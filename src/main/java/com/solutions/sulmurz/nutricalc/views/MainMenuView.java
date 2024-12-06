@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class NutriCalcMainMenuView extends View {
+public class MainMenuView extends NutriCalcView {
     private static Scene mainMenuView = null;
 
     private Font titleFont;
@@ -17,6 +17,7 @@ public class NutriCalcMainMenuView extends View {
     private Button myMealsButton;
     private Button myIngredientsButton;
     private Button exitButton;
+    private VBox mainMenuLayout;
 
     @Override
     public Scene getView() {
@@ -43,7 +44,7 @@ public class NutriCalcMainMenuView extends View {
         return exitButton;
     }
 
-    public NutriCalcMainMenuView() {
+    public MainMenuView() {
         super();
         titleFont = Font.font("BLACK METAL", FontWeight.BOLD, 40);
         titleLabel = new Label("NutriCalc 0.1");
@@ -58,7 +59,7 @@ public class NutriCalcMainMenuView extends View {
         exitButton.setPrefSize(150, 100);
         titleLabel.setFont(titleFont);
 
-        VBox mainMenuLayout = new VBox();
+        mainMenuLayout = new VBox();
         mainMenuLayout.setAlignment(Pos.CENTER);
         mainMenuLayout.setSpacing(10);
         mainMenuLayout.getChildren().addAll(titleLabel, myPlansButton, myMealsButton, myIngredientsButton, exitButton);

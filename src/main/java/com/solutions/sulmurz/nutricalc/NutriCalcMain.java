@@ -1,7 +1,5 @@
 package com.solutions.sulmurz.nutricalc;
 
-import com.solutions.sulmurz.nutricalc.views.NutriCalcMainMenuView;
-import com.solutions.sulmurz.nutricalc.views.NutriCalcMyPlansView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

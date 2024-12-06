@@ -3,10 +3,10 @@ package com.solutions.sulmurz.nutricalc.views;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
-public abstract class View {
-    private Button backButton;
+public abstract class NutriCalcView {
+    protected Button backButton;
     public abstract Scene getView();
-    public View() {
+    public NutriCalcView() {
         backButton = new Button("BACK");
         backButton.setPrefSize(100,50);
     }

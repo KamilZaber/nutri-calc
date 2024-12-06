@@ -8,18 +8,18 @@ import javafx.scene.Scene;
 import static com.solutions.sulmurz.nutricalc.NutriCalcMain.*;
 
 public class NutriCalcController {
-    NutriCalcMainMenuView nutriCalcMainMenuView = null;
-    NutriCalcMyPlansView nutriCalcMyPlansView = null;
-    NutriCalcMyMealsView nutriCalcMyMealsView = null;
-    NutriCalcMyIngredientsView nutriCalcMyIngredientsView = null;
+    MainMenuView mainMenuView = null;
+    MyPlansView myPlansView = null;
+    MyMealsView myMealsView = null;
+    MyIngredientsView myIngredientsView = null;
     NutriCalcModel nutriCalcModel;
 
     public Scene getNutriCalcMainMenuView() {
-        return nutriCalcMainMenuView.getView();
+        return mainMenuView.getView();
     }
 
     public Scene getNutriCalcMyPlansView() {
-        return nutriCalcMyPlansView.getView();
+        return myPlansView.getView();
     }
 
     public NutriCalcModel getNutriCalcModel() {
@@ -28,61 +28,62 @@ public class NutriCalcController {
 
     NutriCalcController() {
         primaryStage.setWidth(800);
-        primaryStage.setHeight(600);
+        primaryStage.setHeight(900);
         primaryStage.setAlwaysOnTop(true);
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Nutricalc 0.1");
 
-        nutriCalcMainMenuView = new NutriCalcMainMenuView();
+        mainMenuView = new MainMenuView();
 
-        nutriCalcMainMenuView.getMyPlansButton().setOnAction(new EventHandler<ActionEvent>() {
+        mainMenuView.getMyPlansButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (nutriCalcMyPlansView == null) {
-                    nutriCalcMyPlansView = new NutriCalcMyPlansView();
-                    nutriCalcMyPlansView.getBackButton().setOnAction(new EventHandler<ActionEvent>() {
+                if (myPlansView == null) {
+                    myPlansView = new MyPlansView();
+                    myPlansView.getBackButton().setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent actionEvent) {
-                            primaryStage.setScene(nutriCalcMainMenuView.getView());
+                            primaryStage.setScene(mainMenuView.getView());
                         }
                     });
                 }
-                primaryStage.setScene(nutriCalcMyPlansView.getView());
+                primaryStage.setScene(myPlansView.getView());
             }
         });
 
-        nutriCalcMainMenuView.getMyMealsButton().setOnAction(new EventHandler<ActionEvent>() {
+        mainMenuView.getMyMealsButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (nutriCalcMyMealsView == null) {
-                    nutriCalcMyMealsView = new NutriCalcMyMealsView();
-                    nutriCalcMyMealsView.getBackButton().setOnAction(new EventHandler<ActionEvent>() {
+                if (myMealsView == null) {
+                    myMealsView = new MyMealsView();
+                    myMealsView.getBackButton().setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent actionEvent) {
-                            primaryStage.setScene(nutriCalcMainMenuView.getView());
+                            primaryStage.setScene(mainMenuView.getView());
                         }
                     });
                 }
-                primaryStage.setScene(nutriCalcMyMealsView.getView());
+                primaryStage.setScene(myMealsView.getView());
             }
         });
 
-        nutriCalcMainMenuView.getMyIngredientsButton().setOnAction(new EventHandler<ActionEvent>() {
+        mainMenuView.getMyIngredientsButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (nutriCalcMyIngredientsView == null) {
-                    nutriCalcMyIngredientsView = new NutriCalcMyIngredientsView();
-                    nutriCalcMyIngredientsView.getBackButton().setOnAction(new EventHandler<ActionEvent>() {
+                if (myIngredientsView == null) {
+                    myIngredientsView = new MyIngredientsView();
+                    myIngredientsView.getBackButton().setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent actionEvent) {
-                            primaryStage.setScene(nutriCalcMainMenuView.getView());
+                            primaryStage.setScene(mainMenuView.getView());
                         }
                     });
                 }
-                primaryStage.setScene(nutriCalcMyIngredientsView.getView());
+                primaryStage.setScene(myIngredientsView.getView());
             }
         });
 
-        nutriCalcMainMenuView.getExitButton().setOnAction(new EventHandler<ActionEvent>() {
+        mainMenuView.getExitButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 primaryStage.close();
