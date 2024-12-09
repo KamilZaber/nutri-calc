@@ -4,7 +4,6 @@ module com.solutions.sulmurz.nutricalc {
 
 
     opens com.solutions.sulmurz.nutricalc to javafx.fxml;
+    opens com.solutions.sulmurz.nutricalc.controllers to javafx.fxml;
     exports com.solutions.sulmurz.nutricalc;
-    exports com.solutions.sulmurz.nutricalc.views;
-    opens com.solutions.sulmurz.nutricalc.views to javafx.fxml;
 }
