@@ -1,10 +1,24 @@
 package com.solutions.sulmurz.nutricalc.models;
 
+import com.google.gson.annotations.Expose;
+
 public class IngredientModel {
+    @Expose
     private String name;
+    @Expose
+    private float[] macroAmounts;
+    @Expose
     private float[] vitaminsAmounts;
+    @Expose
     private float[] mineralsAmounts;
-    private float caloriesAmount;
+
+    public String getName() {
+        return name;
+    }
+
+    public float[] getMacroAmounts() {
+        return macroAmounts;
+    }
 
     public float[] getVitaminsAmounts() {
         return vitaminsAmounts;
@@ -12,13 +26,5 @@ public class IngredientModel {
 
     public float[] getMineralsAmounts() {
         return mineralsAmounts;
-    }
-
-    public float getCaloriesAmount() {
-        return caloriesAmount;
-    }
-
-    public String getName() {
-        return name;
     }
 }

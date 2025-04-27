@@ -1,6 +1,7 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
+import com.solutions.sulmurz.nutricalc.NutriCalcModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,16 +13,17 @@ import java.io.IOException;
 public class MainMenuController {
     private Scene scene;
     private Parent root;
-    @FXML
-    private Button myIngredientsButton;
-    @FXML
-    private Button myMealsButton;
-    @FXML
-    private Button myPlansButton;
-    @FXML
-    private Button exitButton;
+//    @FXML
+//    private Button myIngredientsButton;
+//    @FXML
+//    private Button myMealsButton;
+//    @FXML
+//    private Button myPlansButton;
+//    @FXML
+//    private Button exitButton;
     @FXML
     public void openMyIngredientsView() throws IOException {
+        com.solutions.sulmurz.nutricalc.NutriCalcModel.loadIngredientsDatabase();
         root = FXMLLoader.load(getClass().getClassLoader().getResource("my_ingredients_view.fxml"));
         scene = new Scene(root);
         NutriCalcMain.getPrimaryStage().setScene(scene);
