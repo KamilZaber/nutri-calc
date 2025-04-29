@@ -68,4 +68,87 @@
          </children>
       </Pane>
    </top>
+<<<<<<< Updated upstream
+=======
+   <center>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="224.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane prefHeight="496.0" prefWidth="233.0">
+               <content>
+                  <ListView fx:id="ingredientsListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onMouseClicked" prefHeight="596.0" prefWidth="217.0" />
+               </content>
+            </ScrollPane>
+            <AnchorPane prefHeight="717.0" prefWidth="569.0">
+               <children>
+                  <ScrollPane layoutX="-4.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <content>
+                      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefWidth="557.0">
+                           <children>
+                              <VBox prefHeight="650.0" prefWidth="567.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label fx:id="nameTextField" alignment="CENTER" prefHeight="35.0" prefWidth="1127.0" text="NAME" textAlignment="CENTER" visible="false" VBox.vgrow="ALWAYS">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox fx:id="macroAmountsVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="644.0" prefWidth="443.0">
+                                       <children>
+                                          <TextField fx:id="macroTitle" alignment="CENTER" text="MACRO:" visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="mineralsAmountsVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <TextField fx:id="mineralsTitle" alignment="CENTER" text="MINERALS:" visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="vitaminsAmountsVBox" alignment="CENTER" prefHeight="305.0" prefWidth="567.0">
+                                       <children>
+                                          <TextField fx:id="vitaminsTitle" alignment="CENTER" text="VITAMINS:" visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                          <Label visible="false" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </center>
+>>>>>>> Stashed changes
 </BorderPane>
