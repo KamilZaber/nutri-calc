@@ -1,8 +1,8 @@
 module com.solutions.sulmurz.nutricalc {
     requires javafx.controls;
     requires javafx.fxml;
-    requires com.fasterxml.jackson.databind;
     requires com.google.gson;
+    requires java.desktop;
 
 
     opens com.solutions.sulmurz.nutricalc to javafx.fxml;

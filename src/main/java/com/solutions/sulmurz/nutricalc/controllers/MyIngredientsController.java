@@ -1,39 +1,33 @@
 package com.solutions.sulmurz.nutricalc.controllers;
-
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
 import com.solutions.sulmurz.nutricalc.NutriCalcModel;
 import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 public class MyIngredientsController extends NutriCalcController {
+    private static Scene addIngredientViewScene;
     @FXML
     private ListView<IngredientModel> ingredientsListView;
-    IngredientModel ingredient;
     @FXML
-    private Label nameTextField;
+    private TextField nameTextField;
     @FXML
-    private TextField macroTitle;
+    private VBox dataSection;
     @FXML
-    private TextField mineralsTitle;
+    private VBox macroSection;
     @FXML
-    private TextField vitaminsTitle;
+    private VBox mineralsSection;
     @FXML
-    private VBox macroAmountsVBox;
-    @FXML
-    private VBox mineralsAmountsVBox;
-    @FXML
-    private VBox vitaminsAmountsVBox;
-
+    private VBox vitaminsSection;
     @FXML
     private void initialize() {
+        addIngredientViewScene = null;
         ingredientsListView.getItems().setAll(NutriCalcModel.getIngredientsList());
         ingredientsListView.setCellFactory(ingredientsListView -> new ListCell<>() {        //nowe komórki o określonym działaniu
             @Override
@@ -46,39 +40,44 @@ public class MyIngredientsController extends NutriCalcController {
                 }
             }
         });
-
     }
 
-    private Label[] createLabelsArray(String[] names, float[] values) {
-        Label[] labelsArray = new Label[names.length];
-        for(int i = 0;i < values.length;i++) {
-            labelsArray[i] = new Label(names[i] + ": " + values[i]);
+    private void generateSection(VBox container, String[] fieldsNames, float[] values) {
+        int i = -1;
+        for(Node node: container.getChildren()) {
+            if (i != -1) {
+                ((TextField) node).setText(fieldsNames[i] + ": " + values[i]);
+            }
+            i++;
         }
-        return labelsArray;
+        dataSection.setVisible(true);
     }
 
     @FXML
-    private void onMouseClicked() {
-        ingredient = ingredientsListView.getSelectionModel().getSelectedItem();
+    private void onListObjectSelected() {
+        IngredientModel ingredient = ingredientsListView.getSelectionModel().getSelectedItem();
 
         if (ingredient != null) {
             nameTextField.setVisible(true);
             nameTextField.setText(ingredient.getName());
 
-            macroAmountsVBox.getChildren().clear();
-            macroAmountsVBox.getChildren().add(macroTitle);
-            macroTitle.setVisible(true);
-            macroAmountsVBox.getChildren().addAll(createLabelsArray(NutriCalcModel.getMacroSet(), ingredient.getMacroAmounts()));
-
-            mineralsAmountsVBox.getChildren().clear();
-            mineralsAmountsVBox.getChildren().add(mineralsTitle);
-            mineralsTitle.setVisible(true);
-            mineralsAmountsVBox.getChildren().addAll(createLabelsArray(NutriCalcModel.getMineralsSet(), ingredient.getMineralsAmounts()));
-
-            vitaminsAmountsVBox.getChildren().clear();
-            vitaminsAmountsVBox.getChildren().add(vitaminsTitle);
-            vitaminsTitle.setVisible(true);
-            vitaminsAmountsVBox.getChildren().addAll(createLabelsArray(NutriCalcModel.getVitaminsSet(), ingredient.getVitaminsAmounts()));
+            generateSection(macroSection, NutriCalcModel.getMacroSet(), ingredient.getMacroAmounts());
+            generateSection(mineralsSection, NutriCalcModel.getMineralsSet(), ingredient.getMineralsAmounts());
+            generateSection(vitaminsSection, NutriCalcModel.getVitaminsSet(), ingredient.getVitaminsAmounts());
         }
     }
+
+    @FXML
+    private void openAddIngredientView() {
+        try {
+            if (addIngredientViewScene == null) {
+                addIngredientViewScene = new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("add_ingredient_view.fxml")));
+            }
+            NutriCalcMain.getPrimaryStage().setScene(addIngredientViewScene);
+        }catch (IOException e) {
+            showFatalPrompt();
+        }
+    }
+
+
 }

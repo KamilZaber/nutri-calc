@@ -12,6 +12,26 @@ public class IngredientModel {
     @Expose
     private float[] mineralsAmounts;
 
+    public IngredientModel() {
+        name = null;
+        macroAmounts = null;
+        vitaminsAmounts = null;
+        mineralsAmounts = null;
+    }
+
+    public IngredientModel(String name) {
+        super();
+        this.name = name;
+    }
+
+    public IngredientModel(String name, float[] macroAmounts, float[] mineralsAmounts, float[] vitaminsAmounts) {
+        super();
+        this.name = name;
+        this.macroAmounts = macroAmounts;
+        this.mineralsAmounts = mineralsAmounts;
+        this.vitaminsAmounts = vitaminsAmounts;
+    }
+
     public String getName() {
         return name;
     }

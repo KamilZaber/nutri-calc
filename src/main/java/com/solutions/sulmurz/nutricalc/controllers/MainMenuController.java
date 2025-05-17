@@ -1,16 +1,14 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.NutriCalcModel;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-
 import java.io.IOException;
 
-public class MainMenuController {
+public class MainMenuController extends NutriCalcController {
     private Scene scene;
     private Parent root;
 //    @FXML
@@ -22,26 +20,29 @@ public class MainMenuController {
 //    @FXML
 //    private Button exitButton;
     @FXML
-    public void openMyIngredientsView() throws IOException {
-        com.solutions.sulmurz.nutricalc.NutriCalcModel.loadIngredientsDatabase();
-        root = FXMLLoader.load(getClass().getClassLoader().getResource("my_ingredients_view.fxml"));
+    public void openMyMealsView() {
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("my_meals_view.fxml"));
+        } catch (IOException e) {
+            showFatalPrompt();
+        }
         scene = new Scene(root);
         NutriCalcMain.getPrimaryStage().setScene(scene);
     }
+
     @FXML
-    public void openMyMealsView() throws IOException {
-        root = FXMLLoader.load(getClass().getClassLoader().getResource("my_meals_view.fxml"));
+    public void openMyPlansView() {
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("my_plans_view.fxml"));
+        } catch (IOException e) {
+            showFatalPrompt();
+        }
         scene = new Scene(root);
         NutriCalcMain.getPrimaryStage().setScene(scene);
     }
+
     @FXML
-    public void openMyPlansView() throws IOException {
-        root = FXMLLoader.load(getClass().getClassLoader().getResource("my_plans_view.fxml"));
-        scene = new Scene(root);
-        NutriCalcMain.getPrimaryStage().setScene(scene);
-    }
-    @FXML
-    public void exitNutriCalc() throws IOException {
-        NutriCalcMain.getPrimaryStage().close();
+    public void exitNutriCalc() {
+        Platform.exit();
     }
 }
