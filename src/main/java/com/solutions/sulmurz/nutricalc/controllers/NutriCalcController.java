@@ -53,9 +53,11 @@ public abstract class NutriCalcController {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle("NutriCalc Error");
-        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initModality(Modality.APPLICATION_MODAL); //blokuje inne okna
         stage.showAndWait();
     }
+
+    protected void showConfirmationPrompt() {}
 
     public static void showFatalPrompt() {
         Alert alert = new Alert(Alert.AlertType.ERROR);

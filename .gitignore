@@ -15,6 +15,7 @@ build/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+/src/main/resourcesnutriCalc_database.rar
 
 ### Eclipse ###
 .apt_generated

@@ -26,6 +26,8 @@ public class MyIngredientsController extends NutriCalcController {
     @FXML
     private VBox vitaminsSection;
     @FXML
+    private Button deleteButton;
+    @FXML
     private void initialize() {
         addIngredientViewScene = null;
         ingredientsListView.getItems().setAll(NutriCalcModel.getIngredientsList());
@@ -76,6 +78,20 @@ public class MyIngredientsController extends NutriCalcController {
             NutriCalcMain.getPrimaryStage().setScene(addIngredientViewScene);
         }catch (IOException e) {
             showFatalPrompt();
+        }
+    }
+
+    @FXML
+    private void onDeleteClick() {
+        IngredientModel ingredient = ingredientsListView.getSelectionModel().getSelectedItem();
+        int selectionIndex;
+        if(ingredient != null) {
+            selectionIndex = ingredientsListView.getItems().indexOf(ingredient);
+            ingredientsListView.getItems().remove(selectionIndex);
+            NutriCalcModel.getIngredientsList().remove(selectionIndex);
+            dataSection.setVisible(false);
+        } else {
+            showPrompt("Select an ingredient to delete.");
         }
     }
 
