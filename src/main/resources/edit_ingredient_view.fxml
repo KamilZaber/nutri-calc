@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="600.0" maxWidth="800.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solutions.sulmurz.nutricalc.controllers.AddIngredientController">
+<BorderPane maxHeight="600.0" maxWidth="800.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solutions.sulmurz.nutricalc.controllers.EditIngredientController">
    <effect>
       <ColorAdjust brightness="-0.35" contrast="0.13" hue="0.46" saturation="0.24" />
    </effect>
@@ -42,7 +42,7 @@
    <top>
       <Pane prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="154.0" layoutY="-2.0" prefHeight="104.0" prefWidth="506.0" text="Add Ingredient">
+            <Label layoutX="154.0" layoutY="-2.0" prefHeight="104.0" prefWidth="562.0" text="Edit Ingredient">
                <font>
                   <Font name="Courier New Bold" size="60.0" />
                </font>
@@ -468,6 +468,9 @@
                            </children>
                         </VBox>
                      </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
                </children>
                <opaqueInsets>

@@ -20,7 +20,7 @@ public class MainMenuController extends NutriCalcController {
 //    @FXML
 //    private Button exitButton;
     @FXML
-    public void openMyMealsView() {
+    private void openMyMealsView() {
         try {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("my_meals_view.fxml"));
         } catch (IOException e) {
@@ -31,7 +31,7 @@ public class MainMenuController extends NutriCalcController {
     }
 
     @FXML
-    public void openMyPlansView() {
+    private void openMyPlansView() {
         try {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("my_plans_view.fxml"));
         } catch (IOException e) {
@@ -42,7 +42,7 @@ public class MainMenuController extends NutriCalcController {
     }
 
     @FXML
-    public void exitNutriCalc() {
+    private void exitNutriCalc() {
         Platform.exit();
     }
 }

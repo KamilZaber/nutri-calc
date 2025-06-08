@@ -25,13 +25,13 @@
          <children>
             <HBox alignment="CENTER" prefHeight="72.0" prefWidth="310.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#openAddIngredientView" prefHeight="35.0" prefWidth="86.0" text="ADD" />
+                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAddClick" prefHeight="35.0" prefWidth="86.0" text="ADD" />
                   <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#onDeleteClick" prefHeight="35.0" prefWidth="86.0" text="DELETE" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="72.0" prefWidth="672.0" spacing="100.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="86.0" text="EDIT" />
+                  <Button fx:id="editButton" mnemonicParsing="false" onAction="#onEditClick" prefHeight="35.0" prefWidth="86.0" text="EDIT" />
                </children>
             </HBox>
          </children>

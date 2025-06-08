@@ -5,6 +5,7 @@ import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -26,7 +27,11 @@ public class MyIngredientsController extends NutriCalcController {
     @FXML
     private VBox vitaminsSection;
     @FXML
+    private Button addButton;
+    @FXML
     private Button deleteButton;
+    @FXML
+    private Button editButton;
     @FXML
     private void initialize() {
         addIngredientViewScene = null;
@@ -44,15 +49,8 @@ public class MyIngredientsController extends NutriCalcController {
         });
     }
 
-    private void generateSection(VBox container, String[] fieldsNames, float[] values) {
-        int i = -1;
-        for(Node node: container.getChildren()) {
-            if (i != -1) {
-                ((TextField) node).setText(fieldsNames[i] + ": " + values[i]);
-            }
-            i++;
-        }
-        dataSection.setVisible(true);
+    public static Scene getAddIngredientViewScene() {
+        return addIngredientViewScene;
     }
 
     @FXML
@@ -66,17 +64,19 @@ public class MyIngredientsController extends NutriCalcController {
             generateSection(macroSection, NutriCalcModel.getMacroSet(), ingredient.getMacroAmounts());
             generateSection(mineralsSection, NutriCalcModel.getMineralsSet(), ingredient.getMineralsAmounts());
             generateSection(vitaminsSection, NutriCalcModel.getVitaminsSet(), ingredient.getVitaminsAmounts());
+
+            dataSection.setVisible(true);
         }
     }
 
     @FXML
-    private void openAddIngredientView() {
+    private void onAddClick() {
         try {
             if (addIngredientViewScene == null) {
                 addIngredientViewScene = new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("add_ingredient_view.fxml")));
             }
             NutriCalcMain.getPrimaryStage().setScene(addIngredientViewScene);
-        }catch (IOException e) {
+        } catch (IOException e) {
             showFatalPrompt();
         }
     }
@@ -92,6 +92,28 @@ public class MyIngredientsController extends NutriCalcController {
             dataSection.setVisible(false);
         } else {
             showPrompt("Select an ingredient to delete.");
+        }
+    }
+
+    @FXML
+    private void onEditClick() {
+        IngredientModel ingredient = ingredientsListView.getSelectionModel().getSelectedItem();
+        int selectionIndex;
+        if(ingredient != null) {
+            selectionIndex = ingredientsListView.getItems().indexOf(ingredient);
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("edit_ingredient_view.fxml"));
+                    Parent root = loader.load();
+                    EditIngredientController controller = loader.getController();
+                    controller.setSelectedIngredient(ingredient);
+                    controller.setSelectedIndex(selectionIndex);
+                    controller.setValues();
+                    NutriCalcMain.getPrimaryStage().setScene(new Scene(root));
+                } catch (IOException e) {
+                    showFatalPrompt();
+                }
+        } else {
+            showPrompt("Select an ingredient to edit.");
         }
     }
 

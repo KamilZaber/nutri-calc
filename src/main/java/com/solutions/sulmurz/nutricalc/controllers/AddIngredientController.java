@@ -16,30 +16,23 @@ import java.util.InputMismatchException;
 
 public class AddIngredientController extends NutriCalcController {
     @FXML
-    private TextField nameField;
+    protected TextField nameField;
     @FXML
-    private Button saveButton;
+    protected Button saveButton;
     @FXML
-    private VBox macroSection;
+    protected VBox macroSection;
     @FXML
-    private VBox mineralsSection;
+    protected VBox mineralsSection;
     @FXML
-    private VBox vitaminsSection;
+    protected VBox vitaminsSection;
 
-    //    @FXML
-//    private void initialize() {
-//
-//    }
-
-    private float[] getValuesArray(VBox section) throws InputMismatchException, NumberFormatException {
+    protected float[] getValuesArray(VBox section) throws InputMismatchException, NumberFormatException {
         ObservableList<Node> fieldsList = section.getChildren();
-        float[] valuesArray = new float[fieldsList.size() - 1];
-        int i = -1;
+        float[] valuesArray = new float[fieldsList.size()];
+        int i = 0;
         for (Node field : fieldsList) {
             if (!((TextField) field).getText().isEmpty()) {
-                if (i != -1) {
-                    valuesArray[i] = Float.parseFloat(((TextField) field).getText());
-                }
+                valuesArray[i] = Float.parseFloat(((TextField) field).getText());
             } else {
                 throw new InputMismatchException();
             }
@@ -49,7 +42,7 @@ public class AddIngredientController extends NutriCalcController {
     }
 
     @FXML
-    private void onSaveButtonClick() {
+    protected void onSaveButtonClick() {
         String name = nameField.getText();
         try {
             if (!name.isEmpty()) {

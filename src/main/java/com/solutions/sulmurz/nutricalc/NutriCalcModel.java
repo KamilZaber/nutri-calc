@@ -56,8 +56,6 @@ public class NutriCalcModel {
             } catch (IOException e) {
                 NutriCalcController.showFatalPrompt();
             }
-            System.out.println(ingredientsList.get(0).getName());
-            System.out.println(ingredientsList.get(1).getName());
         }
     }
 
