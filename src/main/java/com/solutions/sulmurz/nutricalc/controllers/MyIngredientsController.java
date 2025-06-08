@@ -86,10 +86,12 @@ public class MyIngredientsController extends NutriCalcController {
         IngredientModel ingredient = ingredientsListView.getSelectionModel().getSelectedItem();
         int selectionIndex;
         if(ingredient != null) {
-            selectionIndex = ingredientsListView.getItems().indexOf(ingredient);
-            ingredientsListView.getItems().remove(selectionIndex);
-            NutriCalcModel.getIngredientsList().remove(selectionIndex);
-            dataSection.setVisible(false);
+            if(showConfirmationPrompt("Do you really want to delete the ingredient: ", ingredient.getName())) {
+                selectionIndex = ingredientsListView.getItems().indexOf(ingredient);
+                ingredientsListView.getItems().remove(selectionIndex);
+                NutriCalcModel.getIngredientsList().remove(selectionIndex);
+                dataSection.setVisible(false);
+            }
         } else {
             showPrompt("Select an ingredient to delete.");
         }
