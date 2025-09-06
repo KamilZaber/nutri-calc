@@ -6,7 +6,6 @@ import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-
 import java.io.IOException;
 import java.util.InputMismatchException;
 

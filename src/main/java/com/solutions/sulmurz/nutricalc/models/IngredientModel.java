@@ -20,7 +20,7 @@ public class IngredientModel {
     }
 
     public IngredientModel(String name) {
-        super();
+        this();
         this.name = name;
     }
 

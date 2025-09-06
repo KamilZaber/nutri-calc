@@ -18,7 +18,8 @@ import java.util.List;
 
 public class NutriCalcModel {
     private static List<IngredientModel> ingredientsList;
-    private static HashMap<MealModel, String> mealsList;
+    private static List<MealModel> mealsList;
+    //private static HashMap<MealModel, String> mealsList;
     private static HashMap<PlanModel, String> plansList;
     private final static String[] macroSet = {"Proteins", "Fats", "Carbohydrates", "Fiber", "KCal"};
     private final static String[] mineralsSet = {"Calcium", "Chloride", "Potassium", "Phosphorus", "Magnesium", "Sodium", "Iron", "Zinc", "Copper", "Manganese", "Molybdenum", "Iodine", "Fluoride", "Chromium",  "Selenium"};
@@ -32,6 +33,10 @@ public class NutriCalcModel {
 
     public static List<IngredientModel> getIngredientsList() {
         return ingredientsList;
+    }
+
+    public static List<MealModel> getMealsList() {
+        return mealsList;
     }
 
     public static String[] getMacroSet() {
@@ -48,11 +53,24 @@ public class NutriCalcModel {
 
     public static void loadIngredientsDatabase() {
         if(ingredientsList == null) {
-            Path path = Paths.get("C:\\Users\\pc\\IdeaProjects\\NutriCalc\\src\\main\\resources\\nutriCalc_database.json");
-            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+            Path path = Paths.get("C:\\Users\\pc\\IdeaProjects\\NutriCalc\\src\\main\\resources\\ingredients_database.json");
+            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();      //żeby nie brało pod uwagę funkcji czy innych pól, które nie mają być częścią struktury obiektu JSON (POJO)
             Type listType = new TypeToken<List<IngredientModel>>(){}.getType();
             try {
                 ingredientsList = gson.fromJson(Files.readString(path),listType);
+            } catch (IOException e) {
+                NutriCalcController.showFatalPrompt();
+            }
+        }
+    }
+
+    public static void loadMealsDatabase() {
+        if(mealsList == null)  {
+            Path path = Paths.get("C:\\Users\\pc\\IdeaProjects\\NutriCalc\\src\\main\\resources\\meals_database.json");
+            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+            Type listType = new TypeToken<List<MealModel>>(){}.getType();
+            try {
+                mealsList = gson.fromJson(Files.readString(path),listType);
             } catch (IOException e) {
                 NutriCalcController.showFatalPrompt();
             }

@@ -16,6 +16,7 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 /src/main/resourcesnutriCalc_database.rar
+/src/main/resources/add_meal_view.xml
 
 ### Eclipse ###
 .apt_generated

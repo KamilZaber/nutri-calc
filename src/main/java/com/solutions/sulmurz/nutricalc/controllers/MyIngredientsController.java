@@ -27,12 +27,6 @@ public class MyIngredientsController extends NutriCalcController {
     @FXML
     private VBox vitaminsSection;
     @FXML
-    private Button addButton;
-    @FXML
-    private Button deleteButton;
-    @FXML
-    private Button editButton;
-    @FXML
     private void initialize() {
         addIngredientViewScene = null;
         ingredientsListView.getItems().setAll(NutriCalcModel.getIngredientsList());

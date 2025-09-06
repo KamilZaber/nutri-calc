@@ -41,10 +41,24 @@ public abstract class NutriCalcController {
         NutriCalcMain.getPrimaryStage().setScene(scene);
     }
 
+    @FXML
+    private void openMyMealsView() {
+        com.solutions.sulmurz.nutricalc.NutriCalcModel.loadIngredientsDatabase();
+        com.solutions.sulmurz.nutricalc.NutriCalcModel.loadMealsDatabase();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("my_meals_view.fxml"));
+        } catch (IOException e) {
+            showFatalPrompt();
+        }
+        Scene scene = new Scene(root);
+        NutriCalcMain.getPrimaryStage().setScene(scene);
+    }
+
     protected void generateSection(VBox container, String[] fieldsNames, float[] values) {
         int i = -1;
         for(Node node: container.getChildren()) {
-            if(i!= -1) {
+            if(i != -1) {
                 ((TextField) node).setText(fieldsNames[i] + ": " + values[i]);
             }
             i++;

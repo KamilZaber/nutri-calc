@@ -1,24 +1,40 @@
 package com.solutions.sulmurz.nutricalc.models;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.HashMap;
+import java.util.List;
 
 public class MealModel {
+    @Expose
     private String name;
-    private float caloriesAmount;
+    @Expose
+    private float[] macroAmounts;
+    @Expose
     private float[] vitaminsAmounts;
+    @Expose
     private float[] mineralsAmounts;
-    private HashMap<IngredientModel, Integer> mealIngredients = new HashMap<>();
+    @Expose
+    private float[] ingredientsAmounts;
+    //@Expose
+    //private List<IngredientModel> mealIngredients;
+    @Expose
+    private int[] mealIngredients;
 
     public String getName() {
         return name;
     }
 
-    public HashMap<IngredientModel, Integer> getMealIngredients() {
+    //public List<IngredientModel> getMealIngredients() {
+    //    return mealIngredients;
+    //}
+
+    public int[] getMealngredients() {
         return mealIngredients;
     }
 
-    public float getCaloriesAmount() {
-        return caloriesAmount;
+    public float[] getCaloriesAmount() {
+        return macroAmounts;
     }
 
     public float[] getMineralsAmounts() {
@@ -27,5 +43,13 @@ public class MealModel {
 
     public float[] getVitaminsAmounts() {
         return vitaminsAmounts;
+    }
+
+    public float[] getMacroAmounts() {
+        return macroAmounts;
+    }
+
+    public float[] getIngredientsAmounts() {
+        return ingredientsAmounts;
     }
 }
