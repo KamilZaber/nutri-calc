@@ -19,7 +19,25 @@ public class MealModel {
     //@Expose
     //private List<IngredientModel> mealIngredients;
     @Expose
-    private int[] mealIngredients;
+    private String[] mealIngredients;
+
+    public MealModel() {
+        name = null;
+        macroAmounts = null;
+        vitaminsAmounts = null;
+        mineralsAmounts = null;
+        ingredientsAmounts = null;
+        mealIngredients = null;
+    }
+
+    public MealModel(String name, String[] mealIngredients, float[] ingredientsAmounts, float[] macroAmounts, float[] vitaminsAmounts, float[] mineralsAmounts) {
+        this.name = name;
+        this.mealIngredients = mealIngredients;
+        this.ingredientsAmounts = ingredientsAmounts;
+        this.macroAmounts = macroAmounts;
+        this.vitaminsAmounts = vitaminsAmounts;
+        this.mineralsAmounts = mineralsAmounts;
+    }
 
     public String getName() {
         return name;
@@ -29,7 +47,7 @@ public class MealModel {
     //    return mealIngredients;
     //}
 
-    public int[] getMealngredients() {
+    public String[] getMealngredients() {
         return mealIngredients;
     }
 

@@ -36,7 +36,7 @@ public class EditIngredientController extends AddIngredientController {
         try {
             if (!name.isEmpty()) {
                 if (showConfirmationPrompt("Are you sure you want to replace these changes for the ingredient:", selectedIngredient.getName())) {
-                    NutriCalcModel.getIngredientsList().set(selectedIndex, new IngredientModel(name, getValuesArray(macroSection), getValuesArray(mineralsSection), getValuesArray(vitaminsSection)));
+                    NutriCalcModel.getIngredientsList().set(selectedIndex, new IngredientModel(name, getSectionValuesArray(macroSection), getSectionValuesArray(mineralsSection), getSectionValuesArray(vitaminsSection)));
                     NutriCalcMain.getPrimaryStage().setScene(new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("my_ingredients_view.fxml"))));
                 }
             } else {

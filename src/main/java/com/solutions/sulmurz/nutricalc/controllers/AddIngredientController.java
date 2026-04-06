@@ -2,6 +2,7 @@ package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
 import com.solutions.sulmurz.nutricalc.NutriCalcModel;
+import com.solutions.sulmurz.nutricalc.exceptions.NameOccupiedException;
 import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -26,39 +27,26 @@ public class AddIngredientController extends NutriCalcController {
     @FXML
     protected VBox vitaminsSection;
 
-    protected float[] getValuesArray(VBox section) throws InputMismatchException, NumberFormatException {
-        ObservableList<Node> fieldsList = section.getChildren();
-        float[] valuesArray = new float[fieldsList.size()];
-        int i = 0;
-        for (Node field : fieldsList) {
-            if (!((TextField) field).getText().isEmpty()) {
-                valuesArray[i] = Float.parseFloat(((TextField) field).getText());
-            } else {
-                throw new InputMismatchException();
-            }
-            i++;
-        }
-        return valuesArray;
-    }
-
     @FXML
     protected void onSaveButtonClick() {
         String name = nameField.getText();
         try {
             if (!name.isEmpty()) {
-                if (!NutriCalcModel.nameOccupied(name)) {
-                    NutriCalcModel.getIngredientsList().add(new IngredientModel(name, getValuesArray(macroSection), getValuesArray(mineralsSection), getValuesArray(vitaminsSection)));
+                if (!NutriCalcModel.ingredientNameOccupied(name)) {
+                    NutriCalcModel.getIngredientsList().add(new IngredientModel(name, getSectionValuesArray(macroSection), getSectionValuesArray(mineralsSection), getSectionValuesArray(vitaminsSection)));
                     NutriCalcMain.getPrimaryStage().setScene(new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("my_ingredients_view.fxml"))));
                 } else {
-                    throw new IOException();
+                    throw new NameOccupiedException();
                 }
             } else {
                 throw new InputMismatchException();
             }
         } catch (InputMismatchException | NumberFormatException e) {
             showPrompt("Enter ingredient name and fill nutritional values fields in correct number format (352, 24.5, 0.51 etc.).");
-        } catch (IOException e2) {
+        } catch (NameOccupiedException noe) {
             showPrompt("Ingredient with provided name already exists in the database.");
+        } catch (IOException ioe) {
+            showPrompt("Error occured while loading new window.");
         }
     }
 }

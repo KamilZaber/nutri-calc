@@ -19,7 +19,6 @@ import java.util.List;
 public class NutriCalcModel {
     private static List<IngredientModel> ingredientsList;
     private static List<MealModel> mealsList;
-    //private static HashMap<MealModel, String> mealsList;
     private static HashMap<PlanModel, String> plansList;
     private final static String[] macroSet = {"Proteins", "Fats", "Carbohydrates", "Fiber", "KCal"};
     private final static String[] mineralsSet = {"Calcium", "Chloride", "Potassium", "Phosphorus", "Magnesium", "Sodium", "Iron", "Zinc", "Copper", "Manganese", "Molybdenum", "Iodine", "Fluoride", "Chromium",  "Selenium"};
@@ -37,6 +36,10 @@ public class NutriCalcModel {
 
     public static List<MealModel> getMealsList() {
         return mealsList;
+    }
+
+    public static HashMap<PlanModel, String> getPlansList() {
+        return plansList;
     }
 
     public static String[] getMacroSet() {
@@ -77,10 +80,20 @@ public class NutriCalcModel {
         }
     }
 
-    public static boolean nameOccupied(String name) {
+    public static boolean ingredientNameOccupied(String name) {
         boolean result = false;
         for(IngredientModel ingredient: ingredientsList) {
             if(ingredient.getName().equals(name)) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public static boolean mealNameOccupied(String name) {
+        boolean result = false;
+        for(MealModel meal: mealsList) {
+            if(meal.getName().equals(name)) {
                 result = true;
             }
         }

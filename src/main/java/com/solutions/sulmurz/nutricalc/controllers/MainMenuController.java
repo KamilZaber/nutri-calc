@@ -9,9 +9,7 @@ import javafx.scene.Scene;
 import java.io.IOException;
 
 public class MainMenuController extends NutriCalcController {
-    private Scene scene;
-    private Parent root;
-//    @FXML
+    //    @FXML
 //    private Button myIngredientsButton;
 //    @FXML
 //    private Button myMealsButton;
@@ -19,17 +17,6 @@ public class MainMenuController extends NutriCalcController {
 //    private Button myPlansButton;
 //    @FXML
 //    private Button exitButton;
-    @FXML
-    private void openMyPlansView() {
-        try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("my_plans_view.fxml"));
-        } catch (IOException e) {
-            showFatalPrompt();
-        }
-        scene = new Scene(root);
-        NutriCalcMain.getPrimaryStage().setScene(scene);
-    }
-
     @FXML
     private void exitNutriCalc() {
         Platform.exit();

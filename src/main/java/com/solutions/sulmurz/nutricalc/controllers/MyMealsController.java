@@ -20,6 +20,7 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 
 public class MyMealsController extends NutriCalcController {
+    private static Scene addMealViewScene ;
     @FXML
     private TextField nameTextField;
     @FXML
@@ -38,6 +39,7 @@ public class MyMealsController extends NutriCalcController {
     private ListView<MealModel> mealsListView;
     @FXML
     private VBox ingredientsTab;
+
     @FXML
     private void initialize() {
         mealsListView.getItems().setAll(NutriCalcModel.getMealsList());
@@ -53,6 +55,7 @@ public class MyMealsController extends NutriCalcController {
             }
         });
     }
+
     @FXML
     private void onListObjectSelected() {
         MealModel meal = mealsListView.getSelectionModel().getSelectedItem();
@@ -69,8 +72,8 @@ public class MyMealsController extends NutriCalcController {
             ingredientsTab.getChildren().clear();
 
             byte x = 0;
-            for (int i : meal.getMealngredients()) {
-                TextField ingredientTextField = new TextField(meal.getIngredientsAmounts()[x] + "g of " + NutriCalcModel.getIngredientsList().get(i).getName());
+            for (String i : meal.getMealngredients()) {
+                TextField ingredientTextField = new TextField(i + ": " + meal.getIngredientsAmounts()[x] + "g");
                 ingredientTextField.setEditable(false);
                 ingredientTextField.setCursor(Cursor.DEFAULT);
                 ingredientTextField.setAlignment(Pos.CENTER);
@@ -79,14 +82,35 @@ public class MyMealsController extends NutriCalcController {
             }
         }
     }
+
     @FXML
     private void onAddClick() {
-
+        try {
+            if(addMealViewScene == null) {
+                addMealViewScene = new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("add_meal_view.fxml")));
+            }
+            NutriCalcMain.getPrimaryStage().setScene(addMealViewScene);
+        } catch(IOException e) {
+            showFatalPrompt();
+        }
     }
+
     @FXML
     private void onDeleteClick() {
-
+        MealModel meal = mealsListView.getSelectionModel().getSelectedItem();
+        int selectionIndex;
+        if(meal != null) {
+            if(showConfirmationPrompt("Do you really want to delete the meal: ", meal.getName())) {
+                selectionIndex = mealsListView.getItems().indexOf(meal);
+                mealsListView.getItems().remove(selectionIndex);
+                NutriCalcModel.getMealsList().remove(selectionIndex);
+                dataSection.setVisible(false);
+            }
+        } else {
+            showPrompt("Select an ingredient to delete.");
+        }
     }
+
     @FXML
     private void onEditClick() {
 
