@@ -1,4 +1,5 @@
 package com.solutions.sulmurz.nutricalc.controllers;
+
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
 import com.solutions.sulmurz.nutricalc.NutriCalcModel;
 import com.solutions.sulmurz.nutricalc.exceptions.NameOccupiedException;
@@ -16,27 +17,27 @@ import java.util.InputMismatchException;
 
 public class AddMealController extends NutriCalcController {
     @FXML
-    private ListView<IngredientModel> allIngredientsListView;
+    protected ListView<IngredientModel> allIngredientsListView;
     @FXML
-    private ListView<IngredientModel> ingredientsListView;
+    protected ListView<IngredientModel> ingredientsListView;
     @FXML
-    private ListView<Float> ingredientsAmountsListView;
+    protected ListView<Float> ingredientsAmountsListView;
     @FXML
-    private TextField gramsTextField;
+    protected TextField gramsTextField;
     @FXML
-    private Button addIngredientButton;
+    protected Button addIngredientButton;
     @FXML
-    private Button deleteIngredientButton;
+    protected Button deleteIngredientButton;
     @FXML
-    private Button saveButton;
+    protected Button saveButton;
     @FXML
-    private Button backButton;
+    protected Button backButton;
     @FXML
-    private TextField nameField;
+    protected TextField nameField;
     @FXML
-    private void initialize() {
+    protected void initialize() {
         allIngredientsListView.getItems().setAll(NutriCalcModel.getIngredientsList());
-        allIngredientsListView.setCellFactory(ingredientsListView -> new ListCell<>() {        //nowe komórki o określonym działaniu
+        allIngredientsListView.setCellFactory(allIngredientsListView -> new ListCell<>() {        //nowe komórki o określonym działaniu
             @Override
             protected void updateItem(IngredientModel ingredient, boolean empty) {
                 super.updateItem(ingredient, empty);                    //nazywanie komórek...
@@ -58,10 +59,17 @@ public class AddMealController extends NutriCalcController {
                 }
             }
         });
+
+        ingredientsListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if(newSelection != null) {
+                allIngredientsListView.getSelectionModel().select(newSelection);
+                allIngredientsListView.scrollTo(newSelection);
+            }
+        });
     }
 
     @FXML
-    private void onAddIngredientButtonClick() {
+    protected void onAddIngredientButtonClick() {
         Float grams;
         try {
             if(allIngredientsListView.getSelectionModel().getSelectedItem() != null) {
@@ -87,7 +95,7 @@ public class AddMealController extends NutriCalcController {
     }
 
     @FXML
-    private void onDeleteIngredientButtonClick() {
+    protected void onDeleteIngredientButtonClick() {
         int selectedIndex = ingredientsListView.getSelectionModel().getSelectedIndex();
         float amountToAdd;
         float amount;

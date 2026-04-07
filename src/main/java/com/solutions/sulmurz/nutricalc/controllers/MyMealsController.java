@@ -16,8 +16,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import org.w3c.dom.Text;
-
 import java.io.IOException;
+import java.util.NoSuchElementException;
 
 public class MyMealsController extends NutriCalcController {
     private static Scene addMealViewScene ;
@@ -113,6 +113,23 @@ public class MyMealsController extends NutriCalcController {
 
     @FXML
     private void onEditClick() {
-
+        MealModel meal = mealsListView.getSelectionModel().getSelectedItem();
+        int selectionIndex;
+        if(meal != null) {
+            selectionIndex = mealsListView.getItems().indexOf(meal);
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("edit_meal_view.fxml"));
+                Parent root = loader.load();
+                EditMealController controller = loader.getController();
+                controller.setSelectedMeal(meal);
+                controller.setSelectedIndex(selectionIndex);
+                controller.setValues();
+                NutriCalcMain.getPrimaryStage().setScene(new Scene(root));
+            } catch (IOException e) {
+                showFatalPrompt();
+            }
+        } else {
+            showPrompt("Select a meal to edit.");
+        }
     }
 }

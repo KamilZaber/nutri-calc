@@ -7,7 +7,6 @@ import com.solutions.sulmurz.nutricalc.controllers.NutriCalcController;
 import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import com.solutions.sulmurz.nutricalc.models.MealModel;
 import com.solutions.sulmurz.nutricalc.models.PlanModel;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
@@ -52,6 +51,16 @@ public class NutriCalcModel {
 
     public static String[] getMineralsSet() {
         return mineralsSet;
+    }
+
+    public static IngredientModel getIngredientByName(String name) {
+        IngredientModel ingredient = null;
+        for(IngredientModel tempIngredient: ingredientsList) {
+            if(tempIngredient.getName().equals(name)) {
+                ingredient = tempIngredient;
+            }
+        }
+        return ingredient;
     }
 
     public static void loadIngredientsDatabase() {

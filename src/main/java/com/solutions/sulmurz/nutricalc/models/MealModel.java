@@ -2,9 +2,6 @@ package com.solutions.sulmurz.nutricalc.models;
 
 import com.google.gson.annotations.Expose;
 
-import java.util.HashMap;
-import java.util.List;
-
 public class MealModel {
     @Expose
     private String name;
