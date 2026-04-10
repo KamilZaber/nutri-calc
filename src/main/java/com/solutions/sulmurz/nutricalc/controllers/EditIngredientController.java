@@ -1,7 +1,7 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.NutriCalcModel;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
 import com.solutions.sulmurz.nutricalc.exceptions.NameOccupiedException;
 import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import javafx.fxml.FXML;

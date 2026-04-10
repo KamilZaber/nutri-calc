@@ -1,9 +1,11 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.NutriCalcModel;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcFunctions;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
 import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import com.solutions.sulmurz.nutricalc.models.MealModel;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -15,9 +17,12 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import org.w3c.dom.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 import java.io.IOException;
-import java.util.NoSuchElementException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyMealsController extends NutriCalcController {
     private static Scene addMealViewScene ;
@@ -118,12 +123,34 @@ public class MyMealsController extends NutriCalcController {
         if(meal != null) {
             selectionIndex = mealsListView.getItems().indexOf(meal);
             try {
+                //test czy wszystkie składniki posiłku są w bazie
+                List<IngredientModel> testIngredientList = new ArrayList<>();
+                float[] testIngredientsAmounts = meal.getIngredientsAmounts().clone();
+                IngredientModel testIngredient;
+                boolean changedInTest = false;
+
+                for(int i = 0; i < meal.getMealngredients().length; i++) {
+                    testIngredient = NutriCalcModel.getIngredientByName(meal.getMealngredients()[i]);
+                    if(testIngredient == null) {
+                        boolean skipIngredient = showNoIngredientPrompt(meal.getMealngredients()[i]);
+                        if(!skipIngredient) {
+                            return;
+                        } else {
+                            changedInTest = true;
+                            testIngredientsAmounts[i] = 0;
+                        }
+                    } else {
+                        testIngredientList.add(testIngredient);
+                    }
+                }
+
+                if(changedInTest) {
+                    testIngredientsAmounts = NutriCalcFunctions.shortenFloatArray(testIngredientsAmounts);
+                }
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("edit_meal_view.fxml"));
                 Parent root = loader.load();
                 EditMealController controller = loader.getController();
-                controller.setSelectedMeal(meal);
-                controller.setSelectedIndex(selectionIndex);
-                controller.setValues();
+                controller.setValues(meal.getName(), selectionIndex, testIngredientList, testIngredientsAmounts);
                 NutriCalcMain.getPrimaryStage().setScene(new Scene(root));
             } catch (IOException e) {
                 showFatalPrompt();
@@ -131,5 +158,25 @@ public class MyMealsController extends NutriCalcController {
         } else {
             showPrompt("Select a meal to edit.");
         }
+    }
+
+    private boolean showNoIngredientPrompt(String name) {
+        NoIngredientPromptController controller;
+        VBox root = null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/no_ingredient_prompt_view.fxml"));
+        try {
+            root = loader.load();
+        } catch(IOException e) {
+            showFatalPrompt();
+            Platform.exit();
+        }
+        controller = loader.getController();
+        controller.setIngredientName(name);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("NutriCalc Prompt");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+        return controller.skipIngredient();
     }
 }

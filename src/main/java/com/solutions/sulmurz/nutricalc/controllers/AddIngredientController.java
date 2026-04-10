@@ -1,13 +1,11 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.NutriCalcModel;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
 import com.solutions.sulmurz.nutricalc.exceptions.NameOccupiedException;
 import com.solutions.sulmurz.nutricalc.models.IngredientModel;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

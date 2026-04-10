@@ -1,10 +1,9 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.NutriCalcModel;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
 import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;

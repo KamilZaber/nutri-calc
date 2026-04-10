@@ -1,7 +1,8 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.NutriCalcModel;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcFunctions;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
 import com.solutions.sulmurz.nutricalc.exceptions.NameOccupiedException;
 import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import com.solutions.sulmurz.nutricalc.models.MealModel;
@@ -126,9 +127,9 @@ public class AddMealController extends NutriCalcController {
         try {
             if (!name.isEmpty()) {
                 if (!NutriCalcModel.mealNameOccupied(name)) {
-                    String[] ingredientsNamesArray = getNamesArray(ingredientsListView.getItems());
-                    float[] ingredientsAmountsArray = getValuesArray(ingredientsAmountsListView.getItems());
-                    NutriCalcModel.getMealsList().add(new MealModel(name, ingredientsNamesArray, ingredientsAmountsArray, sumUpMacroValues(ingredientsListView.getItems(), ingredientsAmountsArray), sumUpVitaminsValues(ingredientsListView.getItems(), ingredientsAmountsArray), sumUpMineralsValues(ingredientsListView.getItems(), ingredientsAmountsArray)));
+                    String[] ingredientsNamesArray = NutriCalcFunctions.getNamesArray(ingredientsListView.getItems());
+                    float[] ingredientsAmountsArray = NutriCalcFunctions.getValuesArray(ingredientsAmountsListView.getItems());
+                    NutriCalcModel.getMealsList().add(new MealModel(name, ingredientsNamesArray, ingredientsAmountsArray, NutriCalcFunctions.sumUpMacroValues(ingredientsListView.getItems(), ingredientsAmountsArray), NutriCalcFunctions.sumUpVitaminsValues(ingredientsListView.getItems(), ingredientsAmountsArray), NutriCalcFunctions.sumUpMineralsValues(ingredientsListView.getItems(), ingredientsAmountsArray)));
                     NutriCalcMain.getPrimaryStage().setScene(new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("my_meals_view.fxml"))));
                 } else {
                     throw new NameOccupiedException();

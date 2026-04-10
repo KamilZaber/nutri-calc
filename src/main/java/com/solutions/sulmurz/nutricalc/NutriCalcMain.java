@@ -1,13 +1,11 @@
 package com.solutions.sulmurz.nutricalc;
 
 import com.solutions.sulmurz.nutricalc.controllers.NutriCalcController;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;

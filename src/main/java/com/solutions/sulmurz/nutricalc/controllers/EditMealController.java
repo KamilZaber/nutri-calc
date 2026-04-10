@@ -1,41 +1,36 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.NutriCalcModel;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcFunctions;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
 import com.solutions.sulmurz.nutricalc.exceptions.NameOccupiedException;
+import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import com.solutions.sulmurz.nutricalc.models.MealModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.List;
 
 public class EditMealController extends AddMealController {
-    private MealModel selectedMeal;
     private int selectedIndex;
     private String oldName;
 
-    public void setSelectedIndex(int index) {
-        this.selectedIndex = index;
-    }
-
-    public void setSelectedMeal(MealModel meal) {
-        this.selectedMeal = meal;
-    }
-
-    public void setValues() {
-        for(int i = 0; i < selectedMeal.getMealngredients().length; i++) {
-            oldName = selectedMeal.getName();
-            nameField.setText(oldName);
-            ingredientsAmountsListView.getItems().add(selectedMeal.getIngredientsAmounts()[i]);
-            ingredientsListView.getItems().add(NutriCalcModel.getIngredientByName(selectedMeal.getMealngredients()[i]));
+    public void setValues(String mealName, int selectedIndex, List<IngredientModel> ingredientsList, float[] ingredientsAmounts) {
+        this.selectedIndex = selectedIndex;
+        oldName = mealName;
+        nameField.setText(oldName);
+        ingredientsListView.getItems().addAll(ingredientsList);
+        for (float ingredientAmount: ingredientsAmounts) {
+            ingredientsAmountsListView.getItems().add(ingredientAmount);
         }
     }
 
     private void saveMeal(String name) throws IOException {
-        String[] ingredientsNamesArray = getNamesArray(ingredientsListView.getItems());
-        float[] ingredientsAmountsArray = getValuesArray(ingredientsAmountsListView.getItems());
-        NutriCalcModel.getMealsList().set(selectedIndex, new MealModel(name, ingredientsNamesArray, ingredientsAmountsArray, sumUpMacroValues(ingredientsListView.getItems(), ingredientsAmountsArray), sumUpVitaminsValues(ingredientsListView.getItems(), ingredientsAmountsArray), sumUpMineralsValues(ingredientsListView.getItems(), ingredientsAmountsArray)));
+        String[] ingredientsNamesArray = NutriCalcFunctions.getNamesArray(ingredientsListView.getItems());
+        float[] ingredientsAmountsArray = NutriCalcFunctions.getValuesArray(ingredientsAmountsListView.getItems());
+        NutriCalcModel.getMealsList().set(selectedIndex, new MealModel(name, ingredientsNamesArray, ingredientsAmountsArray, NutriCalcFunctions.sumUpMacroValues(ingredientsListView.getItems(), ingredientsAmountsArray), NutriCalcFunctions.sumUpVitaminsValues(ingredientsListView.getItems(), ingredientsAmountsArray), NutriCalcFunctions.sumUpMineralsValues(ingredientsListView.getItems(), ingredientsAmountsArray)));
         NutriCalcMain.getPrimaryStage().setScene(new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("my_meals_view.fxml"))));
     }
 

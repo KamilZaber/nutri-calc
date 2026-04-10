@@ -1,8 +1,7 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.NutriCalcModel;
-import com.solutions.sulmurz.nutricalc.models.IngredientModel;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,7 +16,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.InputMismatchException;
-import java.util.List;
 
 public abstract class NutriCalcController {
     @FXML
@@ -103,62 +101,6 @@ public abstract class NutriCalcController {
             i++;
         }
         return valuesArray;
-    }
-
-    protected float[] getValuesArray(ObservableList<Float> valuesList) {
-        float[] valuesArray = new float[valuesList.size()];
-        int i = 0;
-        for(Float value: valuesList) {
-            valuesArray[i] = value;
-            i++;
-        }
-        return valuesArray;
-    }
-
-    protected String[] getNamesArray(ObservableList<IngredientModel> ingredientsList) {
-        String[] namesArray = new String[ingredientsList.size()];
-        int i = 0;
-        for(IngredientModel ingredient: ingredientsList) {
-            namesArray[i] = ingredient.getName();
-            i++;
-        }
-        return namesArray;
-    }
-
-    protected float[] sumUpMacroValues(List<IngredientModel> ingredients, float[] ingredientAmounts) {
-        float[] macroSummary = new float[5];
-        int i = 0;
-        for(IngredientModel ingredient: ingredients) {
-            for(int j = 0; j < 5; j++) {
-                macroSummary[j] = macroSummary[j] + ((ingredient.getMacroAmounts()[j])/100*ingredientAmounts[i]);
-            }
-            i++;
-        }
-        return macroSummary;
-    }
-
-    protected float[] sumUpVitaminsValues(List<IngredientModel> ingredients, float[] ingredientAmounts) {
-        float[] macroSummary = new float[13];
-        int i = 0;
-        for(IngredientModel ingredient: ingredients) {
-            for(int j = 0; j < 13; j++) {
-                macroSummary[j] = macroSummary[j] + ((ingredient.getVitaminsAmounts()[j])/100*ingredientAmounts[i]);
-            }
-            i++;
-        }
-        return macroSummary;
-    }
-
-    protected float[] sumUpMineralsValues(List<IngredientModel> ingredients, float[] ingredientAmounts) {
-        float[] macroSummary = new float[15];
-        int i = 0;
-        for(IngredientModel ingredient: ingredients) {
-            for(int j = 0; j < 15; j++) {
-                macroSummary[j] = macroSummary[j] + ((ingredient.getMineralsAmounts()[j])/100*ingredientAmounts[i]);
-            }
-            i++;
-        }
-        return macroSummary;
     }
 
     protected void showPrompt(String message) {

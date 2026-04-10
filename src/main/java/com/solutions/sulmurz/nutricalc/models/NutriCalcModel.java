@@ -1,12 +1,9 @@
-package com.solutions.sulmurz.nutricalc;
+package com.solutions.sulmurz.nutricalc.models;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.solutions.sulmurz.nutricalc.controllers.NutriCalcController;
-import com.solutions.sulmurz.nutricalc.models.IngredientModel;
-import com.solutions.sulmurz.nutricalc.models.MealModel;
-import com.solutions.sulmurz.nutricalc.models.PlanModel;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
@@ -65,7 +62,7 @@ public class NutriCalcModel {
 
     public static void loadIngredientsDatabase() {
         if(ingredientsList == null) {
-            Path path = Paths.get("C:\\Users\\pc\\IdeaProjects\\NutriCalc\\src\\main\\resources\\ingredients_database.json");
+            Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\ingredients_database.json");
             Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();      //żeby nie brało pod uwagę funkcji czy innych pól, które nie mają być częścią struktury obiektu JSON (POJO)
             Type listType = new TypeToken<List<IngredientModel>>(){}.getType();
             try {
@@ -78,7 +75,7 @@ public class NutriCalcModel {
 
     public static void loadMealsDatabase() {
         if(mealsList == null)  {
-            Path path = Paths.get("C:\\Users\\pc\\IdeaProjects\\NutriCalc\\src\\main\\resources\\meals_database.json");
+            Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\meals_database.json");
             Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
             Type listType = new TypeToken<List<MealModel>>(){}.getType();
             try {
