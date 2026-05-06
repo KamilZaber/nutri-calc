@@ -22,8 +22,12 @@ public abstract class NutriCalcController {
     private void openMainMenuView() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("main_menu_view.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/main_menu_view.fxml")
+            );
+            root = loader.load();
         } catch (IOException e) {
+            e.printStackTrace();
             showFatalPrompt();
         }
         Scene scene = new Scene(root);
@@ -35,8 +39,12 @@ public abstract class NutriCalcController {
         NutriCalcModel.loadIngredientsDatabase();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("my_ingredients_view.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/my_ingredients_view.fxml")
+            );
+            root = loader.load();
         } catch (IOException e) {
+            e.printStackTrace();
             showFatalPrompt();
         }
         Scene scene = new Scene(root);
@@ -49,24 +57,33 @@ public abstract class NutriCalcController {
         NutriCalcModel.loadMealsDatabase();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("my_meals_view.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/my_meals_view.fxml")
+            );
+            root = loader.load();
         } catch (IOException e) {
+            e.printStackTrace();
             showFatalPrompt();
         }
+
         Scene scene = new Scene(root);
         NutriCalcMain.getPrimaryStage().setScene(scene);
     }
 
     @FXML
     private void openMyPlansView() {
-        Scene scene;
+        NutriCalcModel.loadMainPlansDatabase();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("my_plans_view.fxml"));  //tuta generator spersonalizowanych scen z danymi GUI jak kursor, wielkość okna
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/my_plans_view.fxml")
+            );
+            root = loader.load();
         } catch (IOException e) {
+            e.printStackTrace();
             showFatalPrompt();
         }
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         NutriCalcMain.getPrimaryStage().setScene(scene);
     }
 

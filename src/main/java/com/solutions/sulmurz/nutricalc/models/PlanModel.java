@@ -1,33 +1,33 @@
 package com.solutions.sulmurz.nutricalc.models;
 
-import java.util.HashMap;
+import com.google.gson.annotations.Expose;
+
 import java.util.LinkedList;
 import java.util.List;
 
-public class PlanModel {
-    private String name;
-    private float caloriesAmount;
-    private float[] vitaminsAmounts;
-    private float[] mineralsAmounts;
-    private List<PlanElementModel> planElements = new LinkedList<>();
+public class PlanModel extends PlanElementModel {
+    @Expose
+    private int planID;
+    @Expose
+    private int[][] elementsList;
 
-    public String getName() {
-        return name;
+    public PlanModel() {
+        super();
+        this.planID = NutriCalcModel.giveplanID();
+        this.elementsList = null;
     }
 
-    public float getCaloriesAmount() {
-        return caloriesAmount;
+    public PlanModel(int planID, int[][] elementsList) {
+        super();
+        this.planID = planID;
+        this.elementsList = elementsList;
     }
 
-    public float[] getVitaminsAmounts() {
-        return vitaminsAmounts;
+    public int getPlanID() {
+        return planID;
     }
 
-    public float[] getMineralsAmounts() {
-        return mineralsAmounts;
-    }
-
-    public List<PlanElementModel> getPlanElements() {
-        return planElements;
+    public int[][] getElementsList() {
+        return elementsList;
     }
 }

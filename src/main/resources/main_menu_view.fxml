@@ -12,7 +12,7 @@
       <ColorAdjust brightness="-0.35" contrast="0.13" hue="0.46" saturation="0.24" />
    </effect>
    <children>
-      <Label alignment="CENTER" prefHeight="88.0" prefWidth="547.0" text="NutriCalc 0.3">
+      <Label alignment="CENTER" prefHeight="88.0" prefWidth="547.0" text="NutriCalc 0.4">
          <font>
             <Font name="Courier New Bold" size="60.0" />
          </font>

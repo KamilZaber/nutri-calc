@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="planBox" onMouseClicked="#onPlanBoxClick" prefHeight="119.0" prefWidth="785.0" styleClass="plan-box" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solutions.sulmurz.nutricalc.controllers.MainPlanPreviewController">
+   <children>
+      <Label fx:id="planNameLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="785.0" text="PLAN 1">
+         <font>
+            <Font name="Cambria Bold" size="30.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="planInfoArea" disable="true" editable="false" prefHeight="127.0" prefWidth="785.0" wrapText="true">
+         <font>
+            <Font name="System Italic" size="25.0" />
+         </font>
+      </TextArea>
+   </children>
+</VBox>

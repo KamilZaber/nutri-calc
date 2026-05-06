@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+
+<Label fx:id="elementLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="Infinity" onMouseClicked="#onMealsSetElementClick" styleClass="meals-set-element" stylesheets="@style.css" text="Label" textAlignment="CENTER" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solutions.sulmurz.nutricalc.controllers.MealsSetElementController">
+   <font>
+      <Font size="20.0" />
+   </font>
+</Label>

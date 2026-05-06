@@ -1,0 +1,146 @@
+[
+	{
+		"planID": 0,
+		"name": "Carnivore Day 1",
+		"description": "Basic meat day.",
+		"macroAmounts": [120, 90, 5, 0, 1300],
+		"vitaminsAmounts": [1, 0.5, 1, 0.01, 2, 0.2, 0.3, 6, 1, 0.5, 0.02, 0.005, 200],
+		"mineralsAmounts": [150, 0, 500, 400, 80, 900, 6, 5, 0.5, 0.5, 0, 0, 0, 0, 0.03],
+		"elementsList": [[1,5],[1,1],[1,6]]
+	},
+	{
+		"planID": 1,
+		"name": "Carnivore Day 2",
+		"description": "Chicken and liver day.",
+		"macroAmounts": [130, 95, 3, 0, 1350],
+		"vitaminsAmounts": [5, 0.5, 1, 0.01, 10, 0.3, 0.4, 8, 2, 1, 0.03, 0.01, 250],
+		"mineralsAmounts": [200, 0, 600, 500, 90, 1000, 8, 6, 1, 0.8, 0, 0, 0, 0, 0.04],
+		"elementsList": [[1,0],[1,5],[1,6]]
+	},
+	{
+		"planID": 2,
+		"name": "Carnivore Day 3",
+		"description": "Mixed meats.",
+		"macroAmounts": [125, 85, 4, 0, 1280],
+		"vitaminsAmounts": [2, 0.4, 1, 0.01, 4, 0.2, 0.3, 7, 1.5, 0.7, 0.02, 0.005, 220],
+		"mineralsAmounts": [180, 0, 550, 420, 85, 950, 7, 5, 0.7, 0.6, 0, 0, 0, 0, 0.03],
+		"elementsList": [[1,4],[1,1],[1,2]]
+	},
+	{
+		"planID": 3,
+		"name": "Carnivore Day 4",
+		"description": "Fat rich beef day.",
+		"macroAmounts": [140, 110, 3, 0, 1500],
+		"vitaminsAmounts": [2, 0.3, 1.5, 0.01, 3, 0.2, 0.3, 8, 1.5, 0.7, 0.02, 0.005, 230],
+		"mineralsAmounts": [200, 0, 600, 450, 90, 1000, 8, 6, 0.8, 0.7, 0, 0, 0, 0, 0.04],
+		"elementsList": [[1,1],[1,5],[1,2]]
+	},
+	{
+		"planID": 4,
+		"name": "Carnivore Day 5",
+		"description": "Balanced carnivore.",
+		"macroAmounts": [130, 95, 4, 0, 1400],
+		"vitaminsAmounts": [2, 0.4, 1, 0.01, 4, 0.2, 0.3, 7, 1.5, 0.7, 0.02, 0.005, 210],
+		"mineralsAmounts": [180, 0, 550, 420, 85, 900, 7, 5, 0.7, 0.6, 0, 0, 0, 0, 0.03],
+		"elementsList": [[1,4],[1,5],[1,6]]
+	},
+	{
+		"planID": 5,
+		"name": "Carnivore Day 6",
+		"description": "Chicken focused.",
+		"macroAmounts": [120, 80, 5, 0, 1250],
+		"vitaminsAmounts": [1.5, 0.4, 1, 0.01, 5, 0.3, 0.4, 6, 1.2, 0.6, 0.02, 0.005, 200],
+		"mineralsAmounts": [170, 0, 500, 400, 80, 850, 6, 5, 0.6, 0.5, 0, 0, 0, 0, 0.03],
+		"elementsList": [[1,0],[1,5],[1,2]]
+	},
+	{
+		"planID": 6,
+		"name": "Carnivore Day 7",
+		"description": "Organ meats day.",
+		"macroAmounts": [135, 100, 4, 0, 1450],
+		"vitaminsAmounts": [6, 0.5, 1, 0.02, 15, 0.4, 0.5, 9, 2, 1, 0.05, 0.02, 300],
+		"mineralsAmounts": [220, 0, 650, 500, 100, 1100, 10, 7, 1.2, 0.9, 0, 0, 0, 0, 0.05],
+		"elementsList": [[1,0],[1,4],[1,6]]
+	},
+	{
+		"planID": 7,
+		"name": "For Me",
+		"description": "Personal vegan plan.",
+		"macroAmounts": [210, 75, 310, 32, 2300],
+		"vitaminsAmounts": [520, 10, 20, 5, 220, 2, 3, 22, 11, 3, 1, 0, 110],
+		"mineralsAmounts": [420, 0, 1300, 850, 320, 420, 13, 9, 2, 2, 0, 0, 0, 0, 0.05],
+		"elementsList": [[0,8],[0,9]]
+	},
+	{
+		"planID": 8,
+		"name": "Week 1",
+		"description": "First rotation week.",
+		"macroAmounts": [190, 65, 290, 28, 2100],
+		"vitaminsAmounts": [480, 9, 18, 5, 180, 2, 3, 18, 9, 3, 1, 0, 90],
+		"mineralsAmounts": [380, 0, 1100, 750, 280, 380, 10, 7, 2, 2, 0, 0, 0, 0, 0.04],
+		"elementsList": [[1,7],[1,8],[1,9],[1,10],[1,11]]
+	},
+	{
+		"planID": 9,
+		"name": "Week 2",
+		"description": "Second rotation week.",
+		"macroAmounts": [200, 70, 300, 30, 2200],
+		"vitaminsAmounts": [500, 10, 20, 5, 200, 2, 3, 20, 10, 3, 1, 0, 100],
+		"mineralsAmounts": [400, 0, 1200, 800, 300, 400, 12, 8, 2, 2, 0, 0, 0, 0, 0.05],
+		"elementsList": [[1,9],[1,7],[1,10],[1,8],[1,11]]
+	},
+	{
+		"planID": 10,
+		"name": "For Wife",
+		"description": "Adjusted vegan version.",
+		"macroAmounts": [180, 60, 270, 25, 2000],
+		"vitaminsAmounts": [450, 9, 18, 5, 170, 2, 3, 18, 9, 3, 1, 0, 90],
+		"mineralsAmounts": [350, 0, 1000, 700, 250, 350, 9, 7, 2, 2, 0, 0, 0, 0, 0.04],
+		"elementsList": [[0,11],[0,12]]
+	},
+	{
+		"planID": 11,
+		"name": "Week 1",
+		"description": "Week 1 adjusted.",
+		"macroAmounts": [170, 55, 260, 24, 1900],
+		"vitaminsAmounts": [430, 8, 17, 5, 160, 2, 3, 17, 8, 3, 1, 0, 85],
+		"mineralsAmounts": [330, 0, 950, 650, 240, 330, 9, 6, 2, 2, 0, 0, 0, 0, 0.04],
+		"elementsList": [[1,9],[1,10],[1,11],[1,7],[1,8]]
+	},
+	{
+		"planID": 12,
+		"name": "Week 2",
+		"description": "Week 2 adjusted.",
+		"macroAmounts": [175, 58, 265, 25, 1950],
+		"vitaminsAmounts": [440, 9, 18, 5, 165, 2, 3, 18, 9, 3, 1, 0, 88],
+		"mineralsAmounts": [340, 0, 980, 680, 245, 340, 9, 6, 2, 2, 0, 0, 0, 0, 0.04],
+		"elementsList": [[1,10],[1,11],[1,7],[1,8],[1,9]]
+	},
+	{
+		"planID": 13,
+		"name": "Main Courses",
+		"description": "Main travel meals.",
+		"macroAmounts": [140, 55, 220, 18, 1800],
+		"vitaminsAmounts": [180, 5, 10, 2, 70, 1, 1, 7, 3, 2, 0.5, 0, 35],
+		"mineralsAmounts": [280, 0, 850, 480, 190, 280, 5, 5, 1, 1, 0, 0, 0, 0, 0.02],
+		"elementsList": [[0,14],[0,15]]
+	},
+	{
+		"planID": 14,
+		"name": "Day 1",
+		"description": "First travel day.",
+		"macroAmounts": [130, 50, 200, 15, 1700],
+		"vitaminsAmounts": [150, 4, 9, 2, 60, 1, 1, 6, 3, 2, 0.5, 0, 30],
+		"mineralsAmounts": [250, 0, 800, 450, 180, 260, 5, 4, 1, 1, 0, 0, 0, 0, 0.02],
+		"elementsList": [[1,13],[1,14]]
+	},
+	{
+		"planID": 15,
+		"name": "Day 2",
+		"description": "Second travel day.",
+		"macroAmounts": [135, 52, 210, 16, 1750],
+		"vitaminsAmounts": [160, 4, 9, 2, 65, 1, 1, 6, 3, 2, 0.5, 0, 32],
+		"mineralsAmounts": [260, 0, 820, 460, 185, 270, 5, 4, 1, 1, 0, 0, 0, 0, 0.02],
+		"elementsList": [[1,15],[1,16]]
+	}
+]

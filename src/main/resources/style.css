@@ -1,0 +1,56 @@
+.plan-box {
+    -fx-border-color: #535c35;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-background-color: white;
+    -fx-padding: 10;
+}
+
+.plan-box:hover {
+	-fx-background-color: #c4f5cf;
+	-fx-border-width: 8px;
+    -fx-cursor: hand;
+}
+
+.selected-plan {
+    -fx-background-color: #bae8c4;
+    -fx-border-color: #535c35;
+    -fx-border-width: 2;
+}
+
+.element-box {
+	-fx-border-color: #535c35;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+}
+
+.element-box:hover {
+    -fx-background-color: #c4f5cf;
+	-fx-border-width: 8px;
+    -fx-cursor: hand;
+}
+
+.selected-element {
+    -fx-background-color: #bae8c4;
+    -fx-border-color: #4a90e2;
+    -fx-border-width: 2;
+}
+
+.meals-set-element {
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+.meals-set-element:hover {
+    -fx-border-color: #535c35;
+    -fx-border-width: 2px;
+    -fx-background-color: #bae8c4;
+    -fx-cursor: hand;
+}
+
+.selected-meals-set-element {
+    -fx-background-color: #bae8c4;
+    -fx-border-color: #4a90e2;
+    -fx-border-width: 2;
+}
