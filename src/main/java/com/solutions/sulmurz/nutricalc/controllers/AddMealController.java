@@ -129,7 +129,7 @@ public class AddMealController extends NutriCalcController {
                 if (!NutriCalcModel.mealNameOccupied(name)) {
                     String[] ingredientsNamesArray = NutriCalcFunctions.getNamesArray(ingredientsListView.getItems());
                     float[] ingredientsAmountsArray = NutriCalcFunctions.getValuesArray(ingredientsAmountsListView.getItems());
-                    NutriCalcModel.getMealsList().add(new MealModel(name, ingredientsNamesArray, ingredientsAmountsArray, NutriCalcFunctions.sumUpMacroValues(ingredientsListView.getItems(), ingredientsAmountsArray), NutriCalcFunctions.sumUpVitaminsValues(ingredientsListView.getItems(), ingredientsAmountsArray), NutriCalcFunctions.sumUpMineralsValues(ingredientsListView.getItems(), ingredientsAmountsArray)));
+                    NutriCalcModel.getMealsList().add(new MealModel(name, ingredientsNamesArray, ingredientsAmountsArray, MealModel.sumUpMacroValues(ingredientsListView.getItems(), ingredientsAmountsArray), MealModel.sumUpVitaminsValues(ingredientsListView.getItems(), ingredientsAmountsArray), MealModel.sumUpMineralsValues(ingredientsListView.getItems(), ingredientsAmountsArray)));
                     NutriCalcMain.getPrimaryStage().setScene(new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("my_meals_view.fxml"))));
                 } else {
                     throw new NameOccupiedException();

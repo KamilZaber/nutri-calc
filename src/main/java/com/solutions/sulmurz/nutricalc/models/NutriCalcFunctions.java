@@ -1,7 +1,6 @@
 package com.solutions.sulmurz.nutricalc.models;
 
 import javafx.collections.ObservableList;
-import java.util.List;
 
 public class NutriCalcFunctions {
     public static String[] getNamesArray(ObservableList<IngredientModel> ingredientsList) {
@@ -41,41 +40,5 @@ public class NutriCalcFunctions {
             }
         }
         return shortenedArray;
-    }
-
-    public static float[] sumUpMacroValues(List<IngredientModel> ingredients, float[] ingredientAmounts) {
-        float[] macroSummary = new float[5];
-        int i = 0;
-        for(IngredientModel ingredient: ingredients) {
-            for(int j = 0; j < 5; j++) {
-                macroSummary[j] = macroSummary[j] + ((ingredient.getMacroAmounts()[j])/100*ingredientAmounts[i]);
-            }
-            i++;
-        }
-        return macroSummary;
-    }
-
-    public static float[] sumUpVitaminsValues(List<IngredientModel> ingredients, float[] ingredientAmounts) {
-        float[] macroSummary = new float[13];
-        int i = 0;
-        for(IngredientModel ingredient: ingredients) {
-            for(int j = 0; j < 13; j++) {
-                macroSummary[j] = macroSummary[j] + ((ingredient.getVitaminsAmounts()[j])/100*ingredientAmounts[i]);
-            }
-            i++;
-        }
-        return macroSummary;
-    }
-
-    public static float[] sumUpMineralsValues(List<IngredientModel> ingredients, float[] ingredientAmounts) {
-        float[] macroSummary = new float[15];
-        int i = 0;
-        for(IngredientModel ingredient: ingredients) {
-            for(int j = 0; j < 15; j++) {
-                macroSummary[j] = macroSummary[j] + ((ingredient.getMineralsAmounts()[j])/100*ingredientAmounts[i]);
-            }
-            i++;
-        }
-        return macroSummary;
     }
 }

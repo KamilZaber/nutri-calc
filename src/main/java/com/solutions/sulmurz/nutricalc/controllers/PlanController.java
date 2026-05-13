@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -26,13 +27,19 @@ public class PlanController extends NutriCalcController {
     @FXML
     private Label planNameLabel;
     @FXML
-    private Button addButton;
+    private VBox macroSection;
+    @FXML
+    private VBox mineralsSection;
+    @FXML
+    private VBox vitaminsSection;
+    @FXML
+    private MenuButton addButton;
     @FXML
     private Button deleteButton;
     @FXML
     private Button openButton;
     @FXML
-    private Button copyutton;
+    private Button copyButton;
     @FXML
     private Button saveButton;
     private PlanModel currentPlan;
@@ -132,6 +139,7 @@ public class PlanController extends NutriCalcController {
         currentPlan = plan;
         int[][] elementsList = currentPlan.getElementsList();
         planNameLabel.setText(plan.getName());
+
         for(int i = 0; i < elementsList.length; i++) {
             if(elementsList[i][0] == 0) {
                 addToView(NutriCalcModel.getPlanByID(elementsList[i][1]));
@@ -139,6 +147,11 @@ public class PlanController extends NutriCalcController {
                 addToView(NutriCalcModel.getMealsSetByID(elementsList[i][1]));
             }
         }
+
+        generateSection(macroSection, currentPlan.getMacroAmounts());
+        generateSection(mineralsSection, currentPlan.getMineralsAmounts());
+        generateSection(vitaminsSection, currentPlan.getVitaminsAmounts());
+
     }
 
     public void setSelectedElement(PlanElementModel selectedElement, VBox elementBox) {

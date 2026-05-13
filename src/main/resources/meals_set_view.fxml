@@ -36,7 +36,7 @@
    <center>
 		<ScrollPane fx:id="scrollPane" fitToWidth="true" BorderPane.alignment="CENTER">
          <content>
-            <VBox>
+            <VBox alignment="CENTER">
                <children>
                   <TextField alignment="CENTER" prefHeight="44.0" prefWidth="920.0" text="SET MEALS:">
                      <font>

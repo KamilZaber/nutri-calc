@@ -16,13 +16,15 @@ public class MyPlansController extends NutriCalcController {
     @FXML
     private VBox plansBox;
     @FXML
-    private Button summaryButton;
-    @FXML
     private Button openButton;
     @FXML
     private Button addButton;
     @FXML
     private Button deleteButton;
+    @FXML
+    private Button copyButton;
+    @FXML
+    private Button saveButton;
     private PlanModel selectedPlan;
     private VBox selectedPlanBox;
 
@@ -32,10 +34,7 @@ public class MyPlansController extends NutriCalcController {
             addToView(plan);
         }
     }
-    @FXML
-    private void onSummaryButtonClick() {
 
-    }
     @FXML
     private void onOpenButtonClick() {
         if(selectedPlan != null) {
@@ -62,10 +61,22 @@ public class MyPlansController extends NutriCalcController {
     private void onAddButtonClick() {
 
     }
+
     @FXML
     private void onDeleteButtonClick() {
 
     }
+
+    @FXML
+    private void onCopyButtonClick() {
+
+    }
+
+    @FXML
+    private void onSaveButtonClick() {
+
+    }
+
     @FXML
     private void addToView(PlanModel plan) {
         try {

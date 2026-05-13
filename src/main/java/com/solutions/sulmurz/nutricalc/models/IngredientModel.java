@@ -24,7 +24,7 @@ public class IngredientModel {
         this.name = name;
     }
 
-    public IngredientModel(String name, float[] macroAmounts, float[] mineralsAmounts, float[] vitaminsAmounts) {
+    public IngredientModel(String name, float[] macroAmounts, float[] vitaminsAmounts, float[] mineralsAmounts) {
         super();
         this.name = name;
         this.macroAmounts = macroAmounts;
