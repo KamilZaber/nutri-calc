@@ -19,17 +19,21 @@ public class NutriCalcModel {
     private static List<PlanModel> plansList;
     private static List<MealsSetModel> mealsSetsList;
 
-    private static int mealsSetID;
-    private static int planID;
+    private static IDModel mealsSetsIDs;
+    private static IDModel plansIDs;
+
     private final static String[] macroSet = {"Proteins", "Fats", "Carbohydrates", "Fiber", "KCal"};
     private final static String[] mineralsSet = {"Calcium", "Chloride", "Potassium", "Phosphorus", "Magnesium", "Sodium", "Iron", "Zinc", "Copper", "Manganese", "Molybdenum", "Iodine", "Fluoride", "Chromium",  "Selenium"};
     private final static String[] vitaminsSet = {"Vitamin A", "Vitamin D", "Vitamin E", "Vitamin K", "Vitamin C", "Vitamin B1", "Vitamin B2", "Vitamin B3", "Vitamin B5", "Vitamin B6", "Vitamin B9", "Vitamin B12", "Choline"};
 
     public NutriCalcModel() {
-        ingredientsList = null;
-        mealsList = null;
-        mainPlansList = null;
-        plansList = null;
+        loadIngredientsDatabase();
+        loadMealsDatabase();
+        loadMealsSetsDatabase();
+        loadPlansDatabase();
+        loadMainPlansDatabase();
+        mealsSetsIDs = new IDModel(mealsSetsList);
+        plansIDs = new IDModel(plansList);
     }
 
     public static List<IngredientModel> getIngredientsList() {
@@ -40,15 +44,15 @@ public class NutriCalcModel {
         return mealsList;
     }
 
-    public static List<PlanModel> getMainPlansList() {
-        return mainPlansList;
-    }
+    public static  List<MealsSetModel> getMealsSetsList() { return mealsSetsList; }
 
     public static List<PlanModel> getPlansList() {
         return plansList;
     }
 
-    public static  List<MealsSetModel> getMealsSetsList() { return mealsSetsList; }
+    public static List<PlanModel> getMainPlansList() {
+        return mainPlansList;
+    }
 
     public static String[] getMacroSet() {
         return macroSet;
@@ -60,14 +64,6 @@ public class NutriCalcModel {
 
     public static String[] getMineralsSet() {
         return mineralsSet;
-    }
-
-    public static int giveMealsSetID() {
-        return mealsSetID++;
-    }
-
-    public static int giveplanID() {
-        return planID++;
     }
 
     public static IngredientModel getIngredientByName(String name) {
@@ -95,7 +91,7 @@ public class NutriCalcModel {
     public static PlanModel getPlanByID(int ID) {
         PlanModel plan = null;
         for(PlanModel tempPlan: plansList) {
-            if (tempPlan.getPlanID() == ID) {
+            if (tempPlan.getID() == ID) {
                 plan = tempPlan;
                 break;
             }
@@ -106,7 +102,7 @@ public class NutriCalcModel {
     public static MealsSetModel getMealsSetByID(int ID) {
         MealsSetModel mealsSet = null;
         for(MealsSetModel tempMealsSet: mealsSetsList) {
-            if (tempMealsSet.getMealsSetID() == ID) {
+            if (tempMealsSet.getID() == ID) {
                 mealsSet = tempMealsSet;
                 break;
             }
@@ -114,71 +110,61 @@ public class NutriCalcModel {
         return mealsSet;
     }
 
-    public static void loadIngredientsDatabase() {
-        if(ingredientsList == null) {
-            Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\ingredients_database.json");
-            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();      //żeby nie brało pod uwagę funkcji czy innych pól, które nie mają być częścią struktury obiektu JSON (POJO)
-            Type listType = new TypeToken<List<IngredientModel>>(){}.getType();
-            try {
-                ingredientsList = gson.fromJson(Files.readString(path),listType);
-            } catch (IOException e) {
-                NutriCalcController.showFatalPrompt();
-            }
+    private void loadIngredientsDatabase() {
+        Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\ingredients_database.json");
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();      //żeby nie brało pod uwagę funkcji czy innych pól, które nie mają być częścią struktury obiektu JSON (POJO)
+        Type listType = new TypeToken<List<IngredientModel>>(){}.getType();
+        try {
+            ingredientsList = gson.fromJson(Files.readString(path),listType);
+        } catch (IOException e) {
+            NutriCalcController.showFatalPrompt();
         }
     }
 
-    public static void loadMealsDatabase() {
-        if(mealsList == null)  {
-            Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\meals_database.json");
-            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-            Type listType = new TypeToken<List<MealModel>>(){}.getType();
-            try {
-                mealsList = gson.fromJson(Files.readString(path),listType);
-            } catch (IOException e) {
-                NutriCalcController.showFatalPrompt();
-            }
+    private void loadMealsDatabase() {
+        Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\meals_database.json");
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Type listType = new TypeToken<List<MealModel>>(){}.getType();
+        try {
+            mealsList = gson.fromJson(Files.readString(path),listType);
+        } catch (IOException e) {
+            NutriCalcController.showFatalPrompt();
         }
     }
 
-    public static void loadMainPlansDatabase() {
-        if(mainPlansList == null)  {
-            Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\main_plans_database.json");
-            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-            Type listType = new TypeToken<List<PlanModel>>(){}.getType();
-            try {
-                mainPlansList = gson.fromJson(Files.readString(path),listType);
-            } catch (IOException e) {
-                e.printStackTrace();
-                NutriCalcController.showFatalPrompt();
-            }
+    private void loadMealsSetsDatabase() {
+        Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\meals_sets_database.json");
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Type listType = new TypeToken<List<MealsSetModel>>(){}.getType();
+        try {
+            mealsSetsList = gson.fromJson(Files.readString(path),listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+            NutriCalcController.showFatalPrompt();
         }
     }
 
-    public static void loadPlansDatabase() {
-        if(plansList == null)  {
-            Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\plans_database.json");
-            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-            Type listType = new TypeToken<List<PlanModel>>(){}.getType();
-            try {
-                plansList = gson.fromJson(Files.readString(path),listType);
-            } catch (IOException e) {
-                e.printStackTrace();
-                NutriCalcController.showFatalPrompt();
-            }
+    private void loadPlansDatabase() {
+        Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\plans_database.json");
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Type listType = new TypeToken<List<PlanModel>>(){}.getType();
+        try {
+            plansList = gson.fromJson(Files.readString(path),listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+            NutriCalcController.showFatalPrompt();
         }
     }
 
-    public static void loadMealsSetsDatabase() {
-        if(mealsSetsList == null)  {
-            Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\meals_sets_database.json");
-            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-            Type listType = new TypeToken<List<MealsSetModel>>(){}.getType();
-            try {
-                mealsSetsList = gson.fromJson(Files.readString(path),listType);
-            } catch (IOException e) {
-                e.printStackTrace();
-                NutriCalcController.showFatalPrompt();
-            }
+    private void loadMainPlansDatabase() {
+        Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\main_plans_database.json");
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Type listType = new TypeToken<List<PlanModel>>(){}.getType();
+        try {
+            mainPlansList = gson.fromJson(Files.readString(path),listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+            NutriCalcController.showFatalPrompt();
         }
     }
 

@@ -1,6 +1,6 @@
 [
 	{
-		"planID": 0,
+		"ID": 0,
 		"name": "Carnivore Day 1",
 		"description": "Basic meat day.",
 		"macroAmounts": [120, 90, 5, 0, 1300],
@@ -9,7 +9,7 @@
 		"elementsList": [[1,5],[1,1],[1,6]]
 	},
 	{
-		"planID": 1,
+		"ID": 1,
 		"name": "Carnivore Day 2",
 		"description": "Chicken and liver day.",
 		"macroAmounts": [130, 95, 3, 0, 1350],
@@ -18,7 +18,7 @@
 		"elementsList": [[1,0],[1,5],[1,6]]
 	},
 	{
-		"planID": 2,
+		"ID": 2,
 		"name": "Carnivore Day 3",
 		"description": "Mixed meats.",
 		"macroAmounts": [125, 85, 4, 0, 1280],
@@ -27,7 +27,7 @@
 		"elementsList": [[1,4],[1,1],[1,2]]
 	},
 	{
-		"planID": 3,
+		"ID": 3,
 		"name": "Carnivore Day 4",
 		"description": "Fat rich beef day.",
 		"macroAmounts": [140, 110, 3, 0, 1500],
@@ -36,7 +36,7 @@
 		"elementsList": [[1,1],[1,5],[1,2]]
 	},
 	{
-		"planID": 4,
+		"ID": 4,
 		"name": "Carnivore Day 5",
 		"description": "Balanced carnivore.",
 		"macroAmounts": [130, 95, 4, 0, 1400],
@@ -45,7 +45,7 @@
 		"elementsList": [[1,4],[1,5],[1,6]]
 	},
 	{
-		"planID": 5,
+		"ID": 5,
 		"name": "Carnivore Day 6",
 		"description": "Chicken focused.",
 		"macroAmounts": [120, 80, 5, 0, 1250],
@@ -54,7 +54,7 @@
 		"elementsList": [[1,0],[1,5],[1,2]]
 	},
 	{
-		"planID": 6,
+		"ID": 6,
 		"name": "Carnivore Day 7",
 		"description": "Organ meats day.",
 		"macroAmounts": [135, 100, 4, 0, 1450],
@@ -63,7 +63,7 @@
 		"elementsList": [[1,0],[1,4],[1,6]]
 	},
 	{
-		"planID": 7,
+		"ID": 7,
 		"name": "For Me",
 		"description": "Personal vegan plan.",
 		"macroAmounts": [210, 75, 310, 32, 2300],
@@ -72,7 +72,7 @@
 		"elementsList": [[0,8],[0,9]]
 	},
 	{
-		"planID": 8,
+		"ID": 8,
 		"name": "Week 1",
 		"description": "First rotation week.",
 		"macroAmounts": [190, 65, 290, 28, 2100],
@@ -81,7 +81,7 @@
 		"elementsList": [[1,7],[1,8],[1,9],[1,10],[1,11]]
 	},
 	{
-		"planID": 9,
+		"ID": 9,
 		"name": "Week 2",
 		"description": "Second rotation week.",
 		"macroAmounts": [200, 70, 300, 30, 2200],
@@ -90,7 +90,7 @@
 		"elementsList": [[1,9],[1,7],[1,10],[1,8],[1,11]]
 	},
 	{
-		"planID": 10,
+		"ID": 10,
 		"name": "For Wife",
 		"description": "Adjusted vegan version.",
 		"macroAmounts": [180, 60, 270, 25, 2000],
@@ -99,7 +99,7 @@
 		"elementsList": [[0,11],[0,12]]
 	},
 	{
-		"planID": 11,
+		"ID": 11,
 		"name": "Week 1",
 		"description": "Week 1 adjusted.",
 		"macroAmounts": [170, 55, 260, 24, 1900],
@@ -108,7 +108,7 @@
 		"elementsList": [[1,9],[1,10],[1,11],[1,7],[1,8]]
 	},
 	{
-		"planID": 12,
+		"ID": 12,
 		"name": "Week 2",
 		"description": "Week 2 adjusted.",
 		"macroAmounts": [175, 58, 265, 25, 1950],
@@ -117,7 +117,7 @@
 		"elementsList": [[1,10],[1,11],[1,7],[1,8],[1,9]]
 	},
 	{
-		"planID": 13,
+		"ID": 13,
 		"name": "Main Courses",
 		"description": "Main travel meals.",
 		"macroAmounts": [140, 55, 220, 18, 1800],
@@ -126,7 +126,7 @@
 		"elementsList": [[0,14],[0,15]]
 	},
 	{
-		"planID": 14,
+		"ID": 14,
 		"name": "Day 1",
 		"description": "First travel day.",
 		"macroAmounts": [130, 50, 200, 15, 1700],
@@ -135,7 +135,7 @@
 		"elementsList": [[1,13],[1,14]]
 	},
 	{
-		"planID": 15,
+		"ID": 15,
 		"name": "Day 2",
 		"description": "Second travel day.",
 		"macroAmounts": [135, 52, 210, 16, 1750],

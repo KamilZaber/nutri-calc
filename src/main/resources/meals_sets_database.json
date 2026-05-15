@@ -1,6 +1,6 @@
 [
   {
-    "mealsSetID": 0,
+    "ID": 0,
     "name": "Carnivore Day1 Breakfast",
     "description": "",
     "macroAmounts": [30, 35, 2, 0, 450],
@@ -13,7 +13,7 @@
     "elementsAmounts": [1.5, 80]
   },
   {
-    "mealsSetID": 1,
+    "ID": 1,
     "name": "Carnivore Day1 Dinner",
     "description": "",
     "macroAmounts": [50, 40, 0, 0, 600],
@@ -25,7 +25,7 @@
     "elementsAmounts": [1.2]
   },
   {
-    "mealsSetID": 2,
+    "ID": 2,
     "name": "Carnivore Day1 Supper",
     "description": "",
     "macroAmounts": [30, 15, 2, 0, 300],
@@ -37,7 +37,7 @@
     "elementsAmounts": [1]
   },
   {
-    "mealsSetID": 3,
+    "ID": 3,
     "name": "Carnivore Additions",
     "description": "",
     "macroAmounts": [10, 10, 5, 0, 150],
@@ -51,7 +51,7 @@
     "elementsAmounts": [250, 200, 20]
   },
   {
-    "mealsSetID": 4,
+    "ID": 4,
     "name": "Carnivore Breakfast Eggs Cheese",
     "description": "",
     "macroAmounts": [35, 30, 2, 0, 420],
@@ -63,7 +63,7 @@
     "elementsAmounts": [1.3]
   },
   {
-    "mealsSetID": 5,
+    "ID": 5,
     "name": "Carnivore Dinner Chicken",
     "description": "",
     "macroAmounts": [60, 20, 0, 0, 450],
@@ -75,7 +75,7 @@
     "elementsAmounts": [1.4]
   },
   {
-    "mealsSetID": 6,
+    "ID": 6,
     "name": "Carnivore Supper Liver",
     "description": "",
     "macroAmounts": [35, 15, 5, 0, 350],
@@ -88,7 +88,7 @@
     "elementsAmounts": [0.8, 35]
   },
   {
-    "mealsSetID": 7,
+    "ID": 7,
     "name": "Vegan Set1",
     "description": "",
     "macroAmounts": [70, 20, 120, 10, 900],
@@ -102,7 +102,7 @@
     "elementsAmounts": [1, 1.2, 95]
   },
   {
-    "mealsSetID": 8,
+    "ID": 8,
     "name": "Vegan Set2",
     "description": "",
     "macroAmounts": [60, 25, 110, 12, 850],
@@ -115,7 +115,7 @@
     "elementsAmounts": [1, 1.1]
   },
   {
-    "mealsSetID": 9,
+    "ID": 9,
     "name": "Vegan Set3",
     "description": "",
     "macroAmounts": [65, 22, 100, 10, 820],
@@ -129,7 +129,7 @@
     "elementsAmounts": [1.5, 120, 50]
   },
   {
-    "mealsSetID": 10,
+    "ID": 10,
     "name": "Vegan Set4",
     "description": "",
     "macroAmounts": [70, 25, 105, 11, 870],
@@ -141,7 +141,7 @@
     "elementsAmounts": [1.3]
   },
   {
-    "mealsSetID": 11,
+    "ID": 11,
     "name": "Vegan Set5",
     "description": "",
     "macroAmounts": [60, 20, 95, 9, 780],
@@ -155,7 +155,7 @@
     "elementsAmounts": [1.2, 50, 100]
   },
   {
-    "mealsSetID": 12,
+    "ID": 12,
     "name": "Trip Snacks",
     "description": "",
     "macroAmounts": [10, 15, 80, 5, 450],
@@ -170,7 +170,7 @@
     "elementsAmounts": [120, 50, 40, 30]
   },
   {
-    "mealsSetID": 13,
+    "ID": 13,
     "name": "Trip Meal 1 Light",
     "description": "",
     "macroAmounts": [10, 5, 40, 2, 230],
@@ -184,7 +184,7 @@
     "elementsAmounts": [1, 90, 75]
   },
   {
-    "mealsSetID": 14,
+    "ID": 14,
     "name": "Trip Meal 2 Heavy",
     "description": "",
     "macroAmounts": [50, 20, 80, 5, 650],
@@ -197,7 +197,7 @@
     "elementsAmounts": [1.2, 100]
   },
   {
-    "mealsSetID": 15,
+    "ID": 15,
     "name": "Trip Meal 3 Light",
     "description": "",
     "macroAmounts": [20, 10, 20, 5, 250],
@@ -210,7 +210,7 @@
     "elementsAmounts": [1, 90]
   },
   {
-    "mealsSetID": 16,
+    "ID": 16,
     "name": "Trip Meal 4 Heavy",
     "description": "",
     "macroAmounts": [45, 40, 0, 0, 650],
@@ -223,7 +223,7 @@
     "elementsAmounts": [1.1, 200]
   },
   {
-    "mealsSetID": 17,
+    "ID": 17,
     "name": "Trip Shopping Lidl",
     "description": "",
     "macroAmounts": [20, 15, 90, 20, 600],
@@ -238,7 +238,7 @@
     "elementsAmounts": [200, 180, 100, 30]
   },
   {
-    "mealsSetID": 18,
+    "ID": 18,
     "name": "Trip Shopping Biedronka",
     "description": "",
     "macroAmounts": [40, 10, 120, 5, 700],

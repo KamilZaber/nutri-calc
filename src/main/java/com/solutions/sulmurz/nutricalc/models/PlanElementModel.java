@@ -4,6 +4,8 @@ import com.google.gson.annotations.Expose;
 
 public abstract class PlanElementModel {
     @Expose
+    private int ID;
+    @Expose
     private String name;
     @Expose
     private String description;
@@ -31,6 +33,10 @@ public abstract class PlanElementModel {
         this.vitaminsAmounts = vitaminsAmounts;
         this.mineralsAmounts = mineralsAmounts;
         this.parentPlan = parentPlan;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public String getName() {

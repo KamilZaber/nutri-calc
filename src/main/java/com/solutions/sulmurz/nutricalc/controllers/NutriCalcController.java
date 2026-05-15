@@ -36,7 +36,6 @@ public abstract class NutriCalcController {
 
     @FXML
     private void openMyIngredientsView() {
-        NutriCalcModel.loadIngredientsDatabase();
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -53,8 +52,6 @@ public abstract class NutriCalcController {
 
     @FXML
     private void openMyMealsView() {
-        NutriCalcModel.loadIngredientsDatabase();
-        NutriCalcModel.loadMealsDatabase();
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -72,7 +69,6 @@ public abstract class NutriCalcController {
 
     @FXML
     private void openMyPlansView() {
-        NutriCalcModel.loadMainPlansDatabase();
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(

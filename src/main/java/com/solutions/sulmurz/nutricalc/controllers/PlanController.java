@@ -49,12 +49,6 @@ public class PlanController extends NutriCalcController {
     private final int COLUMNS = 4;
 
     @FXML
-    protected void initialize() {
-        NutriCalcModel.loadPlansDatabase();
-        NutriCalcModel.loadMealsSetsDatabase();
-    }
-
-    @FXML
     private void onAddButtonClick() {
 
     }
@@ -68,8 +62,6 @@ public class PlanController extends NutriCalcController {
     private void onOpenButtonClick() {
         if (selectedBox != null) {
             try {
-                NutriCalcModel.loadIngredientsDatabase();
-                NutriCalcModel.loadMealsDatabase();
                 Parent root = null;
                 if (selectedElement instanceof PlanModel) {
                     FXMLLoader loader = new FXMLLoader(
