@@ -66,6 +66,14 @@ public class NutriCalcModel {
         return mineralsSet;
     }
 
+    public static IDModel getMealsSetsIDs() {
+        return mealsSetsIDs;
+    }
+
+    public static IDModel getPlansIDs() {
+        return plansIDs;
+    }
+
     public static IngredientModel getIngredientByName(String name) {
         IngredientModel ingredient = null;
         for(IngredientModel tempIngredient: ingredientsList) {

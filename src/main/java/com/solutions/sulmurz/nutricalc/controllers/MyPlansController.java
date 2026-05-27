@@ -2,6 +2,7 @@ package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
 import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
+import com.solutions.sulmurz.nutricalc.models.PlanElementBasicData;
 import com.solutions.sulmurz.nutricalc.models.PlanModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -59,7 +61,29 @@ public class MyPlansController extends NutriCalcController {
 
     @FXML
     private void onAddButtonClick() {
-
+        Parent root = null;
+        AddPlanController controller;
+        PlanElementBasicData planData;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/add_plan_view.fxml"));
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showFatalPrompt();
+        }
+        controller = loader.getController();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Add New Plan");
+        stage.showAndWait();
+        planData = controller.getNewPlanElementData();
+        if(planData != null) {
+            PlanModel newPlan = new PlanModel(planData.getName(), planData.getDescription());
+            newPlan.giveNewID();
+            System.out.println(newPlan.getID() + " " + newPlan.getName() + " " + newPlan.getDescription());
+            NutriCalcModel.getMainPlansList().add(newPlan);
+            addToView(newPlan);
+        }
     }
 
     @FXML

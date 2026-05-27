@@ -132,11 +132,13 @@ public class PlanController extends NutriCalcController {
         int[][] elementsList = currentPlan.getElementsList();
         planNameLabel.setText(plan.getName());
 
-        for(int i = 0; i < elementsList.length; i++) {
-            if(elementsList[i][0] == 0) {
-                addToView(NutriCalcModel.getPlanByID(elementsList[i][1]));
-            } else if(elementsList[i][0] == 1) {
-                addToView(NutriCalcModel.getMealsSetByID(elementsList[i][1]));
+        if(elementsList != null) {
+            for (int i = 0; i < elementsList.length; i++) {
+                if (elementsList[i][0] == 0) {
+                    addToView(NutriCalcModel.getPlanByID(elementsList[i][1]));
+                } else if (elementsList[i][0] == 1) {
+                    addToView(NutriCalcModel.getMealsSetByID(elementsList[i][1]));
+                }
             }
         }
 

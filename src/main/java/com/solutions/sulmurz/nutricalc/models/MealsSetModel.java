@@ -24,4 +24,8 @@ public class MealsSetModel extends PlanElementModel {
     public float[] getElementsAmounts() {
         return elementsAmounts;
     }
+
+    public void giveNewID() {
+        this.ID = NutriCalcModel.getMealsSetsIDs().giveID();
+    }
 }

@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 
 public abstract class PlanElementModel {
     @Expose
-    private int ID;
+    protected int ID;
     @Expose
     private String name;
     @Expose
@@ -20,9 +20,18 @@ public abstract class PlanElementModel {
     public PlanElementModel() {
         this.name = null;
         this.description = null;
-        this.macroAmounts = null;
-        this.vitaminsAmounts = null;
-        this.mineralsAmounts = null;
+        this.macroAmounts = new float[5];
+        this.vitaminsAmounts = new float[13];
+        this.mineralsAmounts = new float [15];
+        this.parentPlan = null;
+    }
+
+    public PlanElementModel(String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.macroAmounts = new float[5];
+        this.vitaminsAmounts = new float[13];
+        this.mineralsAmounts = new float [15];
         this.parentPlan = null;
     }
 

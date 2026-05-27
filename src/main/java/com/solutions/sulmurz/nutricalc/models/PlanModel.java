@@ -2,7 +2,6 @@ package com.solutions.sulmurz.nutricalc.models;
 
 import com.google.gson.annotations.Expose;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class PlanModel extends PlanElementModel {
@@ -19,8 +18,17 @@ public class PlanModel extends PlanElementModel {
         this.elementsList = elementsList;
     }
 
+    public PlanModel(String name, String description) {
+        super(name, description);
+        this.elementsList = null;
+    }
+
     public int[][] getElementsList() {
         return elementsList;
+    }
+
+    public void giveNewID() {
+        this.ID = NutriCalcModel.getPlansIDs().giveID();
     }
 
     public static float[] sumUpMacroValues(List<PlanElementModel> elements) {
