@@ -1,7 +1,9 @@
 package com.solutions.sulmurz.nutricalc.models;
 
 import com.google.gson.annotations.Expose;
+import com.solutions.sulmurz.nutricalc.controllers.NutriCalcController;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class PlanModel extends PlanElementModel {
@@ -13,22 +15,42 @@ public class PlanModel extends PlanElementModel {
         this.elementsList = null;
     }
 
-    public PlanModel(int[][] elementsList) {
-        super();
-        this.elementsList = elementsList;
+    public PlanModel(PlanModel plan) {
+        super(plan);
+        int[][] oldElementsList = plan.getElementsList();
+        if(oldElementsList != null) {
+            this.elementsList = new int[oldElementsList.length][2];
+            for (int i = 0; i < oldElementsList.length; i++) {
+                int[] elementData = oldElementsList[i];
+                PlanElementModel newElement;
+                if (elementData[0] == 0) {
+                    newElement = new PlanModel(NutriCalcModel.getPlanByID(elementData[1]));
+                    NutriCalcModel.getPlansList().add((PlanModel) newElement);
+                    elementData = new int[2];
+                    elementData[1] = newElement.getID();
+                } else if (elementData[0] == 1) {
+                    newElement = new MealsSetModel(NutriCalcModel.getMealsSetByID(elementData[1]));
+                    NutriCalcModel.getMealsSetsList().add((MealsSetModel) newElement);
+                    elementData = new int[2];
+                    elementData[0] = 1;
+                    elementData[1] = newElement.getID();
+                } else {
+                    NutriCalcController.showFatalPrompt();
+                }
+                this.elementsList[i] = elementData;
+            }
+        }
+        assignNewID();
     }
 
-    public PlanModel(String name, String description) {
-        super(name, description);
+    public PlanModel(int type, String name, String description) {
+        super(type, name, description);
         this.elementsList = null;
+        assignNewID();
     }
 
     public int[][] getElementsList() {
         return elementsList;
-    }
-
-    public void giveNewID() {
-        this.ID = NutriCalcModel.getPlansIDs().giveID();
     }
 
     public static float[] sumUpMacroValues(List<PlanElementModel> elements) {

@@ -1,7 +1,6 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -147,7 +146,7 @@ public abstract class NutriCalcController {
         }
         controller = loader.getController();
         controller.setConfirmationQuestion(question);
-        controller.setIngredientName(name);
+        controller.setName(name);
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle("NutriCalc Prompt");

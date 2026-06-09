@@ -17,7 +17,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="ingredientName" alignment="CENTER" prefHeight="24.0" prefWidth="282.0" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="name" alignment="CENTER" prefHeight="24.0" prefWidth="282.0" textAlignment="CENTER" wrapText="true">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

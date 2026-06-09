@@ -17,15 +17,20 @@ public class MealsSetModel extends PlanElementModel {
         super(name, description, macroAmounts, vitaminsAmounts,mineralsAmounts, parentPlan);
     }
 
+    public MealsSetModel(MealsSetModel mealsSet) {
+        super(mealsSet);
+        this.elementsList = new String[mealsSet.getElementsList().length][2];
+        for(int i = 0; i < mealsSet.getElementsList().length; i++) {
+            this.elementsList[i] = mealsSet.getElementsList()[i].clone();
+        }
+        this.elementsAmounts = mealsSet.getElementsAmounts().clone();
+    }
+
     public String[][] getElementsList() {
         return elementsList;
     }
 
     public float[] getElementsAmounts() {
         return elementsAmounts;
-    }
-
-    public void giveNewID() {
-        this.ID = NutriCalcModel.getMealsSetsIDs().giveID();
     }
 }

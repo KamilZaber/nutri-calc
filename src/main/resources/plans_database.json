@@ -1,6 +1,7 @@
 [
 	{
 		"ID": 0,
+		"type": 1,
 		"name": "Carnivore Day 1",
 		"description": "Basic meat day.",
 		"macroAmounts": [120, 90, 5, 0, 1300],
@@ -10,6 +11,7 @@
 	},
 	{
 		"ID": 1,
+		"type": 1,
 		"name": "Carnivore Day 2",
 		"description": "Chicken and liver day.",
 		"macroAmounts": [130, 95, 3, 0, 1350],
@@ -19,6 +21,7 @@
 	},
 	{
 		"ID": 2,
+		"type": 1,
 		"name": "Carnivore Day 3",
 		"description": "Mixed meats.",
 		"macroAmounts": [125, 85, 4, 0, 1280],
@@ -28,6 +31,7 @@
 	},
 	{
 		"ID": 3,
+		"type": 1,
 		"name": "Carnivore Day 4",
 		"description": "Fat rich beef day.",
 		"macroAmounts": [140, 110, 3, 0, 1500],
@@ -37,6 +41,7 @@
 	},
 	{
 		"ID": 4,
+		"type": 1,
 		"name": "Carnivore Day 5",
 		"description": "Balanced carnivore.",
 		"macroAmounts": [130, 95, 4, 0, 1400],
@@ -46,6 +51,7 @@
 	},
 	{
 		"ID": 5,
+		"type": 1,
 		"name": "Carnivore Day 6",
 		"description": "Chicken focused.",
 		"macroAmounts": [120, 80, 5, 0, 1250],
@@ -55,6 +61,7 @@
 	},
 	{
 		"ID": 6,
+		"type": 1,
 		"name": "Carnivore Day 7",
 		"description": "Organ meats day.",
 		"macroAmounts": [135, 100, 4, 0, 1450],
@@ -64,6 +71,7 @@
 	},
 	{
 		"ID": 7,
+		"type": 1,
 		"name": "For Me",
 		"description": "Personal vegan plan.",
 		"macroAmounts": [210, 75, 310, 32, 2300],
@@ -73,6 +81,7 @@
 	},
 	{
 		"ID": 8,
+		"type": 1,
 		"name": "Week 1",
 		"description": "First rotation week.",
 		"macroAmounts": [190, 65, 290, 28, 2100],
@@ -82,6 +91,7 @@
 	},
 	{
 		"ID": 9,
+		"type": 1,
 		"name": "Week 2",
 		"description": "Second rotation week.",
 		"macroAmounts": [200, 70, 300, 30, 2200],
@@ -91,6 +101,7 @@
 	},
 	{
 		"ID": 10,
+		"type": 1,
 		"name": "For Wife",
 		"description": "Adjusted vegan version.",
 		"macroAmounts": [180, 60, 270, 25, 2000],
@@ -100,6 +111,7 @@
 	},
 	{
 		"ID": 11,
+		"type": 1,
 		"name": "Week 1",
 		"description": "Week 1 adjusted.",
 		"macroAmounts": [170, 55, 260, 24, 1900],
@@ -109,6 +121,7 @@
 	},
 	{
 		"ID": 12,
+		"type": 1,
 		"name": "Week 2",
 		"description": "Week 2 adjusted.",
 		"macroAmounts": [175, 58, 265, 25, 1950],
@@ -118,6 +131,7 @@
 	},
 	{
 		"ID": 13,
+		"type": 1,
 		"name": "Main Courses",
 		"description": "Main travel meals.",
 		"macroAmounts": [140, 55, 220, 18, 1800],
@@ -127,6 +141,7 @@
 	},
 	{
 		"ID": 14,
+		"type": 1,
 		"name": "Day 1",
 		"description": "First travel day.",
 		"macroAmounts": [130, 50, 200, 15, 1700],
@@ -136,6 +151,7 @@
 	},
 	{
 		"ID": 15,
+		"type": 1,
 		"name": "Day 2",
 		"description": "Second travel day.",
 		"macroAmounts": [135, 52, 210, 16, 1750],

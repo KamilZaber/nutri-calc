@@ -21,6 +21,7 @@ public class NutriCalcModel {
 
     private static IDModel mealsSetsIDs;
     private static IDModel plansIDs;
+    private static IDModel mainPlansIDs;
 
     private final static String[] macroSet = {"Proteins", "Fats", "Carbohydrates", "Fiber", "KCal"};
     private final static String[] mineralsSet = {"Calcium", "Chloride", "Potassium", "Phosphorus", "Magnesium", "Sodium", "Iron", "Zinc", "Copper", "Manganese", "Molybdenum", "Iodine", "Fluoride", "Chromium",  "Selenium"};
@@ -34,6 +35,7 @@ public class NutriCalcModel {
         loadMainPlansDatabase();
         mealsSetsIDs = new IDModel(mealsSetsList);
         plansIDs = new IDModel(plansList);
+        mainPlansIDs = new IDModel(mainPlansList);
     }
 
     public static List<IngredientModel> getIngredientsList() {
@@ -66,13 +68,18 @@ public class NutriCalcModel {
         return mineralsSet;
     }
 
+    public static IDModel getPlansIDs() {
+        return plansIDs;
+    }
+
+    public static IDModel getMainPlansIDs() {
+        return mainPlansIDs;
+    }
+
     public static IDModel getMealsSetsIDs() {
         return mealsSetsIDs;
     }
 
-    public static IDModel getPlansIDs() {
-        return plansIDs;
-    }
 
     public static IngredientModel getIngredientByName(String name) {
         IngredientModel ingredient = null;

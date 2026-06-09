@@ -175,7 +175,6 @@ public class PlanController extends NutriCalcController {
             controller.setParentPlanController(this);
 
             GridPane.setHgrow(elementBox, Priority.ALWAYS);   //GridPane zezwala dziecku na rozciąganie poziomo
-            elementBox.setMaxWidth(Double.MAX_VALUE);         //element może być tak szeroki jak chce
             plansBox.add(elementBox, col, row);
 
             elementCount++;

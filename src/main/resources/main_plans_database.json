@@ -1,6 +1,7 @@
 [
   {
     "ID": 0,
+    "type": 0,
     "name": "My Carnivore Plan",
     "description": "My guts calming down attempt. Few days rotation.",
     "macroAmounts": [124, 95.09, 17.5, 21.8, 1524],
@@ -10,6 +11,7 @@
   },
   {
     "ID": 1,
+    "type": 0,
     "name": "My Vegan Plan",
     "description": "A whole week vegan diet plan.",
     "macroAmounts": [13.4, 5.3, 72, 98.5, 395],
@@ -19,6 +21,7 @@
   },
   {
     "ID": 2,
+    "type": 0,
     "name": "For Trip",
     "description": "Planning food for my upcoming trip.",
     "macroAmounts": [150, 60, 250, 20, 2000],

@@ -10,7 +10,7 @@ public class ConfirmationPromptController {
     @FXML
     private Label confirmationQuestion;
     @FXML
-    private Label ingredientName;
+    private Label name;
     @FXML
     private Button yesButton;
     @FXML
@@ -25,8 +25,12 @@ public class ConfirmationPromptController {
         ((Stage) yesButton.getScene().getWindow()).close();
     }
 
-    public void setIngredientName(String ingredientName) {
-        this.ingredientName.setText(ingredientName + "?");
+    public void setName(String name) {
+        if(!name.isEmpty()) {
+            this.name.setText(name + "?");
+        } else {
+            this.name.setVisible(false);
+        }
     }
 
     public void setConfirmationQuestion(String question) {

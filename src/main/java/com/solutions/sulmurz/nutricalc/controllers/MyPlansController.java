@@ -1,6 +1,7 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
+import com.solutions.sulmurz.nutricalc.models.NutriCalcFunctions;
 import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
 import com.solutions.sulmurz.nutricalc.models.PlanElementBasicData;
 import com.solutions.sulmurz.nutricalc.models.PlanModel;
@@ -13,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MyPlansController extends NutriCalcController {
     @FXML
@@ -78,21 +80,27 @@ public class MyPlansController extends NutriCalcController {
         stage.showAndWait();
         planData = controller.getNewPlanElementData();
         if(planData != null) {
-            PlanModel newPlan = new PlanModel(planData.getName(), planData.getDescription());
-            newPlan.giveNewID();
-            System.out.println(newPlan.getID() + " " + newPlan.getName() + " " + newPlan.getDescription());
+            PlanModel newPlan = new PlanModel(0, planData.getName(), planData.getDescription());
             NutriCalcModel.getMainPlansList().add(newPlan);
             addToView(newPlan);
         }
     }
 
     @FXML
-    private void onDeleteButtonClick() {
-
+    private void onCopyButtonClick() {
+        if(selectedPlan != null) {
+            if(showConfirmationPrompt("Do you want to copy plan ", selectedPlan.getName())) {
+                PlanModel newPlan = new PlanModel(selectedPlan);
+                NutriCalcModel.getMainPlansList().add(newPlan);
+                addToView(newPlan);
+            }
+        } else {
+            showPrompt("Select a plan to copy.");
+        }
     }
 
     @FXML
-    private void onCopyButtonClick() {
+    private void onDeleteButtonClick() {
 
     }
 

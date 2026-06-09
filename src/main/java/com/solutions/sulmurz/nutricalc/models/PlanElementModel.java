@@ -2,9 +2,13 @@ package com.solutions.sulmurz.nutricalc.models;
 
 import com.google.gson.annotations.Expose;
 
+import java.util.Arrays;
+
 public abstract class PlanElementModel {
     @Expose
     protected int ID;
+    @Expose
+    private int type;
     @Expose
     private String name;
     @Expose
@@ -26,7 +30,8 @@ public abstract class PlanElementModel {
         this.parentPlan = null;
     }
 
-    public PlanElementModel(String name, String description) {
+    public PlanElementModel(int type, String name, String description) {
+        this.type = type;
         this.name = name;
         this.description = description;
         this.macroAmounts = new float[5];
@@ -35,6 +40,15 @@ public abstract class PlanElementModel {
         this.parentPlan = null;
     }
 
+    public PlanElementModel(PlanElementModel planElement) {
+        this.type = planElement.type;
+        this.name = planElement.name;
+        this.description = planElement.description;
+        this.macroAmounts = planElement.getMacroAmounts().clone();
+        this.vitaminsAmounts = planElement.getVitaminsAmounts().clone();
+        this.mineralsAmounts = planElement.getMineralsAmounts().clone();
+        this.parentPlan = null;
+    }
     public PlanElementModel(String name, String description, float[] macroAmounts, float[] vitaminsAmounts, float[] mineralsAmounts, PlanModel parentPlan) {
         this.name = name;
         this.description = description;
@@ -44,8 +58,21 @@ public abstract class PlanElementModel {
         this.parentPlan = parentPlan;
     }
 
+    protected void assignNewID() {
+        if(type == 0) {
+            this.ID = NutriCalcModel.getMainPlansIDs().giveID();
+        } else if(type == 1) {
+            this.ID = NutriCalcModel.getPlansIDs().giveID();
+        } else if(type == 2) {
+            this.ID = NutriCalcModel.getMealsSetsIDs().giveID();
+        }
+    }
     public int getID() {
         return ID;
+    }
+
+    public int getType() {
+        return type;
     }
 
     public String getName() {
