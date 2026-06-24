@@ -1,10 +1,7 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.models.NutriCalcFunctions;
-import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
-import com.solutions.sulmurz.nutricalc.models.PlanElementBasicData;
-import com.solutions.sulmurz.nutricalc.models.PlanModel;
+import com.solutions.sulmurz.nutricalc.models.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class MyPlansController extends NutriCalcController {
     @FXML
@@ -101,7 +99,24 @@ public class MyPlansController extends NutriCalcController {
 
     @FXML
     private void onDeleteButtonClick() {
-
+        if(selectedPlan != null) {
+            if(showConfirmationPrompt("Do you really want to delete plan", selectedPlan.getName())) {
+                ArrayList<PlanElementModel> planElementsToDelete = NutriCalcFunctions.traverseElements(selectedPlan);
+                plansBox.getChildren().remove(selectedPlanBox);
+                NutriCalcModel.getMainPlansList().remove(selectedPlan);
+                PlanElementModel element;
+                for (int i = 1; i < planElementsToDelete.size(); i++) {
+                    element = planElementsToDelete.get(i);
+                    if (element instanceof PlanModel) {
+                        NutriCalcModel.getPlansList().remove(element);
+                    } else if (element instanceof MealsSetModel) {
+                        NutriCalcModel.getMealsSetsList().remove(element);
+                    }
+                }
+            }
+        } else {
+            showPrompt("Select a plan to delete.");
+        }
     }
 
     @FXML

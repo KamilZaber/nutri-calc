@@ -2,10 +2,7 @@ package com.solutions.sulmurz.nutricalc.models;
 
 import javafx.collections.ObservableList;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class NutriCalcFunctions {
@@ -48,9 +45,11 @@ public class NutriCalcFunctions {
         return shortenedArray;
     }
 
-    public static void traverseElements(PlanModel rootPlan, Consumer<PlanModel> onPlan, Consumer<MealsSetModel> onMealsSet) {
+    public static ArrayList<PlanElementModel> traverseElements(PlanModel rootPlan) {
         Set<PlanModel> visitedPlans = new HashSet<>();
+        ArrayList<PlanElementModel> traversedElements = new ArrayList<>();
         Deque<PlanModel> stack = new ArrayDeque<>();
+
         stack.push(rootPlan);
 
         while (!stack.isEmpty()) {
@@ -67,7 +66,7 @@ public class NutriCalcFunctions {
                 continue;
             }
 
-            onPlan.accept(currentPlan);
+            traversedElements.add(currentPlan);
 
             int[][] elements = currentPlan.getElementsList();
 
@@ -90,10 +89,12 @@ public class NutriCalcFunctions {
                     MealsSetModel mealsSet = NutriCalcModel.getMealsSetByID(ID);
 
                     if (mealsSet != null) {
-                        onMealsSet.accept(mealsSet);
+                        traversedElements.add(mealsSet);
                     }
                 }
             }
         }
+
+        return traversedElements;
     }
 }
