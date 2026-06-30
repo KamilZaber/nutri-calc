@@ -1,10 +1,7 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.models.MealsSetModel;
-import com.solutions.sulmurz.nutricalc.models.NutriCalcModel;
-import com.solutions.sulmurz.nutricalc.models.PlanElementModel;
-import com.solutions.sulmurz.nutricalc.models.PlanModel;
+import com.solutions.sulmurz.nutricalc.models.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -49,8 +46,47 @@ public class PlanController extends NutriCalcController {
     private final int COLUMNS = 4;
 
     @FXML
-    private void onAddButtonClick() {
+    public void onAddNewPlan() {
+        PlanElementBasicData planData = showAddNewElementForm("Add New Plan");
+        if(planData != null) {
+            PlanModel newPlan = new PlanModel(1, planData.getName(), planData.getDescription());
+            NutriCalcModel.getPlansList().add(newPlan);
+            currentPlan.addElement(newPlan);
+            addToView(newPlan);
+        }
+    }
 
+    @FXML
+    public void onAddExistingPlan() {
+        PlanElementModel planToAdd = showChooseElementWindow(NutriCalcModel.getPlansList());
+        if(planToAdd != null) {
+            PlanModel newPlan = new PlanModel((PlanModel) planToAdd);
+            NutriCalcModel.getPlansList().add(newPlan);
+            currentPlan.addElement(newPlan);
+            addToView(newPlan);
+        }
+    }
+
+    @FXML
+    public void onAddNewMealSet() {
+        PlanElementBasicData mealsSetData = showAddNewElementForm("Add New Meals Set");
+        if(mealsSetData != null) {
+            MealsSetModel newMealsSet = new MealsSetModel(2, mealsSetData.getName(), mealsSetData.getDescription());
+            NutriCalcModel.getMealsSetsList().add(newMealsSet);
+            currentPlan.addElement(newMealsSet);
+            addToView(newMealsSet);
+        }
+    }
+
+    @FXML
+    public void onAddExistingMealSet() {
+        PlanElementModel mealsSetToAdd = showChooseElementWindow(NutriCalcModel.getMealsSetsList());
+        if(mealsSetToAdd != null) {
+            MealsSetModel newMealsSet = new MealsSetModel((MealsSetModel) mealsSetToAdd);
+            NutriCalcModel.getMealsSetsList().add(newMealsSet);
+            currentPlan.addElement(newMealsSet);
+            addToView(newMealsSet);
+        }
     }
 
     @FXML
@@ -134,9 +170,9 @@ public class PlanController extends NutriCalcController {
 
         if(elementsList != null) {
             for (int i = 0; i < elementsList.length; i++) {
-                if (elementsList[i][0] == 0) {
+                if (elementsList[i][0] == 1) {
                     addToView(NutriCalcModel.getPlanByID(elementsList[i][1]));
-                } else if (elementsList[i][0] == 1) {
+                } else if (elementsList[i][0] == 2) {
                     addToView(NutriCalcModel.getMealsSetByID(elementsList[i][1]));
                 }
             }

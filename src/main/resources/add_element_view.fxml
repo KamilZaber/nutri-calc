@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="388.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solutions.sulmurz.nutricalc.controllers.AddPlanController">
+<VBox alignment="CENTER" prefHeight="388.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solutions.sulmurz.nutricalc.controllers.AddElementController">
    <children>
-      <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" text="ADD NEW PLAN">
+      <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER">
          <font>
             <Font name="Courier New Bold" size="35.0" />
          </font>

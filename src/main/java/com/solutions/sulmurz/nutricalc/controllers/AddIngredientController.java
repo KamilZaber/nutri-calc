@@ -31,7 +31,7 @@ public class AddIngredientController extends NutriCalcController {
         try {
             if (!name.isEmpty()) {
                 if (!NutriCalcModel.ingredientNameOccupied(name)) {
-                    NutriCalcModel.getIngredientsList().add(new IngredientModel(name, getSectionValuesArray(macroSection), getSectionValuesArray(mineralsSection), getSectionValuesArray(vitaminsSection)));
+                    NutriCalcModel.getIngredientsList().add(new IngredientModel(name, getSectionValuesArray(macroSection), getSectionValuesArray(vitaminsSection), getSectionValuesArray(mineralsSection)));
                     NutriCalcMain.getPrimaryStage().setScene(new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("my_ingredients_view.fxml"))));
                 } else {
                     throw new NameOccupiedException();

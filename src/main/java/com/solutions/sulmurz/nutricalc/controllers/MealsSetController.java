@@ -91,36 +91,38 @@ public class MealsSetController extends NutriCalcController {
         MealsSetElementController elementControlller;
         int i = 0;
 
-        for(String[] element: mealsSet.getElementsList()) {
-            try {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("/meals_set_element_view.fxml")
-                );
+        if(mealsSet.getElementsList() != null) {
+            for (String[] element : mealsSet.getElementsList()) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(
+                            getClass().getResource("/meals_set_element_view.fxml")
+                    );
 
-                mealsSetElement = loader.load();
+                    mealsSetElement = loader.load();
 
-                elementControlller = loader.getController();
-                elementControlller.setParentMealsSetController(this);
-                if(element[0].equals("meal")) {
-                    elementControlller.setElement(NutriCalcModel.getMealByName(element[1]), mealsSet.getElementsAmounts()[i]);
-                } else if(element[0].equals("ingredient")) {
-                    elementControlller.setElement(NutriCalcModel.getIngredientByName(element[1]), mealsSet.getElementsAmounts()[i]);
-                } else {
+                    elementControlller = loader.getController();
+                    elementControlller.setParentMealsSetController(this);
+                    if (element[0].equals("meal")) {
+                        elementControlller.setElement(NutriCalcModel.getMealByName(element[1]), mealsSet.getElementsAmounts()[i]);
+                    } else if (element[0].equals("ingredient")) {
+                        elementControlller.setElement(NutriCalcModel.getIngredientByName(element[1]), mealsSet.getElementsAmounts()[i]);
+                    } else {
+                        showFatalPrompt();
+                        return;
+                    }
+
+                    mealsSetElementsList.getChildren().add(mealsSetElement);
+                    i++;
+                } catch (IOException e) {
+                    e.printStackTrace();
                     showFatalPrompt();
-                    return;
                 }
-
-                mealsSetElementsList.getChildren().add(mealsSetElement);
-                i++;
-            } catch (IOException e) {
-                e.printStackTrace();
-                showFatalPrompt();
             }
-        }
 
-        generateSection(macroSection, currentMealsSet.getMacroAmounts());
-        generateSection(mineralsSection, currentMealsSet.getMineralsAmounts());
-        generateSection(vitaminsSection, currentMealsSet.getVitaminsAmounts());
+            generateSection(macroSection, currentMealsSet.getMacroAmounts());
+            generateSection(mineralsSection, currentMealsSet.getMineralsAmounts());
+            generateSection(vitaminsSection, currentMealsSet.getVitaminsAmounts());
+        }
     }
 
     public void setSelectedElement(IngredientModel element, Label elementLabel) {

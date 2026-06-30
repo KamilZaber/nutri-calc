@@ -19,6 +19,18 @@
     -fx-border-width: 2;
 }
 
+.element-bar:hover {
+    -fx-background-color: #c4f5cf;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+}
+
+.selected-element-bar {
+    -fx-background-color: #bae8c4;
+    -fx-border-color: #535c35;
+    -fx-border-width: 2px;
+}
+
 .element-box {
 	-fx-border-color: #535c35;
     -fx-border-width: 2px;

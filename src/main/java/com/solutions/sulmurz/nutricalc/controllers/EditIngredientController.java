@@ -33,7 +33,7 @@ public class EditIngredientController extends AddIngredientController {
     }
 
     private void saveIngredient(String name) throws IOException {
-        NutriCalcModel.getIngredientsList().set(selectedIndex, new IngredientModel(name, getSectionValuesArray(macroSection), getSectionValuesArray(mineralsSection), getSectionValuesArray(vitaminsSection)));
+        NutriCalcModel.getIngredientsList().set(selectedIndex, new IngredientModel(name, getSectionValuesArray(macroSection), getSectionValuesArray(vitaminsSection), getSectionValuesArray(mineralsSection)));
         NutriCalcMain.getPrimaryStage().setScene(new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("my_ingredients_view.fxml"))));
     }
 

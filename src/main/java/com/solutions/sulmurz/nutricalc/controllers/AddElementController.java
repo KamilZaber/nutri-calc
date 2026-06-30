@@ -1,7 +1,6 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.models.PlanElementBasicData;
-import com.solutions.sulmurz.nutricalc.models.PlanModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,7 +8,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AddPlanController extends NutriCalcController {
+public class AddElementController extends NutriCalcController {
     @FXML
     private TextField nameField;
     @FXML

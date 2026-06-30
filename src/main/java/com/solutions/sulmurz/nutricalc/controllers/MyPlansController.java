@@ -8,11 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class MyPlansController extends NutriCalcController {
     @FXML
@@ -61,22 +59,7 @@ public class MyPlansController extends NutriCalcController {
 
     @FXML
     private void onAddButtonClick() {
-        Parent root = null;
-        AddPlanController controller;
-        PlanElementBasicData planData;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/add_plan_view.fxml"));
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            showFatalPrompt();
-        }
-        controller = loader.getController();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Add New Plan");
-        stage.showAndWait();
-        planData = controller.getNewPlanElementData();
+        PlanElementBasicData planData = showAddNewElementForm("Add New Plan");
         if(planData != null) {
             PlanModel newPlan = new PlanModel(0, planData.getName(), planData.getDescription());
             NutriCalcModel.getMainPlansList().add(newPlan);
@@ -109,8 +92,10 @@ public class MyPlansController extends NutriCalcController {
                     element = planElementsToDelete.get(i);
                     if (element instanceof PlanModel) {
                         NutriCalcModel.getPlansList().remove(element);
+                        NutriCalcModel.getPlansIDs().freeID(element.getID());
                     } else if (element instanceof MealsSetModel) {
                         NutriCalcModel.getMealsSetsList().remove(element);
+                        NutriCalcModel.getMealsSetsIDs().freeID(element.getID());
                     }
                 }
             }

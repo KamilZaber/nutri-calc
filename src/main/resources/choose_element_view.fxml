@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="388.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solutions.sulmurz.nutricalc.controllers.ChooseElementController">
+   <children>
+      <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" text="CHOOSE A PLAN TO COPY">
+         <font>
+            <Font name="Courier New Bold" size="35.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
+      </Label>
+      <Separator prefWidth="200.0" />
+      <ScrollPane fitToWidth="true" prefHeight="250.0" prefWidth="529.0">
+         <content>
+            <VBox fx:id="elementsBox" fillWidth="true" />
+         </content>
+      </ScrollPane>
+      <HBox alignment="CENTER" prefHeight="0.0" prefWidth="529.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button fx:id="cancelButton" alignment="CENTER" mnemonicParsing="false" onAction="#onCancelButtonClick" prefHeight="40.0" prefWidth="78.0" text="CANCEL">
+               <HBox.margin>
+                  <Insets right="150.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="addButton" alignment="CENTER" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="40.0" prefWidth="78.0" text="ADD" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+   </children>
+   <effect>
+      <ColorAdjust brightness="-0.35" contrast="0.13" hue="0.46" saturation="0.24" />
+   </effect>
+</VBox>

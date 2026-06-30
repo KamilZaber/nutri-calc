@@ -13,8 +13,10 @@ public class MealsSetModel extends PlanElementModel {
         elementsList = null;
     }
 
-    public MealsSetModel(String name, String description, float[] macroAmounts, float[] vitaminsAmounts, float[] mineralsAmounts, PlanModel parentPlan, int mealsSetID, String[][] elementsList) {
-        super(name, description, macroAmounts, vitaminsAmounts,mineralsAmounts, parentPlan);
+    public MealsSetModel(int type, String name, String description) {
+        super(type, name, description);
+        elementsList = null;
+        assignNewID();
     }
 
     public MealsSetModel(MealsSetModel mealsSet) {
@@ -24,6 +26,7 @@ public class MealsSetModel extends PlanElementModel {
             this.elementsList[i] = mealsSet.getElementsList()[i].clone();
         }
         this.elementsAmounts = mealsSet.getElementsAmounts().clone();
+        assignNewID();
     }
 
     public String[][] getElementsList() {

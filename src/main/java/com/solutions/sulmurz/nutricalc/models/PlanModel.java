@@ -23,16 +23,17 @@ public class PlanModel extends PlanElementModel {
             for (int i = 0; i < oldElementsList.length; i++) {
                 int[] elementData = oldElementsList[i];
                 PlanElementModel newElement;
-                if (elementData[0] == 0) {
+                if (elementData[0] == 1) {
                     newElement = new PlanModel(NutriCalcModel.getPlanByID(elementData[1]));
                     NutriCalcModel.getPlansList().add((PlanModel) newElement);
                     elementData = new int[2];
+                    elementData[0] = 1;
                     elementData[1] = newElement.getID();
-                } else if (elementData[0] == 1) {
+                } else if (elementData[0] == 2) {
                     newElement = new MealsSetModel(NutriCalcModel.getMealsSetByID(elementData[1]));
                     NutriCalcModel.getMealsSetsList().add((MealsSetModel) newElement);
                     elementData = new int[2];
-                    elementData[0] = 1;
+                    elementData[0] = 2;
                     elementData[1] = newElement.getID();
                 } else {
                     NutriCalcController.showFatalPrompt();
@@ -81,5 +82,15 @@ public class PlanModel extends PlanElementModel {
             }
         }
         return vitaminsSummary;
+    }
+
+    public void addElement(PlanElementModel element) {
+        int[][] newElementsList = new int[elementsList.length+1][2];
+        for(int i = 0; i < elementsList.length; i++) {
+            newElementsList[i] = elementsList[i];
+        }
+        newElementsList[elementsList.length][0] = element.getType();
+        newElementsList[elementsList.length][1] = element.getID();
+        this.elementsList = newElementsList;
     }
 }

@@ -1,6 +1,8 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
+import com.solutions.sulmurz.nutricalc.models.PlanElementBasicData;
+import com.solutions.sulmurz.nutricalc.models.PlanElementModel;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.List;
 
 public abstract class NutriCalcController {
     @FXML
@@ -83,11 +86,9 @@ public abstract class NutriCalcController {
     }
 
     protected void generateSection(VBox container, String[] fieldsNames, float[] values) {
-        int i = -1;
+        int i = 0;
         for(Node node: container.getChildren()) {
-            if(i != -1) {
-                ((TextField) node).setText(fieldsNames[i] + ": " + values[i]);
-            }
+            ((TextField) node).setText(fieldsNames[i] + ": " + values[i]);
             i++;
         }
     }
@@ -103,6 +104,7 @@ public abstract class NutriCalcController {
     protected float[] getSectionValuesArray(VBox section) throws InputMismatchException, NumberFormatException {
         ObservableList<Node> fieldsList = section.getChildren();
         float[] valuesArray = new float[fieldsList.size()];
+        System.out.println(fieldsList.size());
         int i = 0;
         for (Node field : fieldsList) {
             if (!((TextField) field).getText().isEmpty()) {
@@ -113,6 +115,46 @@ public abstract class NutriCalcController {
             i++;
         }
         return valuesArray;
+    }
+
+    protected PlanElementBasicData showAddNewElementForm(String title) {
+        Parent root = null;
+        AddElementController controller;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/add_element_view.fxml"));
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showFatalPrompt();
+        }
+        controller = loader.getController();
+        controller.setTitle(title);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle(title);
+        stage.showAndWait();
+        return controller.getNewPlanElementData();
+    }
+
+    protected PlanElementModel showChooseElementWindow(List<? extends PlanElementModel> elementsList) {
+            Parent root = null;
+            ChooseElementController controller;
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/choose_element_view.fxml")
+            );
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+                showFatalPrompt();
+            }
+            controller = loader.getController();
+            controller.setup(elementsList);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Choose A Plan Element");
+            stage.showAndWait();
+        return controller.getSelectedElement();
     }
 
     protected void showPrompt(String message) {

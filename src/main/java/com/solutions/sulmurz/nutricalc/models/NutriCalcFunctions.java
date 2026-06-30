@@ -80,12 +80,12 @@ public class NutriCalcFunctions {
                 int ID = element[1];
 
                 // PLAN
-                if (type == 0) {
+                if (type == 1) {
                     stack.push(NutriCalcModel.getPlanByID(ID));
                 }
 
                 // MEALS SET
-                else if (type == 1) {
+                else if (type == 2) {
                     MealsSetModel mealsSet = NutriCalcModel.getMealsSetByID(ID);
 
                     if (mealsSet != null) {
