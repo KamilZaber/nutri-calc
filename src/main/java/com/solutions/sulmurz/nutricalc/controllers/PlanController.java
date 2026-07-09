@@ -156,7 +156,25 @@ public class PlanController extends NutriCalcController {
 
     @FXML
     private void onCopyButtonClick() {
-
+        if(selectedElement != null) {
+            if(showConfirmationPrompt("Do you want to copy element ", selectedElement.getName())) {
+                if(selectedElement instanceof PlanModel) {
+                    PlanModel newPlan = new PlanModel((PlanModel) selectedElement);
+                    NutriCalcModel.getPlansList().add(newPlan);
+                    currentPlan.addElement(newPlan);
+                    addToView(newPlan);
+                } else if(selectedElement instanceof MealsSetModel) {
+                    MealsSetModel newMealsSet = new MealsSetModel((MealsSetModel) selectedElement);
+                    NutriCalcModel.getMealsSetsList().add(newMealsSet);
+                    currentPlan.addElement(newMealsSet);
+                    addToView(newMealsSet);
+                }
+                resetElementsBox();
+                setup(currentPlan);
+            }
+        } else {
+            showPrompt("Select a plan to copy.");
+        }
     }
 
     @FXML
