@@ -307,7 +307,7 @@
                         </HBox>
                      </content>
                   </TitledPane>
-                  <GridPane fx:id="plansBox" hgap="10" style="-fx-padding: 10;" vgap="10" VBox.vgrow="ALWAYS">
+                  <GridPane fx:id="elementsBox" hgap="10" style="-fx-padding: 10;" vgap="10" VBox.vgrow="ALWAYS">
 
                      <columnConstraints>
                         <ColumnConstraints percentWidth="25" />

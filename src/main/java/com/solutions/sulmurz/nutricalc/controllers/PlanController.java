@@ -15,12 +15,13 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class PlanController extends NutriCalcController {
     @FXML
     private ScrollPane scrollPane;
     @FXML
-    private GridPane plansBox;
+    private GridPane elementsBox;
     @FXML
     private Label planNameLabel;
     @FXML
@@ -91,7 +92,33 @@ public class PlanController extends NutriCalcController {
 
     @FXML
     private void onDeleteButtonClick() {
-
+        if(selectedElement != null) {
+            if(showConfirmationPrompt("Do you really want to delete element", selectedElement.getName())) {
+                if(selectedElement instanceof PlanModel) {
+                    ArrayList<PlanElementModel> planElementsToDelete = NutriCalcFunctions.traverseElements((PlanModel) selectedElement);
+                    elementsBox.getChildren().remove(selectedBox);
+                    currentPlan.deleteElement(selectedElement);
+                    for (PlanElementModel element: planElementsToDelete) {
+                        if (element instanceof PlanModel) {
+                            NutriCalcModel.getPlansList().remove(element);
+                            NutriCalcModel.getPlansIDs().freeID(element.getID());
+                        } else if (element instanceof MealsSetModel) {
+                            NutriCalcModel.getMealsSetsList().remove(element);
+                            NutriCalcModel.getMealsSetsIDs().freeID(element.getID());
+                        }
+                    }
+                } else if (selectedElement instanceof MealsSetModel) {
+                    elementsBox.getChildren().remove(selectedBox);
+                    currentPlan.deleteElement(selectedElement);
+                    NutriCalcModel.getMealsSetsList().remove((MealsSetModel) selectedElement);
+                    NutriCalcModel.getMealsSetsIDs().freeID(selectedElement.getID());
+                }
+                resetElementsBox();
+                setup(currentPlan);
+            }
+        } else {
+            showPrompt("Select a plan to delete.");
+        }
     }
 
     @FXML
@@ -184,6 +211,11 @@ public class PlanController extends NutriCalcController {
 
     }
 
+    private void resetElementsBox() {
+        elementsBox.getChildren().clear();
+        elementCount = 0;
+    }
+
     public void setSelectedElement(PlanElementModel selectedElement, VBox elementBox) {
         this.selectedElement = selectedElement;
         if (selectedBox != null) {
@@ -211,7 +243,7 @@ public class PlanController extends NutriCalcController {
             controller.setParentPlanController(this);
 
             GridPane.setHgrow(elementBox, Priority.ALWAYS);   //GridPane zezwala dziecku na rozciąganie poziomo
-            plansBox.add(elementBox, col, row);
+            elementsBox.add(elementBox, col, row);
 
             elementCount++;
 

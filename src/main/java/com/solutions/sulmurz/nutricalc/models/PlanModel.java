@@ -93,4 +93,18 @@ public class PlanModel extends PlanElementModel {
         newElementsList[elementsList.length][1] = element.getID();
         this.elementsList = newElementsList;
     }
+
+    public void deleteElement(PlanElementModel element) {
+        int[][] newElementsList = new int[elementsList.length-1][2];
+        int j = 0;
+
+        for(int i = 0; i < elementsList.length; i++) {
+            if(!((elementsList[i][0] == element.getType()) && (elementsList[i][1] == element.getID()))) {
+                newElementsList[j] = elementsList[i];
+                j++;
+            }
+        }
+
+        elementsList = newElementsList;
+    }
 }
