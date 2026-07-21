@@ -84,7 +84,18 @@ public class MealsSetController extends NutriCalcController {
 
     @FXML
     private void onDeleteButtonClick() {
-        
+        if(selectedElement != null) {
+            if(showConfirmationPrompt("Do you want to delete element", selectedElement.getName()));
+            mealsSetElementsList.getChildren().remove(selectedElementLabel);
+            currentMealsSet.deleteElement(selectedElement);
+            if(selectedElement instanceof MealModel) {
+                NutriCalcModel.getMealsList().remove(selectedElement);
+            } else if (selectedElement != null) {
+                NutriCalcModel.getIngredientsList().remove(selectedElement);
+            }
+        } else {
+            showPrompt("Choose an element to delete.");
+        }
     }
 
     @FXML

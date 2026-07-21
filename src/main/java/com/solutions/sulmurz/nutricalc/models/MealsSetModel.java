@@ -41,6 +41,7 @@ public class MealsSetModel extends PlanElementModel {
         int n = elementsList.length;
         String[][] newElementsList = new String[n + 1][2];
         float[] newAmountsList = new float[n + 1];
+
         for(int i = 0; i < n; i++) {
             newElementsList[i] = elementsList[i];
             newAmountsList[i] = elementsAmounts[i];
@@ -55,5 +56,26 @@ public class MealsSetModel extends PlanElementModel {
 
         elementsList = newElementsList;
         elementsAmounts = newAmountsList;
+    }
+
+    public void deleteElement(IngredientModel selectedElement) {
+        String[][] newElementslist = new String[elementsList.length-1][2];
+        String type = null;
+        int j = 0;
+
+        if(selectedElement instanceof MealModel) {
+            type = "meal";
+        } else if(selectedElement != null) {
+            type = "ingredient";
+        }
+
+        for(int i = 0; i < elementsList.length; i++) {
+            if(!(elementsList[i][0].equals(type) && elementsList[i][1].equals(selectedElement.getName()))) {
+                newElementslist[j] = elementsList[i];
+                j++;
+            }
+        }
+
+        elementsList = newElementslist;
     }
 }

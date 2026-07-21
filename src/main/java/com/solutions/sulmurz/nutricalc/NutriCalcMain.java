@@ -27,7 +27,7 @@ public class NutriCalcMain extends Application {
         nutriCalcModel = new NutriCalcModel();
         root.requestFocus();
         stage.setScene(scene);
-        stage.setTitle("NutriCalc 0.4");
+        stage.setTitle("NutriCalc 0.5");
         stage.show();
     }
 
