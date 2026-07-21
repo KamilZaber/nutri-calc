@@ -66,17 +66,25 @@ public class MealsSetController extends NutriCalcController {
 
     @FXML
     private void onAddIngredientClick() {
-
+        MealsSetElementBasicData elementToAddInfo = showChooseMealsSetElementWindow(NutriCalcModel.getIngredientsList());
+        if(elementToAddInfo != null) {
+            currentMealsSet.addNewElement(elementToAddInfo.getElement(), elementToAddInfo.getAmount());
+            addToView(elementToAddInfo.getElement(), elementToAddInfo.getAmount());
+        }
     }
 
     @FXML
     private void onAddMealClick() {
-
+        MealsSetElementBasicData elementToAddInfo = showChooseMealsSetElementWindow(NutriCalcModel.getMealsList());
+        if(elementToAddInfo != null) {
+            currentMealsSet.addNewElement(elementToAddInfo.getElement(), elementToAddInfo.getAmount());
+            addToView(elementToAddInfo.getElement(), elementToAddInfo.getAmount());
+        }
     }
 
     @FXML
     private void onDeleteButtonClick() {
-
+        
     }
 
     @FXML
@@ -87,41 +95,47 @@ public class MealsSetController extends NutriCalcController {
     public void setup(MealsSetModel mealsSet) {
         currentMealsSet = mealsSet;
         mealsSetNameLabel.setText(currentMealsSet.getName());
-        Label mealsSetElement;
-        MealsSetElementController elementControlller;
-        int i = 0;
 
         if(mealsSet.getElementsList() != null) {
+            int i = 0;
+            IngredientModel elementToAdd;
             for (String[] element : mealsSet.getElementsList()) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(
-                            getClass().getResource("/meals_set_element_view.fxml")
-                    );
-
-                    mealsSetElement = loader.load();
-
-                    elementControlller = loader.getController();
-                    elementControlller.setParentMealsSetController(this);
-                    if (element[0].equals("meal")) {
-                        elementControlller.setElement(NutriCalcModel.getMealByName(element[1]), mealsSet.getElementsAmounts()[i]);
-                    } else if (element[0].equals("ingredient")) {
-                        elementControlller.setElement(NutriCalcModel.getIngredientByName(element[1]), mealsSet.getElementsAmounts()[i]);
-                    } else {
-                        showFatalPrompt();
-                        return;
-                    }
-
-                    mealsSetElementsList.getChildren().add(mealsSetElement);
-                    i++;
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (element[0].equals("meal")) {
+                    elementToAdd = NutriCalcModel.getMealByName(element[1]);
+                } else if (element[0].equals("ingredient")) {
+                    elementToAdd = NutriCalcModel.getIngredientByName(element[1]);
+                } else {
                     showFatalPrompt();
+                    return;
                 }
+                addToView(elementToAdd, currentMealsSet.getElementsAmounts()[i]);
+                i++;
             }
 
             generateSection(macroSection, currentMealsSet.getMacroAmounts());
             generateSection(mineralsSection, currentMealsSet.getMineralsAmounts());
             generateSection(vitaminsSection, currentMealsSet.getVitaminsAmounts());
+        }
+    }
+
+    private void addToView(IngredientModel element, float amount) {
+        Label mealsSetElement;
+        MealsSetElementController elementControlller;
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/meals_set_element_view.fxml")
+            );
+
+            mealsSetElement = loader.load();
+
+            elementControlller = loader.getController();
+            elementControlller.setParentMealsSetController(this);
+            elementControlller.setElement(element, amount);
+
+            mealsSetElementsList.getChildren().add(mealsSetElement);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showFatalPrompt();
         }
     }
 

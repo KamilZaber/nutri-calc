@@ -251,7 +251,7 @@
                         </HBox>
                      </content>
                   </TitledPane>
-                  <TextField alignment="CENTER" prefHeight="44.0" prefWidth="920.0" text="SET MEALS:">
+                  <TextField alignment="CENTER" editable="false" prefHeight="44.0" prefWidth="920.0" text="SET MEALS:">
                      <font>
                         <Font name="Calibri Bold" size="37.0" />
                      </font>

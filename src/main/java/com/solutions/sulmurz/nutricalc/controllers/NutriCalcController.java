@@ -1,6 +1,8 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
+import com.solutions.sulmurz.nutricalc.models.IngredientModel;
+import com.solutions.sulmurz.nutricalc.models.MealsSetElementBasicData;
 import com.solutions.sulmurz.nutricalc.models.PlanElementBasicData;
 import com.solutions.sulmurz.nutricalc.models.PlanElementModel;
 import javafx.application.Platform;
@@ -136,7 +138,7 @@ public abstract class NutriCalcController {
         return controller.getNewPlanElementData();
     }
 
-    protected PlanElementModel showChooseElementWindow(List<? extends PlanElementModel> elementsList) {
+    protected PlanElementModel showChoosePlanElementWindow(List<? extends PlanElementModel> elementsList) {
             Parent root = null;
             ChooseElementController controller;
             FXMLLoader loader = new FXMLLoader(
@@ -155,6 +157,27 @@ public abstract class NutriCalcController {
             stage.setTitle("Choose A Plan Element");
             stage.showAndWait();
         return controller.getSelectedElement();
+    }
+
+    protected MealsSetElementBasicData showChooseMealsSetElementWindow(List<? extends IngredientModel> elementsList) {
+        Parent root = null;
+        ChooseMealsSetElementController controller;
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/choose_meals_set_element_view.fxml")
+        );
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showFatalPrompt();
+        }
+        controller = loader.getController();
+        controller.setup(elementsList);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Choose Meals Set Element");
+        stage.showAndWait();
+        return controller.getElementInfo();
     }
 
     protected void showPrompt(String message) {

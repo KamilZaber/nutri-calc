@@ -36,4 +36,24 @@ public class MealsSetModel extends PlanElementModel {
     public float[] getElementsAmounts() {
         return elementsAmounts;
     }
+
+    public void addNewElement(IngredientModel newElement, float amount) {
+        int n = elementsList.length;
+        String[][] newElementsList = new String[n + 1][2];
+        float[] newAmountsList = new float[n + 1];
+        for(int i = 0; i < n; i++) {
+            newElementsList[i] = elementsList[i];
+            newAmountsList[i] = elementsAmounts[i];
+        }
+        if(newElement instanceof MealModel) {
+            newElementsList[n][0] = "meal";
+        } else {
+            newElementsList[n][0] = "ingredient";
+        }
+        newElementsList[n][1] = newElement.getName();
+        newAmountsList[n] = amount;
+
+        elementsList = newElementsList;
+        elementsAmounts = newAmountsList;
+    }
 }

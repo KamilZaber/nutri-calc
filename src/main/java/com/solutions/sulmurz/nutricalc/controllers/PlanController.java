@@ -59,7 +59,7 @@ public class PlanController extends NutriCalcController {
 
     @FXML
     public void onAddExistingPlan() {
-        PlanElementModel planToAdd = showChooseElementWindow(NutriCalcModel.getPlansList());
+        PlanElementModel planToAdd = showChoosePlanElementWindow(NutriCalcModel.getPlansList());
         if(planToAdd != null) {
             PlanModel newPlan = new PlanModel((PlanModel) planToAdd);
             NutriCalcModel.getPlansList().add(newPlan);
@@ -81,7 +81,7 @@ public class PlanController extends NutriCalcController {
 
     @FXML
     public void onAddExistingMealSet() {
-        PlanElementModel mealsSetToAdd = showChooseElementWindow(NutriCalcModel.getMealsSetsList());
+        PlanElementModel mealsSetToAdd = showChoosePlanElementWindow(NutriCalcModel.getMealsSetsList());
         if(mealsSetToAdd != null) {
             MealsSetModel newMealsSet = new MealsSetModel((MealsSetModel) mealsSetToAdd);
             NutriCalcModel.getMealsSetsList().add(newMealsSet);
