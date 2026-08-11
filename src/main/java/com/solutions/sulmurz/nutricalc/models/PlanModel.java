@@ -3,9 +3,6 @@ package com.solutions.sulmurz.nutricalc.models;
 import com.google.gson.annotations.Expose;
 import com.solutions.sulmurz.nutricalc.controllers.NutriCalcController;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class PlanModel extends PlanElementModel {
     @Expose
     private int[][] elementsList;
@@ -54,41 +51,50 @@ public class PlanModel extends PlanElementModel {
         return elementsList;
     }
 
-    public static float[] sumUpMacroValues(List<PlanElementModel> elements) {
-        float[] macroSummary = new float[5];
-        for(PlanElementModel element: elements) {
-            for(int i = 0; i < 5; i++) {
-                macroSummary[i] = macroSummary[i] + element.getMacroAmounts()[i];
+    public void calculateNutritionalValues() {
+
+        clearNutritionalValues();
+
+        for(int[] e: elementsList) {
+
+            switch(e[0]) {
+
+                case 1 -> {
+                    PlanModel p = NutriCalcModel.getPlanByID(e[1]);
+
+                    p.calculateNutritionalValues();
+
+                    changeNutritionalValues("PLUS", 1, p.getMacroAmounts(), p.getMineralsAmounts(), p.getVitaminsAmounts());
+                }
+
+                case 2 -> {
+                    MealsSetModel s = NutriCalcModel.getMealsSetByID(e[1]);
+
+                    s.calculateNutritionalValues();
+
+                    changeNutritionalValues("PLUS", 1, s.getMacroAmounts(), s.getMineralsAmounts(), s.getVitaminsAmounts());
+                }
             }
         }
-        return macroSummary;
     }
 
-    public static float[] sumUpMineralsValues(List<PlanElementModel> elements) {
-        float[] mineralsSummary = new float[15];
-        for(PlanElementModel element: elements) {
-            for(int i = 0; i < 15; i++) {
-                mineralsSummary[i] = mineralsSummary[i] + element.getMineralsAmounts()[i];
-            }
-        }
-        return mineralsSummary;
-    }
+    public void recalculateParents(String plusOrMinus, float[] macro, float[] minerals, float[] vitamins) {
 
-    public static float[] sumUpVitaminsValues(List<PlanElementModel> elements) {
-        float[] vitaminsSummary = new float[13];
-        for(PlanElementModel element: elements) {
-            for(int i = 0; i < 13; i++) {
-                vitaminsSummary[i] = vitaminsSummary[i] + element.getVitaminsAmounts()[i];
-            }
+        PlanElementModel current = this;
+
+        while(current != null) {
+            current.changeNutritionalValues(plusOrMinus, 1, macro, minerals, vitamins);
+            current = current.getParentPlan();
         }
-        return vitaminsSummary;
     }
 
     public void addElement(PlanElementModel element) {
         int[][] newElementsList = new int[elementsList.length+1][2];
+
         for(int i = 0; i < elementsList.length; i++) {
             newElementsList[i] = elementsList[i];
         }
+
         newElementsList[elementsList.length][0] = element.getType();
         newElementsList[elementsList.length][1] = element.getID();
         this.elementsList = newElementsList;

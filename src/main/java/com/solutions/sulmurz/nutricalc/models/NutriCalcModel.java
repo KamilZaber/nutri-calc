@@ -9,7 +9,6 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.List;
 
 public class NutriCalcModel {
@@ -33,6 +32,7 @@ public class NutriCalcModel {
         loadMealsSetsDatabase();
         loadPlansDatabase();
         loadMainPlansDatabase();
+        calculateAllNutritionalValues();
         mealsSetsIDs = new IDModel(mealsSetsList);
         plansIDs = new IDModel(plansList);
         mainPlansIDs = new IDModel(mainPlansList);
@@ -180,6 +180,12 @@ public class NutriCalcModel {
         } catch (IOException e) {
             e.printStackTrace();
             NutriCalcController.showFatalPrompt();
+        }
+    }
+
+    public static void calculateAllNutritionalValues() {
+        for (PlanModel mainPlan: mainPlansList) {
+            mainPlan.calculateNutritionalValues();
         }
     }
 

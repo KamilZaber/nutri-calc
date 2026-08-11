@@ -36,6 +36,7 @@ public class MealsSetController extends NutriCalcController {
     private Button saveButton;
     private MealsSetModel currentMealsSet;
     private IngredientModel selectedElement;
+    private MealsSetElementController selectedController;
     private Label selectedElementLabel;
 
     @FXML
@@ -69,7 +70,9 @@ public class MealsSetController extends NutriCalcController {
         MealsSetElementBasicData elementToAddInfo = showChooseMealsSetElementWindow(NutriCalcModel.getIngredientsList());
         if(elementToAddInfo != null) {
             currentMealsSet.addNewElement(elementToAddInfo.getElement(), elementToAddInfo.getAmount());
+            currentMealsSet.recalculateParents("PLUS", elementToAddInfo.getElement(), elementToAddInfo.getAmount());
             addToView(elementToAddInfo.getElement(), elementToAddInfo.getAmount());
+            generateNutritionalValuesSections();
         }
     }
 
@@ -78,20 +81,20 @@ public class MealsSetController extends NutriCalcController {
         MealsSetElementBasicData elementToAddInfo = showChooseMealsSetElementWindow(NutriCalcModel.getMealsList());
         if(elementToAddInfo != null) {
             currentMealsSet.addNewElement(elementToAddInfo.getElement(), elementToAddInfo.getAmount());
+            currentMealsSet.recalculateParents("PLUS", elementToAddInfo.getElement(), elementToAddInfo.getAmount());
             addToView(elementToAddInfo.getElement(), elementToAddInfo.getAmount());
+            generateNutritionalValuesSections();
         }
     }
 
     @FXML
     private void onDeleteButtonClick() {
         if(selectedElement != null) {
-            if(showConfirmationPrompt("Do you want to delete element", selectedElement.getName()));
-            mealsSetElementsList.getChildren().remove(selectedElementLabel);
-            currentMealsSet.deleteElement(selectedElement);
-            if(selectedElement instanceof MealModel) {
-                NutriCalcModel.getMealsList().remove(selectedElement);
-            } else if (selectedElement != null) {
-                NutriCalcModel.getIngredientsList().remove(selectedElement);
+            if(showConfirmationPrompt("Do you want to delete element", selectedElement.getName())) {
+                mealsSetElementsList.getChildren().remove(selectedElementLabel);
+                currentMealsSet.deleteElement(selectedElement);
+                currentMealsSet.recalculateParents("MINUS", selectedElement, selectedController.getAmount());
+                generateNutritionalValuesSections();
             }
         } else {
             showPrompt("Choose an element to delete.");
@@ -101,6 +104,12 @@ public class MealsSetController extends NutriCalcController {
     @FXML
     private void onSaveButtonClick() {
 
+    }
+
+    private void generateNutritionalValuesSections() {
+        generateSection(macroSection, currentMealsSet.getMacroAmounts());
+        generateSection(mineralsSection, currentMealsSet.getMineralsAmounts());
+        generateSection(vitaminsSection, currentMealsSet.getVitaminsAmounts());
     }
 
     public void setup(MealsSetModel mealsSet) {
@@ -123,9 +132,7 @@ public class MealsSetController extends NutriCalcController {
                 i++;
             }
 
-            generateSection(macroSection, currentMealsSet.getMacroAmounts());
-            generateSection(mineralsSection, currentMealsSet.getMineralsAmounts());
-            generateSection(vitaminsSection, currentMealsSet.getVitaminsAmounts());
+            generateNutritionalValuesSections();
         }
     }
 
@@ -159,5 +166,9 @@ public class MealsSetController extends NutriCalcController {
 
         this.selectedElementLabel = elementLabel;
         selectedElementLabel.getStyleClass().add("selected-meals-set-element");
+    }
+
+    public void setSelectedController(MealsSetElementController selectedController) {
+        this.selectedController = selectedController;
     }
 }

@@ -10,10 +10,12 @@ public class MealsSetElementController extends NutriCalcController {
     private Label elementLabel;
     private MealsSetController parentMealsSetController;
     private IngredientModel currentElement;
+    private float amount;
 
     @FXML
     private void onMealsSetElementClick() {
         parentMealsSetController.setSelectedElement(currentElement, elementLabel);
+        parentMealsSetController.setSelectedController(this);
     }
 
     public void setParentMealsSetController(MealsSetController mealsSetController) {
@@ -22,6 +24,7 @@ public class MealsSetElementController extends NutriCalcController {
 
     public void setElement(IngredientModel element, float amount) {
         this.currentElement = element;
+        this.amount = amount;
 
         if(element instanceof MealModel) {
             elementLabel.setText(amount + " x " + element.getName());
@@ -29,5 +32,9 @@ public class MealsSetElementController extends NutriCalcController {
         } else {
             elementLabel.setText(amount + "g of " + element.getName());
         }
+    }
+
+    public float getAmount() {
+        return amount;
     }
 }

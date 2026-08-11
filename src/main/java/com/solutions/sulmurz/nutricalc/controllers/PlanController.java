@@ -13,7 +13,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -53,7 +52,9 @@ public class PlanController extends NutriCalcController {
             PlanModel newPlan = new PlanModel(1, planData.getName(), planData.getDescription());
             NutriCalcModel.getPlansList().add(newPlan);
             currentPlan.addElement(newPlan);
+            resetElementsBox();
             addToView(newPlan);
+            setup(currentPlan);
         }
     }
 
@@ -64,7 +65,10 @@ public class PlanController extends NutriCalcController {
             PlanModel newPlan = new PlanModel((PlanModel) planToAdd);
             NutriCalcModel.getPlansList().add(newPlan);
             currentPlan.addElement(newPlan);
+            currentPlan.recalculateParents("PLUS", newPlan.getMacroAmounts(), newPlan.getMineralsAmounts(), newPlan.getVitaminsAmounts());
+            resetElementsBox();
             addToView(newPlan);
+            setup(currentPlan);
         }
     }
 
@@ -75,7 +79,9 @@ public class PlanController extends NutriCalcController {
             MealsSetModel newMealsSet = new MealsSetModel(2, mealsSetData.getName(), mealsSetData.getDescription());
             NutriCalcModel.getMealsSetsList().add(newMealsSet);
             currentPlan.addElement(newMealsSet);
+            resetElementsBox();
             addToView(newMealsSet);
+            setup(currentPlan);
         }
     }
 
@@ -86,7 +92,10 @@ public class PlanController extends NutriCalcController {
             MealsSetModel newMealsSet = new MealsSetModel((MealsSetModel) mealsSetToAdd);
             NutriCalcModel.getMealsSetsList().add(newMealsSet);
             currentPlan.addElement(newMealsSet);
+            currentPlan.recalculateParents("PLUS", newMealsSet.getMacroAmounts(), newMealsSet.getMineralsAmounts(), newMealsSet.getVitaminsAmounts());
+            resetElementsBox();
             addToView(newMealsSet);
+            setup(currentPlan);
         }
     }
 
@@ -98,6 +107,7 @@ public class PlanController extends NutriCalcController {
                     ArrayList<PlanElementModel> planElementsToDelete = NutriCalcFunctions.traverseElements((PlanModel) selectedElement);
                     elementsBox.getChildren().remove(selectedBox);
                     currentPlan.deleteElement(selectedElement);
+                    currentPlan.recalculateParents("MINUS", selectedElement.getMacroAmounts(), selectedElement.getMineralsAmounts(), selectedElement.getVitaminsAmounts());
                     for (PlanElementModel element: planElementsToDelete) {
                         if (element instanceof PlanModel) {
                             NutriCalcModel.getPlansList().remove(element);
@@ -110,6 +120,7 @@ public class PlanController extends NutriCalcController {
                 } else if (selectedElement instanceof MealsSetModel) {
                     elementsBox.getChildren().remove(selectedBox);
                     currentPlan.deleteElement(selectedElement);
+                    currentPlan.recalculateParents("MINUS", selectedElement.getMacroAmounts(), selectedElement.getMineralsAmounts(), selectedElement.getVitaminsAmounts());
                     NutriCalcModel.getMealsSetsList().remove((MealsSetModel) selectedElement);
                     NutriCalcModel.getMealsSetsIDs().freeID(selectedElement.getID());
                 }
@@ -162,11 +173,13 @@ public class PlanController extends NutriCalcController {
                     PlanModel newPlan = new PlanModel((PlanModel) selectedElement);
                     NutriCalcModel.getPlansList().add(newPlan);
                     currentPlan.addElement(newPlan);
+                    currentPlan.recalculateParents("PLUS", newPlan.getMacroAmounts(), newPlan.getMineralsAmounts(), newPlan.getVitaminsAmounts());
                     addToView(newPlan);
                 } else if(selectedElement instanceof MealsSetModel) {
                     MealsSetModel newMealsSet = new MealsSetModel((MealsSetModel) selectedElement);
                     NutriCalcModel.getMealsSetsList().add(newMealsSet);
                     currentPlan.addElement(newMealsSet);
+                    currentPlan.recalculateParents("PLUS", newMealsSet.getMacroAmounts(), newMealsSet.getMineralsAmounts(), newMealsSet.getVitaminsAmounts());
                     addToView(newMealsSet);
                 }
                 resetElementsBox();
@@ -208,10 +221,8 @@ public class PlanController extends NutriCalcController {
         NutriCalcMain.getPrimaryStage().setScene(scene);
     }
 
-    public void setup(PlanModel plan) {
-        currentPlan = plan;
+    public void generateElementsBox() {
         int[][] elementsList = currentPlan.getElementsList();
-        planNameLabel.setText(plan.getName());
 
         if(elementsList != null) {
             for (int i = 0; i < elementsList.length; i++) {
@@ -222,11 +233,16 @@ public class PlanController extends NutriCalcController {
                 }
             }
         }
+    }
+    public void setup(PlanModel plan) {
+        currentPlan = plan;
+        planNameLabel.setText(plan.getName());
+
+        generateElementsBox();
 
         generateSection(macroSection, currentPlan.getMacroAmounts());
         generateSection(mineralsSection, currentPlan.getMineralsAmounts());
         generateSection(vitaminsSection, currentPlan.getVitaminsAmounts());
-
     }
 
     private void resetElementsBox() {

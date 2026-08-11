@@ -98,7 +98,7 @@ public abstract class NutriCalcController {
     protected void generateSection(VBox container, float[] values) {
         int i = 0;
         for(Node node: container.getChildren()) {
-            ((TextField) node).setText(Float.toString(values[i]));
+            ((TextField) node).setText(Float.toString((float) Math.round(values[i] * 100) /100));
             i++;
         }
     }

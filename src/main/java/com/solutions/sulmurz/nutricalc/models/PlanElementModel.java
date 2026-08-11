@@ -2,8 +2,6 @@ package com.solutions.sulmurz.nutricalc.models;
 
 import com.google.gson.annotations.Expose;
 
-import java.util.Arrays;
-
 public abstract class PlanElementModel {
     @Expose
     protected int ID;
@@ -14,11 +12,11 @@ public abstract class PlanElementModel {
     @Expose
     private String description;
     @Expose
-    private float[] macroAmounts;
+    protected float[] macroAmounts;
     @Expose
-    private float[] vitaminsAmounts;
+    protected float[] vitaminsAmounts;
     @Expose
-    private float[] mineralsAmounts;
+    protected float[] mineralsAmounts;
     private PlanModel parentPlan;
 
     public PlanElementModel() {
@@ -49,6 +47,7 @@ public abstract class PlanElementModel {
         this.mineralsAmounts = planElement.getMineralsAmounts().clone();
         this.parentPlan = null;
     }
+
     public PlanElementModel(String name, String description, float[] macroAmounts, float[] vitaminsAmounts, float[] mineralsAmounts, PlanModel parentPlan) {
         this.name = name;
         this.description = description;
@@ -67,6 +66,45 @@ public abstract class PlanElementModel {
             this.ID = NutriCalcModel.getMealsSetsIDs().giveID();
         }
     }
+
+    public abstract void calculateNutritionalValues();
+
+    protected void clearNutritionalValues() {
+        for(int j = 0; j < 5; j++) {
+            macroAmounts[j] = 0;
+        }
+        for(int j = 0; j < 15; j++) {
+            mineralsAmounts[j] = 0;
+        }
+        for(int j = 0; j < 13; j++) {
+            vitaminsAmounts[j] = 0;
+        }
+    }
+
+    protected void changeNutritionalValues(String plusOrMinus, float amount, float[] macro, float[] minerals, float[] vitamins) {
+        if(plusOrMinus.equals("PLUS")) {
+            for(int j = 0; j < 5; j++) {
+                macroAmounts[j] = macroAmounts[j] + amount * macro[j];
+            }
+            for(int j = 0; j < 15; j++) {
+                mineralsAmounts[j] = mineralsAmounts[j] + amount * minerals[j];
+            }
+            for(int j = 0; j < 13; j++) {
+                vitaminsAmounts[j] = vitaminsAmounts[j] + amount * vitamins[j];
+            }
+        } else if (plusOrMinus.equals("MINUS")) {
+            for(int j = 0; j < 5; j++) {
+                macroAmounts[j] = macroAmounts[j] - amount * macro[j];
+            }
+            for(int j = 0; j < 15; j++) {
+                mineralsAmounts[j] = mineralsAmounts[j] - amount * minerals[j];
+            }
+            for(int j = 0; j < 13; j++) {
+                vitaminsAmounts[j] = vitaminsAmounts[j] - amount * vitamins[j];
+            }
+        }
+    }
+
     public int getID() {
         return ID;
     }

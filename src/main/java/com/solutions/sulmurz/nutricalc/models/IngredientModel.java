@@ -6,11 +6,11 @@ public class IngredientModel {
     @Expose
     private String name;
     @Expose
-    private float[] macroAmounts;
+    protected float[] macroAmounts;
     @Expose
-    private float[] vitaminsAmounts;
+    protected float[] vitaminsAmounts;
     @Expose
-    private float[] mineralsAmounts;
+    protected float[] mineralsAmounts;
 
     public IngredientModel() {
         name = null;

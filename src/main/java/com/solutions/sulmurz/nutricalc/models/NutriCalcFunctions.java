@@ -1,9 +1,7 @@
 package com.solutions.sulmurz.nutricalc.models;
 
 import javafx.collections.ObservableList;
-
 import java.util.*;
-import java.util.function.Consumer;
 
 public class NutriCalcFunctions {
     public static String[] getNamesArray(ObservableList<IngredientModel> ingredientsList) {

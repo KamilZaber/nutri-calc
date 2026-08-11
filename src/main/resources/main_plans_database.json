@@ -13,7 +13,7 @@
     "ID": 1,
     "type": 0,
     "name": "My Vegan Plan",
-    "description": "A whole week vegan diet plan.",
+    "description": "A whole week vegan diet experimental plan.",
     "macroAmounts": [13.4, 5.3, 72, 98.5, 395],
     "vitaminsAmounts": [501, 403, 18.08, 20.0066, 50, 48.967, 23.403, 22.63, 21.552, 587.121, 377.107, 890.00035, 80.6],
     "mineralsAmounts": [299, 8, 355, 81, 18, 569, 8.14, 5.8, 0.358, 1.51, 0.69, 0.2, 0.57, 38, 30.0252],
