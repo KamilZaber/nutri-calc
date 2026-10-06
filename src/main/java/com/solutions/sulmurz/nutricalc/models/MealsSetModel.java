@@ -29,6 +29,21 @@ public class MealsSetModel extends PlanElementModel {
         assignNewID();
     }
 
+    public MealsSetModel(int ID, int type, String name, String description, float[] macroAmounts, float[] mineralsAmounts, float[] vitaminsAmounts, String[][] elements, float[] elementsAmounts) {
+        super(type, name, description);
+        this.ID = ID;
+        this.macroAmounts = macroAmounts.clone();
+        this.mineralsAmounts = mineralsAmounts.clone();
+        this.vitaminsAmounts = vitaminsAmounts.clone();
+        this.elementsList = new String[elements.length][2];
+        this.elementsAmounts = elementsAmounts.clone();
+
+        for(int i = 0; i < elements.length; i++) {
+            elementsList[i][0] = elements[i][0];
+            elementsList[i][1] = elements[i][1];
+        }
+    }
+
     public void calculateNutritionalValues() {
         float[] macroSummary = new float[5];
         float[] mineralsSummary = new float[15];
@@ -69,7 +84,7 @@ public class MealsSetModel extends PlanElementModel {
             amount = amount/100;
         }
 
-        PlanElementModel current = this;
+        PlanElementModel current = this.getParentPlan();
 
         while(current != null) {
             current.changeNutritionalValues(plusOrMinus, amount, element.getMacroAmounts(), element.getMineralsAmounts(), element.getVitaminsAmounts());
@@ -128,5 +143,15 @@ public class MealsSetModel extends PlanElementModel {
 
         elementsList = newElementslist;
         elementsAmounts = newAmountsList;
+    }
+
+    public void replaceMealsSetData(MealsSetModel otherMealsSet) {
+        this.name = otherMealsSet.getName();
+        this.description = otherMealsSet.getDescription();
+        this.macroAmounts = otherMealsSet.getMacroAmounts();
+        this.vitaminsAmounts = otherMealsSet.getVitaminsAmounts();
+        this.mineralsAmounts = otherMealsSet.getMineralsAmounts();
+        this.elementsList = otherMealsSet.getElementsList();
+        this.elementsAmounts = otherMealsSet.getElementsAmounts();
     }
 }

@@ -47,8 +47,26 @@ public class PlanModel extends PlanElementModel {
         assignNewID();
     }
 
+    public PlanModel(int ID, int type, String name, String description, float[] macroAmounts, float[] mineralsAmounts, float[] vitaminsAmounts, int[][] elements) {
+        super(type, name, description);
+        this.ID = ID;
+        this.macroAmounts = macroAmounts.clone();
+        this.mineralsAmounts = mineralsAmounts.clone();
+        this.vitaminsAmounts = vitaminsAmounts.clone();
+        this.elementsList = new int[elements.length][2];
+
+        for(int i = 0; i < elements.length; i++) {
+            elementsList[i][0] = elements[i][0];
+            elementsList[i][1] = elements[i][1];
+        }
+    }
+
     public int[][] getElementsList() {
         return elementsList;
+    }
+
+    public void setElementsList(int[][] elementsList) {
+        this.elementsList = elementsList;
     }
 
     public void calculateNutritionalValues() {
@@ -80,7 +98,7 @@ public class PlanModel extends PlanElementModel {
 
     public void recalculateParents(String plusOrMinus, float[] macro, float[] minerals, float[] vitamins) {
 
-        PlanElementModel current = this;
+        PlanElementModel current = this.getParentPlan();
 
         while(current != null) {
             current.changeNutritionalValues(plusOrMinus, 1, macro, minerals, vitamins);
@@ -112,5 +130,14 @@ public class PlanModel extends PlanElementModel {
         }
 
         elementsList = newElementsList;
+    }
+
+    public void replacePlanData(PlanModel otherPlan) {
+        this.name = otherPlan.getName();
+        this.description = otherPlan.getDescription();
+        this.macroAmounts = otherPlan.getMacroAmounts();
+        this.vitaminsAmounts = otherPlan.getVitaminsAmounts();
+        this.mineralsAmounts = otherPlan.getMineralsAmounts();
+        this.elementsList = otherPlan.getElementsList();
     }
 }

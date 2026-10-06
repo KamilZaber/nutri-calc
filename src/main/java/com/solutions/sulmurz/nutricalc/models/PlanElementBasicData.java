@@ -4,6 +4,11 @@ public class PlanElementBasicData {
     private String name;
     private String description;
 
+    public PlanElementBasicData() {
+        this.name = null;
+        this.description = null;
+    }
+
     public PlanElementBasicData(String name, String description) {
         this.name = name;
         this.description = description;

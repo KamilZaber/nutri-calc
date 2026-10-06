@@ -8,9 +8,9 @@ public abstract class PlanElementModel {
     @Expose
     private int type;
     @Expose
-    private String name;
+    protected String name;
     @Expose
-    private String description;
+    protected String description;
     @Expose
     protected float[] macroAmounts;
     @Expose
@@ -81,7 +81,7 @@ public abstract class PlanElementModel {
         }
     }
 
-    protected void changeNutritionalValues(String plusOrMinus, float amount, float[] macro, float[] minerals, float[] vitamins) {
+    public void changeNutritionalValues(String plusOrMinus, float amount, float[] macro, float[] minerals, float[] vitamins) {
         if(plusOrMinus.equals("PLUS")) {
             for(int j = 0; j < 5; j++) {
                 macroAmounts[j] = macroAmounts[j] + amount * macro[j];
@@ -142,5 +142,13 @@ public abstract class PlanElementModel {
     }
 
     public void setName(String s) {
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

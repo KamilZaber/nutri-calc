@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
 public class ConfirmationPromptController {
-    boolean confirmed = false;
+    Boolean confirmed = null;
     @FXML
     private Label confirmationQuestion;
     @FXML
@@ -17,6 +17,7 @@ public class ConfirmationPromptController {
     private Button noButton;
     @FXML
     private void onNoButtonClick() {
+        confirmed = false;
         ((Stage) noButton.getScene().getWindow()).close();
     }
     @FXML
@@ -37,8 +38,7 @@ public class ConfirmationPromptController {
         this.confirmationQuestion.setText(question);
     }
 
-    public boolean wasConfirmed() {
+    public Boolean wasConfirmed() {
         return confirmed;
     }
-
 }

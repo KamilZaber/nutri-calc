@@ -1,10 +1,7 @@
 package com.solutions.sulmurz.nutricalc.controllers;
 
 import com.solutions.sulmurz.nutricalc.NutriCalcMain;
-import com.solutions.sulmurz.nutricalc.models.IngredientModel;
-import com.solutions.sulmurz.nutricalc.models.MealsSetElementBasicData;
-import com.solutions.sulmurz.nutricalc.models.PlanElementBasicData;
-import com.solutions.sulmurz.nutricalc.models.PlanElementModel;
+import com.solutions.sulmurz.nutricalc.models.*;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,13 +14,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.List;
 
 public abstract class NutriCalcController {
     @FXML
-    private void openMainMenuView() {
+    protected void openMainMenuView() {
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -39,7 +37,7 @@ public abstract class NutriCalcController {
     }
 
     @FXML
-    private void openMyIngredientsView() {
+    protected void openMyIngredientsView() {
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -51,11 +49,14 @@ public abstract class NutriCalcController {
             showFatalPrompt();
         }
         Scene scene = new Scene(root);
+        if(!MyIngredientsController.isChanged()) {
+            NutriCalcModel.backupDatabases();
+        }
         NutriCalcMain.getPrimaryStage().setScene(scene);
     }
 
     @FXML
-    private void openMyMealsView() {
+    protected void openMyMealsView() {
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -68,6 +69,9 @@ public abstract class NutriCalcController {
         }
 
         Scene scene = new Scene(root);
+        if(!MyMealsController.isChanged()) {
+            NutriCalcModel.backupDatabases();
+        }
         NutriCalcMain.getPrimaryStage().setScene(scene);
     }
 
@@ -98,7 +102,7 @@ public abstract class NutriCalcController {
     protected void generateSection(VBox container, float[] values) {
         int i = 0;
         for(Node node: container.getChildren()) {
-            ((TextField) node).setText(Float.toString((float) Math.round(values[i] * 100) /100));
+            ((TextField) node).setText(Float.toString((float) Math.round(values[i] * 1000) /1000));
             i++;
         }
     }
@@ -199,7 +203,7 @@ public abstract class NutriCalcController {
         stage.showAndWait();
     }
 
-    protected boolean showConfirmationPrompt(String question, String name) {
+    protected Boolean showConfirmationPrompt(String question, String name) {
         ConfirmationPromptController controller;
         VBox root = null;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/confirmation_prompt_view.fxml"));
@@ -214,6 +218,7 @@ public abstract class NutriCalcController {
         controller.setName(name);
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        //stage.setOnCloseRequest(Event::consume);
         stage.setTitle("NutriCalc Prompt");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();

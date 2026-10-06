@@ -8,6 +8,7 @@ import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import com.solutions.sulmurz.nutricalc.models.MealModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
@@ -35,6 +36,8 @@ public class AddMealController extends NutriCalcController {
     protected Button backButton;
     @FXML
     protected TextField nameField;
+    protected boolean changed = false;
+
     @FXML
     protected void initialize() {
         allIngredientsListView.getItems().setAll(NutriCalcModel.getIngredientsList());
@@ -85,6 +88,7 @@ public class AddMealController extends NutriCalcController {
                         ingredientsAmountsListView.getItems().add(grams);
                         ingredientsListView.getItems().add(allIngredientsListView.getItems().get(indexIn));
                         }
+                        changed = true;
                     } else throw new NumberFormatException();
                 } else throw new InputMismatchException();
             } else throw new InputMismatchException();
@@ -100,17 +104,18 @@ public class AddMealController extends NutriCalcController {
         int selectedIndex = ingredientsListView.getSelectionModel().getSelectedIndex();
         float amountToAdd;
         float amount;
-        if (selectedIndex != -1) {
+        if(selectedIndex != -1) {
             try {
                 amountToAdd = Float.parseFloat(gramsTextField.getText());
                 amount = ingredientsAmountsListView.getItems().get(selectedIndex);
-                if (amountToAdd > 0 && amountToAdd < amount) {
+                if(amountToAdd > 0 && amountToAdd < amount) {
                     ingredientsAmountsListView.getItems().set(selectedIndex, (amount - amountToAdd));
 
                 } else {
-                    if (showConfirmationPrompt("Do you really want to delete ingredient ", ingredientsListView.getItems().get(selectedIndex).getName())) {
+                    if(Boolean.TRUE.equals(showConfirmationPrompt("Do you really want to delete ingredient ", ingredientsListView.getItems().get(selectedIndex).getName()))) {
                         ingredientsListView.getItems().remove(selectedIndex);
                         ingredientsAmountsListView.getItems().remove(selectedIndex);
+                        changed = true;
                     }
                 }
             } catch (NumberFormatException e) {
@@ -122,7 +127,34 @@ public class AddMealController extends NutriCalcController {
     }
 
     @FXML
+    protected void onBackButtonClick() {
+        if(changed) {
+            Boolean confirmed = showConfirmationPrompt("Do you want to save this meal?","");
+            if(Boolean.TRUE.equals(confirmed)) {
+                saveMeal();
+            } else if(Boolean.FALSE.equals(confirmed)) {
+                openMyMealsView();
+            }
+        } else {
+            openMyMealsView();
+        }
+    }
+
+    @FXML
     protected void onSaveButtonClick() {
+        if(changed) {
+            saveMeal();
+        } else {
+            showPrompt("Nothing to save.");
+        }
+    }
+
+    @FXML
+    protected void change() {
+        changed = true;
+    }
+
+    private void saveMeal() {
         String name = nameField.getText();
         try {
             if (!name.isEmpty()) {
@@ -130,7 +162,11 @@ public class AddMealController extends NutriCalcController {
                     String[] ingredientsNamesArray = NutriCalcFunctions.getNamesArray(ingredientsListView.getItems());
                     float[] ingredientsAmountsArray = NutriCalcFunctions.getValuesArray(ingredientsAmountsListView.getItems());
                     NutriCalcModel.getMealsList().add(new MealModel(name, ingredientsNamesArray, ingredientsAmountsArray, MealModel.sumUpMacroValues(ingredientsListView.getItems(), ingredientsAmountsArray), MealModel.sumUpVitaminsValues(ingredientsListView.getItems(), ingredientsAmountsArray), MealModel.sumUpMineralsValues(ingredientsListView.getItems(), ingredientsAmountsArray)));
-                    NutriCalcMain.getPrimaryStage().setScene(new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("my_meals_view.fxml"))));
+                    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("my_meals_view.fxml"));
+                    Parent root = loader.load();
+                    MyMealsController controller = loader.getController();
+                    controller.setChanged(true);
+                    NutriCalcMain.getPrimaryStage().setScene(new Scene(root));
                 } else {
                     throw new NameOccupiedException();
                 }

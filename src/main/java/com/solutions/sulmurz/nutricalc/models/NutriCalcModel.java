@@ -9,6 +9,7 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class NutriCalcModel {
@@ -17,6 +18,12 @@ public class NutriCalcModel {
     private static List<PlanModel> mainPlansList;
     private static List<PlanModel> plansList;
     private static List<MealsSetModel> mealsSetsList;
+
+    private static List<IngredientModel> oldIngredientsList;
+    private static List<MealModel> oldMealsList;
+    private static List<PlanModel> oldMainPlansList;
+    private static List<PlanModel> oldPlansList;
+    private static List<MealsSetModel> oldMealsSetsList;
 
     private static IDModel mealsSetsIDs;
     private static IDModel plansIDs;
@@ -181,6 +188,22 @@ public class NutriCalcModel {
             e.printStackTrace();
             NutriCalcController.showFatalPrompt();
         }
+    }
+
+    public static void backupDatabases() {
+        oldIngredientsList = new ArrayList<>(ingredientsList);
+        oldMealsList = new ArrayList<>(mealsList);
+        oldMainPlansList = new ArrayList<>(mainPlansList);
+        oldPlansList = new ArrayList<>(plansList);
+        oldMealsSetsList = new ArrayList<>(mealsSetsList);
+    }
+
+    public static void restoreDatabases() {
+        ingredientsList = oldIngredientsList;
+        mealsList = oldMealsList;
+        mainPlansList = oldMainPlansList;
+        plansList = oldPlansList;
+        mealsSetsList = oldMealsSetsList;
     }
 
     public static void calculateAllNutritionalValues() {

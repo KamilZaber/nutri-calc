@@ -12,11 +12,12 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 
 public class MyIngredientsController extends NutriCalcController {
-    private static Scene addIngredientViewScene;
     @FXML
     private ListView<IngredientModel> ingredientsListView;
     @FXML
     private TextField nameTextField;
+    @FXML
+    private Button backButton;
     @FXML
     private VBox dataSection;
     @FXML
@@ -25,9 +26,10 @@ public class MyIngredientsController extends NutriCalcController {
     private VBox mineralsSection;
     @FXML
     private VBox vitaminsSection;
+    private static boolean changed = false;
+
     @FXML
     private void initialize() {
-        addIngredientViewScene = null;
         ingredientsListView.getItems().setAll(NutriCalcModel.getIngredientsList());
         ingredientsListView.setCellFactory(ingredientsListView -> new ListCell<>() {        //nowe komórki o określonym działaniu
             @Override
@@ -42,8 +44,21 @@ public class MyIngredientsController extends NutriCalcController {
         });
     }
 
-    public static Scene getAddIngredientViewScene() {
-        return addIngredientViewScene;
+    @FXML
+    private void onBackButtonClick() {
+        if(changed) {
+            Boolean confirmed = showConfirmationPrompt("Do you want to save changes?", "");
+            if(Boolean.TRUE.equals(confirmed)) {
+                showPrompt("Changes saved");
+                changed = false;
+            } else if(Boolean.FALSE.equals(confirmed)) {
+                NutriCalcModel.restoreDatabases();
+                changed = false;
+            } else {
+                return;
+            }
+        }
+        openMainMenuView();
     }
 
     @FXML
@@ -65,10 +80,12 @@ public class MyIngredientsController extends NutriCalcController {
     @FXML
     private void onAddClick() {
         try {
-            if (addIngredientViewScene == null) {
-                addIngredientViewScene = new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("add_ingredient_view.fxml")));
-            }
-            NutriCalcMain.getPrimaryStage().setScene(addIngredientViewScene);
+            Parent root;
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/add_ingredient_view.fxml")
+            );
+            root = loader.load();
+            NutriCalcMain.getPrimaryStage().setScene(new Scene(root));
         } catch (IOException e) {
             showFatalPrompt();
         }
@@ -77,13 +94,12 @@ public class MyIngredientsController extends NutriCalcController {
     @FXML
     private void onDeleteClick() {
         IngredientModel ingredient = ingredientsListView.getSelectionModel().getSelectedItem();
-        int selectionIndex;
         if(ingredient != null) {
-            if(showConfirmationPrompt("Do you really want to delete the ingredient: ", ingredient.getName())) {
-                selectionIndex = ingredientsListView.getItems().indexOf(ingredient);
-                ingredientsListView.getItems().remove(selectionIndex);
-                NutriCalcModel.getIngredientsList().remove(selectionIndex);
+            if(Boolean.TRUE.equals(showConfirmationPrompt("Do you really want to delete the ingredient: ", ingredient.getName()))) {
+                ingredientsListView.getItems().remove(ingredient);
+                NutriCalcModel.getIngredientsList().remove(ingredient);
                 dataSection.setVisible(false);
+                changed = true;
             }
         } else {
             showPrompt("Select an ingredient to delete.");
@@ -112,5 +128,23 @@ public class MyIngredientsController extends NutriCalcController {
         }
     }
 
+    @FXML
+    private void onSaveClick() {
+        if(changed) {
+            if(Boolean.TRUE.equals(showConfirmationPrompt("Do you really want to save changes?", ""))) {
+                changed = false;
+                showPrompt("Changes saved");
+            }
+        } else {
+            showPrompt("Nothing to save.");
+        }
+    }
 
+    public static boolean isChanged() {
+        return changed;
+    }
+
+    public void setChanged(boolean changed) {
+        MyIngredientsController.changed = changed;
+    }
 }

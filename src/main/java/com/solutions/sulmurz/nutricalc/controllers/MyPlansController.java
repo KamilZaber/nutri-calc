@@ -16,6 +16,8 @@ public class MyPlansController extends NutriCalcController {
     @FXML
     private VBox plansBox;
     @FXML
+    private Button backButton;
+    @FXML
     private Button openButton;
     @FXML
     private Button addButton;
@@ -27,31 +29,65 @@ public class MyPlansController extends NutriCalcController {
     private Button saveButton;
     private PlanModel selectedPlan;
     private VBox selectedPlanBox;
+    private final ArrayList<PlanElementModel> addedElements = new ArrayList<>();
+    private final ArrayList<PlanElementModel> deletedElements = new ArrayList<>();
+
+    boolean changed = false;
 
     @FXML
     protected void initialize() {
-        for(PlanModel plan: NutriCalcModel.getMainPlansList()) {
-            addToView(plan);
+        prepareView();
+    }
+
+    @FXML
+    private void onBackButtonClick() {
+        if(changed) {
+            Boolean confirmed = showConfirmationPrompt("Do you want to save changes?", "");
+            if(Boolean.TRUE.equals(confirmed)) {
+                savePlanData();
+            } else if(Boolean.FALSE.equals(confirmed)) {
+                undoPlanChanges();
+            } else {
+                return;
+            }
         }
+        openMainMenuView();
     }
 
     @FXML
     private void onOpenButtonClick() {
         if(selectedPlan != null) {
-            Parent root = null;
-            try {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("/plan_view.fxml")
-                );
-                root = loader.load();
-                PlanController controller = loader.getController();
-                controller.setup(selectedPlan);
-            } catch (IOException e) {
-                e.printStackTrace();
-                showFatalPrompt();
+            if(changed) {
+                Boolean confirmed = showConfirmationPrompt("Do you want to save changes?", "");
+                if(Boolean.TRUE.equals(confirmed)) {
+                    savePlanData();
+                } else if(Boolean.FALSE.equals(confirmed)) {
+                    undoPlanChanges();
+                } else {
+                    return;
+                }
             }
-            Scene scene = new Scene(root);
-            NutriCalcMain.getPrimaryStage().setScene(scene);
+
+            if(NutriCalcModel.getMainPlansList().contains(selectedPlan)) {
+                Parent root = null;
+                try {
+                    FXMLLoader loader = new FXMLLoader(
+                            getClass().getResource("/plan_view.fxml")
+                    );
+                    root = loader.load();
+                    PlanController controller = loader.getController();
+                    controller.setup(selectedPlan);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    showFatalPrompt();
+                }
+                Scene scene = new Scene(root);
+                NutriCalcMain.getPrimaryStage().setScene(scene);
+            } else {
+                showPrompt("Unable to open such element.");
+                plansBox.getChildren().clear();
+                prepareView();
+            }
         } else {
             showPrompt("Select a plan to open.");
         }
@@ -64,40 +100,47 @@ public class MyPlansController extends NutriCalcController {
             PlanModel newPlan = new PlanModel(0, planData.getName(), planData.getDescription());
             NutriCalcModel.getMainPlansList().add(newPlan);
             addToView(newPlan);
+            addedElements.add(newPlan);
         }
+
+        changed = true;
     }
 
     @FXML
     private void onCopyButtonClick() {
         if(selectedPlan != null) {
-            if(showConfirmationPrompt("Do you want to copy plan ", selectedPlan.getName())) {
+            Boolean confirmed = showConfirmationPrompt("Do you want to copy plan ", selectedPlan.getName());
+            if(Boolean.TRUE.equals(confirmed)) {
                 PlanModel newPlan = new PlanModel(selectedPlan);
                 NutriCalcModel.getMainPlansList().add(newPlan);
                 addToView(newPlan);
+                addedElements.add(newPlan);
             }
         } else {
             showPrompt("Select a plan to copy.");
         }
+
+        changed = true;
     }
 
     @FXML
     private void onDeleteButtonClick() {
         if(selectedPlan != null) {
-            if(showConfirmationPrompt("Do you really want to delete plan", selectedPlan.getName())) {
+            if(Boolean.TRUE.equals(showConfirmationPrompt("Do you really want to delete plan", selectedPlan.getName()))) {
                 ArrayList<PlanElementModel> planElementsToDelete = NutriCalcFunctions.traverseElements(selectedPlan);
                 plansBox.getChildren().remove(selectedPlanBox);
                 NutriCalcModel.getMainPlansList().remove(selectedPlan);
-                PlanElementModel element;
-                for (int i = 1; i < planElementsToDelete.size(); i++) {
-                    element = planElementsToDelete.get(i);
-                    if (element instanceof PlanModel) {
+
+                for(PlanElementModel element: planElementsToDelete) {
+                    if(element instanceof PlanModel) {
                         NutriCalcModel.getPlansList().remove(element);
-                        NutriCalcModel.getPlansIDs().freeID(element.getID());
-                    } else if (element instanceof MealsSetModel) {
+                    } else if(element instanceof MealsSetModel) {
                         NutriCalcModel.getMealsSetsList().remove(element);
-                        NutriCalcModel.getMealsSetsIDs().freeID(element.getID());
                     }
+                    deletedElements.add(element);
                 }
+
+                changed = true;
             }
         } else {
             showPrompt("Select a plan to delete.");
@@ -106,7 +149,11 @@ public class MyPlansController extends NutriCalcController {
 
     @FXML
     private void onSaveButtonClick() {
-
+        if(changed) {
+            savePlanData();
+        } else {
+            showPrompt("Nothing to save.");
+        }
     }
 
     @FXML
@@ -137,5 +184,31 @@ public class MyPlansController extends NutriCalcController {
 
         selectedPlanBox = planBox;
         selectedPlanBox.getStyleClass().add("selected-plan");
+    }
+
+    private void savePlanData() {
+        if(!deletedElements.isEmpty()) {
+            for (PlanElementModel elementToDelete: deletedElements) {
+                if(elementToDelete instanceof PlanModel) {
+                    NutriCalcModel.getPlansIDs().freeID(elementToDelete.getID());
+                } else if(elementToDelete instanceof MealsSetModel) {
+                    NutriCalcModel.getMealsSetsIDs().freeID(elementToDelete.getID());
+                }
+            }
+        }
+
+        changed = false;
+        showPrompt("Data saved.");
+    }
+
+    private void prepareView() {
+        for(PlanModel plan: NutriCalcModel.getMainPlansList()) {
+            addToView(plan);
+        }
+
+        NutriCalcModel.backupDatabases();
+    }
+    private void undoPlanChanges() {
+        NutriCalcModel.restoreDatabases();
     }
 }

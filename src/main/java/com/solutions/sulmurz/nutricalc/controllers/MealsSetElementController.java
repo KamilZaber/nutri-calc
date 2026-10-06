@@ -34,7 +34,12 @@ public class MealsSetElementController extends NutriCalcController {
         }
     }
 
+    public IngredientModel getCurrentElement() {
+        return currentElement;
+    }
+
     public float getAmount() {
         return amount;
     }
+
 }

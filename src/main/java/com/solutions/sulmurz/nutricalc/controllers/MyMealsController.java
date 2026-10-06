@@ -29,6 +29,8 @@ public class MyMealsController extends NutriCalcController {
     @FXML
     private TextField nameTextField;
     @FXML
+    private Button backButton;
+    @FXML
     private Button addButton;
     @FXML
     private Button deleteButton;
@@ -44,6 +46,7 @@ public class MyMealsController extends NutriCalcController {
     private ListView<MealModel> mealsListView;
     @FXML
     private VBox ingredientsTab;
+    private static boolean changed = false;
 
     @FXML
     private void initialize() {
@@ -89,12 +92,31 @@ public class MyMealsController extends NutriCalcController {
     }
 
     @FXML
+    private void onBackButtonClick() {
+        if(changed) {
+            Boolean confirmed = showConfirmationPrompt("Do you want to save changes?", "");
+            if(Boolean.TRUE.equals(confirmed)) {
+                showPrompt("Changes saved");
+                changed = false;
+            } else if(Boolean.FALSE.equals(confirmed)) {
+                NutriCalcModel.restoreDatabases();
+                changed = false;
+            } else {
+                return;
+            }
+        }
+        openMainMenuView();
+    }
+
+    @FXML
     private void onAddClick() {
         try {
-            if(addMealViewScene == null) {
-                addMealViewScene = new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("add_meal_view.fxml")));
-            }
-            NutriCalcMain.getPrimaryStage().setScene(addMealViewScene);
+            Parent root;
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/add_meal_view.fxml")
+            );
+            root = loader.load();
+            NutriCalcMain.getPrimaryStage().setScene(new Scene(root));
         } catch(IOException e) {
             showFatalPrompt();
         }
@@ -105,11 +127,12 @@ public class MyMealsController extends NutriCalcController {
         MealModel meal = mealsListView.getSelectionModel().getSelectedItem();
         int selectionIndex;
         if(meal != null) {
-            if(showConfirmationPrompt("Do you really want to delete the meal: ", meal.getName())) {
+            if(Boolean.TRUE.equals(showConfirmationPrompt("Do you really want to delete the meal: ", meal.getName()))) {
                 selectionIndex = mealsListView.getItems().indexOf(meal);
                 mealsListView.getItems().remove(selectionIndex);
                 NutriCalcModel.getMealsList().remove(selectionIndex);
                 dataSection.setVisible(false);
+                changed = true;
             }
         } else {
             showPrompt("Select an ingredient to delete.");
@@ -137,6 +160,7 @@ public class MyMealsController extends NutriCalcController {
                             return;
                         } else {
                             changedInTest = true;
+                            changed = true;
                             testIngredientsAmounts[i] = 0;
                         }
                     } else {
@@ -147,6 +171,7 @@ public class MyMealsController extends NutriCalcController {
                 if(changedInTest) {
                     testIngredientsAmounts = NutriCalcFunctions.shortenFloatArray(testIngredientsAmounts);
                 }
+
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("edit_meal_view.fxml"));
                 Parent root = loader.load();
                 EditMealController controller = loader.getController();
@@ -158,6 +183,26 @@ public class MyMealsController extends NutriCalcController {
         } else {
             showPrompt("Select a meal to edit.");
         }
+    }
+
+    @FXML
+    private void onSaveClick() {
+        if(changed) {
+            if(Boolean.TRUE.equals(showConfirmationPrompt("Do you really want to save changes?", ""))) {
+                changed = false;
+                showPrompt("Changes saved");
+            }
+        } else {
+            showPrompt("Nothing to save.");
+        }
+    }
+
+    public void setChanged(boolean changed) {
+        MyMealsController.changed = changed;
+    }
+
+    public static boolean isChanged() {
+        return changed;
     }
 
     private boolean showNoIngredientPrompt(String name) {

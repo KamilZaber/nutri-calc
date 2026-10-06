@@ -56,7 +56,7 @@
                   <Font name="Courier New Bold" size="60.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" contentDisplay="CENTER" layoutX="44.0" layoutY="23.0" mnemonicParsing="false" onAction="#openMainMenuView" prefHeight="31.0" prefWidth="52.0" text="Button">
+            <Button fx:id="backButton" contentDisplay="CENTER" layoutX="44.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="31.0" prefWidth="52.0" text="Button">
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                      <image>

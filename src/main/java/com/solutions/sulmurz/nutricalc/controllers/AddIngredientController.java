@@ -6,6 +6,7 @@ import com.solutions.sulmurz.nutricalc.exceptions.NameOccupiedException;
 import com.solutions.sulmurz.nutricalc.models.IngredientModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -24,15 +25,49 @@ public class AddIngredientController extends NutriCalcController {
     protected VBox mineralsSection;
     @FXML
     protected VBox vitaminsSection;
+    @FXML
+    private Button backButton;
+    protected boolean changed = false;
 
     @FXML
     protected void onSaveButtonClick() {
+        if(changed) {
+            saveIngredient();
+        } else {
+            showPrompt("Nothing to save.");
+        }
+    }
+
+    @FXML
+    protected void onBackButtonClick() {
+        if(changed) {
+            Boolean confirmed = showConfirmationPrompt("Do you want to save this ingredient?","");
+            if(Boolean.TRUE.equals(confirmed)) {
+                saveIngredient();
+            } else if(Boolean.FALSE.equals(confirmed)) {
+                openMyIngredientsView();
+            }
+        } else {
+            openMyIngredientsView();
+        }
+    }
+
+    @FXML
+    private void change() {
+        changed = true;
+    }
+
+    private void saveIngredient() {
         String name = nameField.getText();
         try {
             if (!name.isEmpty()) {
                 if (!NutriCalcModel.ingredientNameOccupied(name)) {
                     NutriCalcModel.getIngredientsList().add(new IngredientModel(name, getSectionValuesArray(macroSection), getSectionValuesArray(vitaminsSection), getSectionValuesArray(mineralsSection)));
-                    NutriCalcMain.getPrimaryStage().setScene(new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("my_ingredients_view.fxml"))));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/my_ingredients_view.fxml"));
+                    Parent root = loader.load();
+                    MyIngredientsController controller = loader.getController();
+                    controller.setChanged(true);
+                    NutriCalcMain.getPrimaryStage().setScene(new Scene(root));
                 } else {
                     throw new NameOccupiedException();
                 }
