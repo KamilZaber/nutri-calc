@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.solutions.sulmurz.nutricalc.controllers.NutriCalcController;
+
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
@@ -134,7 +136,7 @@ public class NutriCalcModel {
 
     private void loadIngredientsDatabase() {
         Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\ingredients_database.json");
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();      //żeby nie brało pod uwagę funkcji czy innych pól, które nie mają być częścią struktury obiektu JSON (POJO)
+        Gson gson = new GsonBuilder().create();
         Type listType = new TypeToken<List<IngredientModel>>(){}.getType();
         try {
             ingredientsList = gson.fromJson(Files.readString(path),listType);
@@ -145,7 +147,7 @@ public class NutriCalcModel {
 
     private void loadMealsDatabase() {
         Path path = Paths.get("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\projects\\nutri-calc\\nutri-calc\\src\\main\\resources\\meals_database.json");
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create(); //żeby nie brało pod uwagę funkcji czy innych pól, które nie mają być częścią struktury obiektu JSON (POJO)
         Type listType = new TypeToken<List<MealModel>>(){}.getType();
         try {
             mealsList = gson.fromJson(Files.readString(path),listType);
@@ -190,6 +192,41 @@ public class NutriCalcModel {
         }
     }
 
+    public static void saveDatabase() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson2 = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+
+        try(FileWriter writer = new FileWriter("./src/main/resources/ingredients_database.json")) {
+            gson.toJson(ingredientsList, writer);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        try(FileWriter writer = new FileWriter("./src/main/resources/meals_database.json")) {
+            gson2.toJson(mealsList, writer);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        try(FileWriter writer = new FileWriter("./src/main/resources/meals_sets_database.json")) {
+            gson2.toJson(mealsSetsList, writer);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        try(FileWriter writer = new FileWriter("./src/main/resources/plans_database.json")) {
+            gson2.toJson(plansList, writer);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        try(FileWriter writer = new FileWriter("./src/main/resources/main_plans_database.json")) {
+            gson2.toJson(mainPlansList, writer);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void backupDatabases() {
         oldIngredientsList = new ArrayList<>(ingredientsList);
         oldMealsList = new ArrayList<>(mealsList);
@@ -207,6 +244,10 @@ public class NutriCalcModel {
     }
 
     public static void calculateAllNutritionalValues() {
+        for(MealModel meal: mealsList) {
+            meal.calculateNutritionalValues();
+        }
+
         for (PlanModel mainPlan: mainPlansList) {
             mainPlan.calculateNutritionalValues();
         }

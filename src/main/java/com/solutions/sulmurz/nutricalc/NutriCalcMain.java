@@ -26,8 +26,13 @@ public class NutriCalcMain extends Application {
         primaryStage = stage;
         nutriCalcModel = new NutriCalcModel();
         root.requestFocus();
+        stage.setOnCloseRequest(event -> {
+            if(Boolean.TRUE.equals(NutriCalcController.showConfirmationPrompt("Do you want to save the database file?", ""))) {
+                NutriCalcModel.saveDatabase();
+            }
+        });
         stage.setScene(scene);
-        stage.setTitle("NutriCalc 0.7");
+        stage.setTitle("NutriCalc 0.8");
         stage.show();
     }
 

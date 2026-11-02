@@ -304,9 +304,9 @@ public class PlanController extends NutriCalcController {
     private void generateData() {
         generateElementsBox();
 
-        generateSection(macroSection, currentPlan.getMacroAmounts());
-        generateSection(mineralsSection, currentPlan.getMineralsAmounts());
-        generateSection(vitaminsSection, currentPlan.getVitaminsAmounts());
+        generateSection(macroSection, NutriCalcModel.getMacroSet(), currentPlan.getMacroAmounts());
+        generateSection(mineralsSection, NutriCalcModel.getMineralsSet(), currentPlan.getMineralsAmounts());
+        generateSection(vitaminsSection, NutriCalcModel.getVitaminsSet(), currentPlan.getVitaminsAmounts());
     }
 
     private void resetElementsBox() {
@@ -373,28 +373,6 @@ public class PlanController extends NutriCalcController {
     }
 
     private void undoPlanChanges() {
-//        if(!deletedElements.isEmpty()) {
-//            for (PlanElementModel element : deletedElements) {
-//                if (element instanceof PlanModel) {
-//                    NutriCalcModel.getPlansList().add((PlanModel) element);
-//                } else if (element instanceof MealsSetModel) {
-//                    NutriCalcModel.getMealsSetsList().add((MealsSetModel) element);
-//                }
-//            }
-//        }
-//
-//        if(!addedElements.isEmpty()) {
-//            for (PlanElementModel element : addedElements) {
-//                if (element instanceof PlanModel) {
-//                    NutriCalcModel.getPlansList().remove((PlanModel) element);
-//                    NutriCalcModel.getPlansIDs().freeID(element.getID());
-//
-//                } else if (element instanceof MealsSetModel) {
-//                    NutriCalcModel.getMealsSetsList().remove((MealsSetModel) element);
-//                    NutriCalcModel.getMealsSetsIDs().freeID(element.getID());
-//                }
-//            }
-//        }
         if(!addedElements.isEmpty()) {
             for (PlanElementModel addedElement: addedElements) {
                 if(addedElement instanceof PlanModel) {

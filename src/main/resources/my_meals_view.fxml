@@ -99,7 +99,7 @@
                                        <children>
                                           <VBox prefHeight="194.0" prefWidth="554.0">
                                              <children>
-                                                <TextField alignment="CENTER" editable="false" prefHeight="44.0" prefWidth="224.0" text="MACRO:">
+                                                <TextField alignment="CENTER" editable="false" prefHeight="44.0" prefWidth="224.0" text="MACRO (g):">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font>
@@ -137,7 +137,7 @@
                                           </VBox>
                                           <VBox prefHeight="194.0" prefWidth="560.0">
                                              <children>
-                                                <TextField alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="354.0" text="MINERALS:">
+                                                <TextField alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="354.0" text="MINERALS (mg):">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font>
@@ -225,7 +225,7 @@
                                           </VBox>
                                           <VBox prefHeight="194.0" prefWidth="569.0">
                                              <children>
-                                                <TextField alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="354.0" text="VITAMINS:">
+                                                <TextField alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="354.0" text="VITAMINS (mg):">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font>

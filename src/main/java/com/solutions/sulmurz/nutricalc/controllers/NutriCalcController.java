@@ -91,10 +91,17 @@ public abstract class NutriCalcController {
         NutriCalcMain.getPrimaryStage().setScene(scene);
     }
 
+    @FXML
+    private void onSaveDatabaseClick() {
+        if(Boolean.TRUE.equals(NutriCalcController.showConfirmationPrompt("Do you want to save the database file?", ""))) {
+           NutriCalcModel.saveDatabase();
+        }
+    }
+
     protected void generateSection(VBox container, String[] fieldsNames, float[] values) {
         int i = 0;
         for(Node node: container.getChildren()) {
-            ((TextField) node).setText(fieldsNames[i] + ": " + values[i]);
+            ((TextField) node).setText(fieldsNames[i] + ": " + (float) Math.round(values[i] * 1000) /1000);
             i++;
         }
     }
@@ -203,10 +210,10 @@ public abstract class NutriCalcController {
         stage.showAndWait();
     }
 
-    protected Boolean showConfirmationPrompt(String question, String name) {
+    public static Boolean showConfirmationPrompt(String question, String name) {
         ConfirmationPromptController controller;
         VBox root = null;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/confirmation_prompt_view.fxml"));
+        FXMLLoader loader = new FXMLLoader(NutriCalcController.class.getResource("/confirmation_prompt_view.fxml"));
         try {
             root = loader.load();
         } catch(IOException e) {

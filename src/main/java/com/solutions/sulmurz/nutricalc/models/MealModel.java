@@ -2,6 +2,7 @@ package com.solutions.sulmurz.nutricalc.models;
 
 import com.google.gson.annotations.Expose;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MealModel extends IngredientModel {
@@ -56,6 +57,22 @@ public class MealModel extends IngredientModel {
             i++;
         }
         return mineralsSummary;
+    }
+
+    public void calculateNutritionalValues() {
+        List<IngredientModel> ingredientsList = new ArrayList<>();
+
+        for(String ingredientName: mealIngredients) {
+            IngredientModel ingredient;
+            ingredient = NutriCalcModel.getIngredientByName(ingredientName);
+            if (ingredient != null) {
+                ingredientsList.add(ingredient);
+            }
+        }
+
+        macroAmounts = sumUpMacroValues(ingredientsList, ingredientsAmounts);
+        vitaminsAmounts = sumUpVitaminsValues(ingredientsList, ingredientsAmounts);
+        mineralsAmounts = sumUpMineralsValues(ingredientsList, ingredientsAmounts);
     }
 
     public String[] getMealngredients() {

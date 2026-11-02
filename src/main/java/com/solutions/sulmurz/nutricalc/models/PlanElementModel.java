@@ -11,11 +11,8 @@ public abstract class PlanElementModel {
     protected String name;
     @Expose
     protected String description;
-    @Expose
     protected float[] macroAmounts;
-    @Expose
     protected float[] vitaminsAmounts;
-    @Expose
     protected float[] mineralsAmounts;
     private PlanModel parentPlan;
 

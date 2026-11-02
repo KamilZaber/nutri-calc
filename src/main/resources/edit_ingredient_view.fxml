@@ -76,7 +76,7 @@
                      <children>
                         <VBox prefHeight="194.0" prefWidth="554.0">
                            <children>
-                              <TextField fx:id="macroLabel" alignment="CENTER" editable="false" prefHeight="44.0" prefWidth="224.0" text="MACRO:">
+                              <TextField fx:id="macroLabel" alignment="CENTER" editable="false" prefHeight="44.0" prefWidth="224.0" text="MACRO (g):">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -114,27 +114,27 @@
                                     </VBox>
                                     <VBox fx:id="macroSection" prefHeight="100.0" prefWidth="152.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="30.0" prefWidth="344.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="30.0" prefWidth="344.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -147,7 +147,7 @@
                         </VBox>
                         <VBox prefHeight="194.0" prefWidth="554.0">
                            <children>
-                              <TextField fx:id="mineralsLabel" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="354.0" text="MINERALS:">
+                              <TextField fx:id="mineralsLabel" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="354.0" text="MINERALS (mg):">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -235,77 +235,77 @@
                                     </VBox>
                                     <VBox fx:id="mineralsSection" prefHeight="100.0" prefWidth="152.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="30.0" prefWidth="344.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="30.0" prefWidth="344.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -318,7 +318,7 @@
                         </VBox>
                         <VBox prefHeight="194.0" prefWidth="554.0">
                            <children>
-                              <TextField fx:id="vitaminsLabel" alignment="CENTER" editable="false" prefHeight="44.0" prefWidth="224.0" text="VITAMINS:">
+                              <TextField fx:id="vitaminsLabel" alignment="CENTER" editable="false" prefHeight="44.0" prefWidth="224.0" text="VITAMINS (mg):">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -396,67 +396,67 @@
                                     </VBox>
                                     <VBox fx:id="vitaminsSection" prefHeight="100.0" prefWidth="152.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="30.0" prefWidth="344.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="30.0" prefWidth="344.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TextField alignment="CENTER" prefHeight="25.0" prefWidth="354.0" onKeyReleased="#change">
+                                          <TextField alignment="CENTER" onKeyReleased="#change" prefHeight="25.0" prefWidth="354.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>

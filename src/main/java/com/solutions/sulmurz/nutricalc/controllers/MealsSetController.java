@@ -87,7 +87,7 @@ public class MealsSetController extends NutriCalcController {
         if(elementToAddInfo != null) {
             addedIngredients.add(elementToAddInfo);
             currentMealsSet.addNewElement(elementToAddInfo.getElement(), elementToAddInfo.getAmount());
-            currentMealsSet.changeNutritionalValues("PLUS", elementToAddInfo.getAmount(), elementToAddInfo.getElement().getMacroAmounts(), elementToAddInfo.getElement().getMineralsAmounts(), elementToAddInfo.getElement().getVitaminsAmounts());
+            currentMealsSet.changeNutritionalValues("PLUS", elementToAddInfo.getAmount()/100, elementToAddInfo.getElement().getMacroAmounts(), elementToAddInfo.getElement().getMineralsAmounts(), elementToAddInfo.getElement().getVitaminsAmounts());
             addToView(elementToAddInfo.getElement(), elementToAddInfo.getAmount());
             generateNutritionalValuesSections();
 
@@ -144,9 +144,9 @@ public class MealsSetController extends NutriCalcController {
     }
 
     private void generateNutritionalValuesSections() {
-        generateSection(macroSection, currentMealsSet.getMacroAmounts());
-        generateSection(mineralsSection, currentMealsSet.getMineralsAmounts());
-        generateSection(vitaminsSection, currentMealsSet.getVitaminsAmounts());
+        generateSection(macroSection, NutriCalcModel.getMacroSet(), currentMealsSet.getMacroAmounts());
+        generateSection(mineralsSection, NutriCalcModel.getMineralsSet(), currentMealsSet.getMineralsAmounts());
+        generateSection(vitaminsSection, NutriCalcModel.getVitaminsSet(), currentMealsSet.getVitaminsAmounts());
     }
 
     public void setup(MealsSetModel mealsSet) {

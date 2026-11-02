@@ -1,690 +1,440 @@
 [
   {
+    "elementsList": [
+      [
+        "meal",
+        "jaja sadzone na maśle"
+      ],
+      [
+        "ingredient",
+        "gouda cheese"
+      ]
+    ],
+    "elementsAmounts": [
+      1.5,
+      80.0
+    ],
     "ID": 0,
     "type": 2,
     "name": "Carnivore Day1 Breakfast",
-    "description": "",
-    "macroAmounts": [30, 35, 2, 0, 450],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200],
-    "mineralsAmounts": [100, 0, 200, 150, 20, 300, 2, 2, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "jaja sadzone na maśle"],
-      ["ingredient", "gouda cheese"]
-    ],
-    "elementsAmounts": [1.5, 80]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "jaja sadzone na maśle"
+      ],
+      [
+        "ingredient",
+        "gouda cheese"
+      ]
+    ],
+    "elementsAmounts": [
+      1.5,
+      80.0
+    ],
     "ID": 19,
     "type": 2,
     "name": "Carnivore Day1 Breakfast",
-    "description": "",
-    "macroAmounts": [30, 35, 2, 0, 450],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200],
-    "mineralsAmounts": [100, 0, 200, 150, 20, 300, 2, 2, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "jaja sadzone na maśle"],
-      ["ingredient", "gouda cheese"]
-    ],
-    "elementsAmounts": [1.5, 80]
+    "description": ""
   },
   {
-    "ID": 20,
-    "type": 2,
-    "name": "Carnivore Day1 Breakfast",
-    "description": "",
-    "macroAmounts": [30, 35, 2, 0, 450],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200],
-    "mineralsAmounts": [100, 0, 200, 150, 20, 300, 2, 2, 0, 0, 0, 0, 0, 0, 0],
     "elementsList": [
-      ["meal", "jaja sadzone na maśle"],
-      ["ingredient", "gouda cheese"]
+      [
+        "meal",
+        "stek ribeye z masłem"
+      ]
     ],
-    "elementsAmounts": [1.5, 80]
-  },
-  {
-    "ID": 1,
-    "type": 2,
-    "name": "Carnivore Day1 Dinner",
-    "description": "",
-    "macroAmounts": [50, 40, 0, 0, 600],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 50],
-    "mineralsAmounts": [10, 0, 300, 200, 30, 100, 2, 4, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "stek ribeye z masłem"]
+    "elementsAmounts": [
+      1.2
     ],
-    "elementsAmounts": [1.2]
-  },
-  {
     "ID": 21,
     "type": 2,
     "name": "Carnivore Day1 Dinner",
-    "description": "",
-    "macroAmounts": [50, 40, 0, 0, 600],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 50],
-    "mineralsAmounts": [10, 0, 300, 200, 30, 100, 2, 4, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "stek ribeye z masłem"]
-    ],
-    "elementsAmounts": [1.2]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "stek ribeye z masłem"
+      ]
+    ],
+    "elementsAmounts": [
+      1.2
+    ],
     "ID": 22,
     "type": 2,
     "name": "Carnivore Day1 Dinner",
-    "description": "",
-    "macroAmounts": [50, 40, 0, 0, 600],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 50],
-    "mineralsAmounts": [10, 0, 300, 200, 30, 100, 2, 4, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "stek ribeye z masłem"]
-    ],
-    "elementsAmounts": [1.2]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "schab wędzony"
+      ]
+    ],
+    "elementsAmounts": [
+      1.0
+    ],
     "ID": 2,
     "type": 2,
     "name": "Carnivore Day1 Supper",
-    "description": "",
-    "macroAmounts": [30, 15, 2, 0, 300],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 40],
-    "mineralsAmounts": [10, 0, 200, 150, 20, 400, 1, 2, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "schab wędzony"]
-    ],
-    "elementsAmounts": [1]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "schab wędzony"
+      ]
+    ],
+    "elementsAmounts": [
+      1.0
+    ],
     "ID": 23,
     "type": 2,
     "name": "Carnivore Day1 Supper",
-    "description": "",
-    "macroAmounts": [30, 15, 2, 0, 300],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 40],
-    "mineralsAmounts": [10, 0, 200, 150, 20, 400, 1, 2, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "schab wędzony"]
-    ],
-    "elementsAmounts": [1]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "schab wędzony"
+      ]
+    ],
+    "elementsAmounts": [
+      1.0
+    ],
     "ID": 24,
     "type": 2,
     "name": "Carnivore Day1 Supper",
-    "description": "",
-    "macroAmounts": [30, 15, 2, 0, 300],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 40],
-    "mineralsAmounts": [10, 0, 200, 150, 20, 400, 1, 2, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "schab wędzony"]
-    ],
-    "elementsAmounts": [1]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "boczek smażony"
+      ],
+      [
+        "meal",
+        "ziemniaki pieczone"
+      ],
+      [
+        "meal",
+        "antrykot z ghee"
+      ]
+    ],
+    "elementsAmounts": [
+      50.0,
+      50.0,
+      50.0
+    ],
     "ID": 3,
     "type": 2,
     "name": "Carnivore Additions",
-    "description": "",
-    "macroAmounts": [10, 10, 5, 0, 150],
-    "vitaminsAmounts": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 20],
-    "mineralsAmounts": [50, 0, 100, 80, 10, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["ingredient", "kefir"],
-      ["ingredient", "yogurt natural 2%"],
-      ["ingredient", "irish butter"]
-    ],
-    "elementsAmounts": [250, 200, 20]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "jaja + ser gouda"
+      ]
+    ],
+    "elementsAmounts": [
+      1.3
+    ],
     "ID": 4,
     "type": 2,
     "name": "Carnivore Breakfast Eggs Cheese",
-    "description": "",
-    "macroAmounts": [35, 30, 2, 0, 420],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220],
-    "mineralsAmounts": [300, 0, 250, 300, 30, 400, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "jaja + ser gouda"]
-    ],
-    "elementsAmounts": [1.3]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "jaja + ser gouda"
+      ]
+    ],
+    "elementsAmounts": [
+      1.3
+    ],
     "ID": 25,
     "type": 2,
     "name": "Carnivore Breakfast Eggs Cheese",
-    "description": "",
-    "macroAmounts": [35, 30, 2, 0, 420],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220],
-    "mineralsAmounts": [300, 0, 250, 300, 30, 400, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "jaja + ser gouda"]
-    ],
-    "elementsAmounts": [1.3]
+    "description": ""
   },
   {
-    "ID": 26,
-    "type": 2,
-    "name": "Carnivore Breakfast Eggs Cheese",
-    "description": "",
-    "macroAmounts": [35, 30, 2, 0, 420],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220],
-    "mineralsAmounts": [300, 0, 250, 300, 30, 400, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     "elementsList": [
-      ["meal", "jaja + ser gouda"]
+      [
+        "meal",
+        "kurczak smażony ghee"
+      ]
     ],
-    "elementsAmounts": [1.3]
-  },
-  {
-    "ID": 5,
-    "type": 2,
-    "name": "Carnivore Dinner Chicken",
-    "description": "",
-    "macroAmounts": [60, 20, 0, 0, 450],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 90],
-    "mineralsAmounts": [20, 0, 300, 200, 30, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "kurczak smażony ghee"]
+    "elementsAmounts": [
+      1.4
     ],
-    "elementsAmounts": [1.4]
-  },
-  {
     "ID": 27,
     "type": 2,
     "name": "Carnivore Dinner Chicken",
-    "description": "",
-    "macroAmounts": [60, 20, 0, 0, 450],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 90],
-    "mineralsAmounts": [20, 0, 300, 200, 30, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "kurczak smażony ghee"]
-    ],
-    "elementsAmounts": [1.4]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "kurczak smażony ghee"
+      ]
+    ],
+    "elementsAmounts": [
+      1.4
+    ],
     "ID": 28,
     "type": 2,
     "name": "Carnivore Dinner Chicken",
-    "description": "",
-    "macroAmounts": [60, 20, 0, 0, 450],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 90],
-    "mineralsAmounts": [20, 0, 300, 200, 30, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "kurczak smażony ghee"]
-    ],
-    "elementsAmounts": [1.4]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "kurczak smażony ghee"
+      ]
+    ],
+    "elementsAmounts": [
+      1.4
+    ],
     "ID": 29,
     "type": 2,
     "name": "Carnivore Dinner Chicken",
-    "description": "",
-    "macroAmounts": [60, 20, 0, 0, 450],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 90],
-    "mineralsAmounts": [20, 0, 300, 200, 30, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "kurczak smażony ghee"]
-    ],
-    "elementsAmounts": [1.4]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "kurczak smażony ghee"
+      ]
+    ],
+    "elementsAmounts": [
+      1.4
+    ],
     "ID": 30,
     "type": 2,
     "name": "Carnivore Dinner Chicken",
-    "description": "",
-    "macroAmounts": [60, 20, 0, 0, 450],
-    "vitaminsAmounts": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 90],
-    "mineralsAmounts": [20, 0, 300, 200, 30, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "kurczak smażony ghee"]
-    ],
-    "elementsAmounts": [1.4]
+    "description": ""
   },
   {
-    "ID": 6,
-    "type": 2,
-    "name": "Carnivore Supper Liver",
-    "description": "",
-    "macroAmounts": [35, 15, 5, 0, 350],
-    "vitaminsAmounts": [5, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 300],
-    "mineralsAmounts": [10, 0, 400, 300, 20, 100, 5, 3, 10, 0, 0, 0, 0, 0, 0],
     "elementsList": [
-      ["meal", "wątróbka smażona"],
-      ["ingredient", "irish butter"]
+      [
+        "meal",
+        "wątróbka smażona"
+      ],
+      [
+        "ingredient",
+        "irish butter"
+      ]
     ],
-    "elementsAmounts": [0.8, 35]
-  },
-  {
+    "elementsAmounts": [
+      0.8,
+      35.0
+    ],
     "ID": 31,
     "type": 2,
     "name": "Carnivore Supper Liver",
-    "description": "",
-    "macroAmounts": [35, 15, 5, 0, 350],
-    "vitaminsAmounts": [5, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 300],
-    "mineralsAmounts": [10, 0, 400, 300, 20, 100, 5, 3, 10, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "wątróbka smażona"],
-      ["ingredient", "irish butter"]
-    ],
-    "elementsAmounts": [0.8, 35]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "wątróbka smażona"
+      ],
+      [
+        "ingredient",
+        "irish butter"
+      ]
+    ],
+    "elementsAmounts": [
+      0.8,
+      35.0
+    ],
     "ID": 32,
     "type": 2,
     "name": "Carnivore Supper Liver",
-    "description": "",
-    "macroAmounts": [35, 15, 5, 0, 350],
-    "vitaminsAmounts": [5, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 300],
-    "mineralsAmounts": [10, 0, 400, 300, 20, 100, 5, 3, 10, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "wątróbka smażona"],
-      ["ingredient", "irish butter"]
-    ],
-    "elementsAmounts": [0.8, 35]
+    "description": ""
   },
   {
-    "ID": 33,
-    "type": 2,
-    "name": "Carnivore Supper Liver",
-    "description": "",
-    "macroAmounts": [35, 15, 5, 0, 350],
-    "vitaminsAmounts": [5, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 300],
-    "mineralsAmounts": [10, 0, 400, 300, 20, 100, 5, 3, 10, 0, 0, 0, 0, 0, 0],
     "elementsList": [
-      ["meal", "wątróbka smażona"],
-      ["ingredient", "irish butter"]
+      [
+        "ingredient",
+        "banana"
+      ],
+      [
+        "ingredient",
+        "snickers"
+      ],
+      [
+        "ingredient",
+        "dates dried"
+      ],
+      [
+        "ingredient",
+        "almonds"
+      ]
     ],
-    "elementsAmounts": [0.8, 35]
-  },
-  {
-    "ID": 7,
-    "type": 2,
-    "name": "Vegan Set1",
-    "description": "",
-    "macroAmounts": [70, 20, 120, 10, 900],
-    "vitaminsAmounts": [0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [200, 0, 600, 300, 80, 50, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "sałatka tofu"],
-      ["meal", "ryż z tofu"],
-      ["ingredient", "banana"]
+    "elementsAmounts": [
+      120.0,
+      50.0,
+      40.0,
+      30.0
     ],
-    "elementsAmounts": [1, 1.2, 95]
-  },
-  {
-    "ID": 34,
-    "type": 2,
-    "name": "Vegan Set1",
-    "description": "",
-    "macroAmounts": [70, 20, 120, 10, 900],
-    "vitaminsAmounts": [0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [200, 0, 600, 300, 80, 50, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "sałatka tofu"],
-      ["meal", "ryż z tofu"],
-      ["ingredient", "banana"]
-    ],
-    "elementsAmounts": [1, 1.2, 95]
-  },
-  {
-    "ID": 35,
-    "type": 2,
-    "name": "Vegan Set1",
-    "description": "",
-    "macroAmounts": [70, 20, 120, 10, 900],
-    "vitaminsAmounts": [0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [200, 0, 600, 300, 80, 50, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "sałatka tofu"],
-      ["meal", "ryż z tofu"],
-      ["ingredient", "banana"]
-    ],
-    "elementsAmounts": [1, 1.2, 95]
-  },
-  {
-    "ID": 36,
-    "type": 2,
-    "name": "Vegan Set1",
-    "description": "",
-    "macroAmounts": [70, 20, 120, 10, 900],
-    "vitaminsAmounts": [0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [200, 0, 600, 300, 80, 50, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "sałatka tofu"],
-      ["meal", "ryż z tofu"],
-      ["ingredient", "banana"]
-    ],
-    "elementsAmounts": [1, 1.2, 95]
-  },
-  {
-    "ID": 8,
-    "type": 2,
-    "name": "Vegan Set2",
-    "description": "",
-    "macroAmounts": [60, 25, 110, 12, 850],
-    "vitaminsAmounts": [0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 40],
-    "mineralsAmounts": [200, 0, 700, 300, 80, 40, 3, 2, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "broccoli bowl"],
-      ["meal", "ziemniaki pieczone"]
-    ],
-    "elementsAmounts": [1, 1.1]
-  },
-  {
-    "ID": 37,
-    "type": 2,
-    "name": "Vegan Set2",
-    "description": "",
-    "macroAmounts": [60, 25, 110, 12, 850],
-    "vitaminsAmounts": [0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 40],
-    "mineralsAmounts": [200, 0, 700, 300, 80, 40, 3, 2, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "broccoli bowl"],
-      ["meal", "ziemniaki pieczone"]
-    ],
-    "elementsAmounts": [1, 1.1]
-  },
-  {
-    "ID": 38,
-    "type": 2,
-    "name": "Vegan Set2",
-    "description": "",
-    "macroAmounts": [60, 25, 110, 12, 850],
-    "vitaminsAmounts": [0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 40],
-    "mineralsAmounts": [200, 0, 700, 300, 80, 40, 3, 2, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "broccoli bowl"],
-      ["meal", "ziemniaki pieczone"]
-    ],
-    "elementsAmounts": [1, 1.1]
-  },
-  {
-    "ID": 39,
-    "type": 2,
-    "name": "Vegan Set2",
-    "description": "",
-    "macroAmounts": [60, 25, 110, 12, 850],
-    "vitaminsAmounts": [0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 40],
-    "mineralsAmounts": [200, 0, 700, 300, 80, 40, 3, 2, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "broccoli bowl"],
-      ["meal", "ziemniaki pieczone"]
-    ],
-    "elementsAmounts": [1, 1.1]
-  },
-  {
-    "ID": 9,
-    "type": 2,
-    "name": "Vegan Set3",
-    "description": "",
-    "macroAmounts": [65, 22, 100, 10, 820],
-    "vitaminsAmounts": [0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [180, 0, 650, 250, 70, 30, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "kanapki vegan"],
-      ["ingredient", "apple"],
-      ["ingredient", "banana"]
-    ],
-    "elementsAmounts": [1.5, 120, 50]
-  },
-  {
-    "ID": 40,
-    "type": 2,
-    "name": "Vegan Set3",
-    "description": "",
-    "macroAmounts": [65, 22, 100, 10, 820],
-    "vitaminsAmounts": [0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [180, 0, 650, 250, 70, 30, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "kanapki vegan"],
-      ["ingredient", "apple"],
-      ["ingredient", "banana"]
-    ],
-    "elementsAmounts": [1.5, 120, 50]
-  },
-  {
-    "ID": 41,
-    "type": 2,
-    "name": "Vegan Set3",
-    "description": "",
-    "macroAmounts": [65, 22, 100, 10, 820],
-    "vitaminsAmounts": [0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [180, 0, 650, 250, 70, 30, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "kanapki vegan"],
-      ["ingredient", "apple"],
-      ["ingredient", "banana"]
-    ],
-    "elementsAmounts": [1.5, 120, 50]
-  },
-  {
-    "ID": 42,
-    "type": 2,
-    "name": "Vegan Set3",
-    "description": "",
-    "macroAmounts": [65, 22, 100, 10, 820],
-    "vitaminsAmounts": [0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [180, 0, 650, 250, 70, 30, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "kanapki vegan"],
-      ["ingredient", "apple"],
-      ["ingredient", "banana"]
-    ],
-    "elementsAmounts": [1.5, 120, 50]
-  },
-  {
-    "ID": 10,
-    "type": 2,
-    "name": "Vegan Set4",
-    "description": "",
-    "macroAmounts": [70, 25, 105, 11, 870],
-    "vitaminsAmounts": [0, 0, 0, 0, 45, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [200, 0, 700, 250, 70, 30, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "makaron tofu warzywa"]
-    ],
-    "elementsAmounts": [1.3]
-  },
-  {
-    "ID": 43,
-    "type": 2,
-    "name": "Vegan Set4",
-    "description": "",
-    "macroAmounts": [70, 25, 105, 11, 870],
-    "vitaminsAmounts": [0, 0, 0, 0, 45, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [200, 0, 700, 250, 70, 30, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "makaron tofu warzywa"]
-    ],
-    "elementsAmounts": [1.3]
-  },
-  {
-    "ID": 44,
-    "type": 2,
-    "name": "Vegan Set4",
-    "description": "",
-    "macroAmounts": [70, 25, 105, 11, 870],
-    "vitaminsAmounts": [0, 0, 0, 0, 45, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [200, 0, 700, 250, 70, 30, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "makaron tofu warzywa"]
-    ],
-    "elementsAmounts": [1.3]
-  },
-  {
-    "ID": 45,
-    "type": 2,
-    "name": "Vegan Set4",
-    "description": "",
-    "macroAmounts": [70, 25, 105, 11, 870],
-    "vitaminsAmounts": [0, 0, 0, 0, 45, 0, 0, 0, 0, 0, 0, 0, 30],
-    "mineralsAmounts": [200, 0, 700, 250, 70, 30, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "makaron tofu warzywa"]
-    ],
-    "elementsAmounts": [1.3]
-  },
-  {
-    "ID": 11,
-    "type": 2,
-    "name": "Vegan Set5",
-    "description": "",
-    "macroAmounts": [60, 20, 95, 9, 780],
-    "vitaminsAmounts": [0, 0, 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 25],
-    "mineralsAmounts": [150, 0, 600, 200, 60, 20, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "sałatka ziemniak + warzywa"],
-      ["ingredient", "blueberries"],
-      ["ingredient", "banana"]
-    ],
-    "elementsAmounts": [1.2, 50, 100]
-  },
-  {
-    "ID": 46,
-    "type": 2,
-    "name": "Vegan Set5",
-    "description": "",
-    "macroAmounts": [60, 20, 95, 9, 780],
-    "vitaminsAmounts": [0, 0, 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 25],
-    "mineralsAmounts": [150, 0, 600, 200, 60, 20, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "sałatka ziemniak + warzywa"],
-      ["ingredient", "blueberries"],
-      ["ingredient", "banana"]
-    ],
-    "elementsAmounts": [1.2, 50, 100]
-  },
-  {
-    "ID": 47,
-    "type": 2,
-    "name": "Vegan Set5",
-    "description": "",
-    "macroAmounts": [60, 20, 95, 9, 780],
-    "vitaminsAmounts": [0, 0, 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 25],
-    "mineralsAmounts": [150, 0, 600, 200, 60, 20, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "sałatka ziemniak + warzywa"],
-      ["ingredient", "blueberries"],
-      ["ingredient", "banana"]
-    ],
-    "elementsAmounts": [1.2, 50, 100]
-  },
-  {
-    "ID": 48,
-    "type": 2,
-    "name": "Vegan Set5",
-    "description": "",
-    "macroAmounts": [60, 20, 95, 9, 780],
-    "vitaminsAmounts": [0, 0, 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 25],
-    "mineralsAmounts": [150, 0, 600, 200, 60, 20, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "sałatka ziemniak + warzywa"],
-      ["ingredient", "blueberries"],
-      ["ingredient", "banana"]
-    ],
-    "elementsAmounts": [1.2, 50, 100]
-  },
-  {
     "ID": 12,
     "type": 2,
     "name": "Trip Snacks",
-    "description": "",
-    "macroAmounts": [10, 15, 80, 5, 450],
-    "vitaminsAmounts": [0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 10],
-    "mineralsAmounts": [100, 0, 300, 100, 50, 10, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["ingredient", "banana"],
-      ["ingredient", "snickers"],
-      ["ingredient", "dates dried"],
-      ["ingredient", "almonds"]
-    ],
-    "elementsAmounts": [120, 50, 40, 30]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "kanapka 1"
+      ],
+      [
+        "ingredient",
+        "banana"
+      ],
+      [
+        "ingredient",
+        "blueberries"
+      ]
+    ],
+    "elementsAmounts": [
+      1.0,
+      90.0,
+      75.0
+    ],
     "ID": 13,
     "type": 2,
     "name": "Trip Meal 1 Light",
-    "description": "",
-    "macroAmounts": [10, 5, 40, 2, 230],
-    "vitaminsAmounts": [0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 10],
-    "mineralsAmounts": [50, 0, 150, 80, 20, 20, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "kanapka 1"],
-      ["ingredient", "banana"],
-      ["ingredient", "blueberries"]
-    ],
-    "elementsAmounts": [1, 90, 75]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "kurczak smażony"
+      ],
+      [
+        "ingredient",
+        "apple"
+      ]
+    ],
+    "elementsAmounts": [
+      1.2,
+      100.0
+    ],
     "ID": 14,
     "type": 2,
     "name": "Trip Meal 2 Heavy",
-    "description": "",
-    "macroAmounts": [50, 20, 80, 5, 650],
-    "vitaminsAmounts": [0, 0, 0, 0, 15, 0, 0, 2, 0, 0, 0, 0, 40],
-    "mineralsAmounts": [100, 0, 400, 200, 40, 60, 2, 2, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "kurczak smażony"],
-      ["ingredient", "apple"]
-    ],
-    "elementsAmounts": [1.2, 100]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "sałatka tofu"
+      ],
+      [
+        "ingredient",
+        "gouda cheese"
+      ]
+    ],
+    "elementsAmounts": [
+      1.0,
+      90.0
+    ],
     "ID": 15,
     "type": 2,
     "name": "Trip Meal 3 Light",
-    "description": "",
-    "macroAmounts": [20, 10, 20, 5, 250],
-    "vitaminsAmounts": [0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 20],
-    "mineralsAmounts": [80, 0, 200, 120, 20, 30, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "sałatka tofu"],
-      ["ingredient", "gouda cheese"]
-    ],
-    "elementsAmounts": [1, 90]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "meal",
+        "stek ribeye z masłem"
+      ],
+      [
+        "ingredient",
+        "potato"
+      ]
+    ],
+    "elementsAmounts": [
+      1.1,
+      200.0
+    ],
     "ID": 16,
     "type": 2,
     "name": "Trip Meal 4 Heavy",
-    "description": "",
-    "macroAmounts": [45, 40, 0, 0, 650],
-    "vitaminsAmounts": [0, 0, 0, 0, 5, 0, 0, 3, 0, 0, 0, 0, 60],
-    "mineralsAmounts": [120, 0, 350, 250, 30, 100, 2, 3, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["meal", "stek ribeye z masłem"],
-      ["ingredient", "potato"]
-    ],
-    "elementsAmounts": [1.1, 200]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "ingredient",
+        "banana"
+      ],
+      [
+        "ingredient",
+        "tofu"
+      ],
+      [
+        "ingredient",
+        "arborio rice"
+      ],
+      [
+        "ingredient",
+        "olive oil"
+      ]
+    ],
+    "elementsAmounts": [
+      200.0,
+      180.0,
+      100.0,
+      30.0
+    ],
     "ID": 17,
     "type": 2,
     "name": "Trip Shopping Lidl",
-    "description": "",
-    "macroAmounts": [20, 15, 90, 20, 600],
-    "vitaminsAmounts": [0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 20],
-    "mineralsAmounts": [150, 0, 300, 150, 40, 30, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["ingredient", "banana"],
-      ["ingredient", "tofu"],
-      ["ingredient", "arborio rice"],
-      ["ingredient", "olive oil"]
-    ],
-    "elementsAmounts": [200, 180, 100, 30]
+    "description": ""
   },
   {
+    "elementsList": [
+      [
+        "ingredient",
+        "white wheat bread"
+      ]
+    ],
+    "elementsAmounts": [
+      200.0
+    ],
     "ID": 18,
     "type": 2,
     "name": "Trip Shopping Biedronka",
-    "description": "",
-    "macroAmounts": [40, 10, 120, 5, 700],
-    "vitaminsAmounts": [0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 15],
-    "mineralsAmounts": [200, 0, 400, 200, 50, 40, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    "elementsList": [
-      ["ingredient", "white wheat bread"],
-      ["ingredient", "chicken breast"],
-      ["ingredient", "paprika"],
-      ["ingredient", "cucumber"]
-    ],
-    "elementsAmounts": [200, 250, 100, 120]
+    "description": ""
+  },
+  {
+    "elementsList": [],
+    "elementsAmounts": [],
+    "ID": 49,
+    "type": 2,
+    "name": "Carnivore Day1 Dinner",
+    "description": ""
   }
 ]
